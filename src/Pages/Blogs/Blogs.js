@@ -1,10 +1,13 @@
 import { Disclosure } from '@headlessui/react'
 import { FaChevronCircleDown } from 'react-icons/fa';
 
+
 export default function Example() {
+  
+
   return (
-    <div className="w-full px-4 pt-16">
-      <div className="mx-auto w-full max-w-2xl rounded-2xl bg-white p-2">
+      <div className="w-full px-4 pt-16 grid grid-cols-1 lg:grid-cols-2">
+             <div className="mx-auto w-full max-w-2xl rounded-2xl bg-white p-2">
         <Disclosure>
           {({ open }) => (
             <>
@@ -88,6 +91,10 @@ export default function Example() {
           )}
         </Disclosure>
       </div>
+          <div className='w-full'>
+          
+          </div>
+       
     </div>
   )
 }

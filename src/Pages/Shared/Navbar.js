@@ -1,10 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Lottie from 'react-lottie';
+import logo from '../../shopping-cart-icon.json';
+
+
+
 
 
 const Navbar = () => {
     
-
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: logo,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    }
 
     const menuItems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
@@ -23,7 +35,12 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost normal-case text-xl">IceBox</Link>
+                <Link to="/" className="btn btn-ghost normal-case text-xl">
+                <Lottie options={defaultOptions}
+              height={60}
+              width={60}
+               />
+                    IceBox</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
