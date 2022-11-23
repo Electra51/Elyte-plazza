@@ -1,22 +1,23 @@
 import { Disclosure } from '@headlessui/react'
 import { FaChevronCircleDown } from 'react-icons/fa';
+import blogImage from '../../assets/images/1.png'
 
 
 export default function Example() {
   
 
   return (
-      <div className="w-full px-4 pt-16 grid grid-cols-1 lg:grid-cols-2">
+      <div className="w-full px-4 pt-16 grid grid-cols-1 lg:grid-cols-2 items-center">
              <div className="mx-auto w-full max-w-2xl rounded-2xl bg-white p-2">
         <Disclosure>
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-blue-800 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                 <span>What are the different ways to manage a state in a React application??</span>
                 <FaChevronCircleDown
                   className={`${
                     open ? 'rotate-180 transform' : ''
-                  } h-5 w-5 text-purple-500`}
+                  } h-5 w-5 text-orange-500`}
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
@@ -33,12 +34,12 @@ export default function Example() {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-blue-800 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                 <span>How does prototypical inheritance work?</span>
                 <FaChevronCircleDown
                   className={`${
                     open ? 'rotate-180 transform' : ''
-                  } h-5 w-5 text-purple-500`}
+                  } h-5 w-5 text-orange-500`}
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
@@ -50,12 +51,12 @@ export default function Example() {
               <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-blue-800 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                 <span>What is a unit test? Why should we write unit tests?</span>
                 <FaChevronCircleDown
                   className={`${
                     open ? 'rotate-180 transform' : ''
-                  } h-5 w-5 text-purple-500`}
+                  } h-5 w-5 text-orange-500`}
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
@@ -67,12 +68,12 @@ export default function Example() {
               <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-blue-800 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
                 <span>React vs. Angular vs. Vue?</span>
                 <FaChevronCircleDown
                   className={`${
                     open ? 'rotate-180 transform' : ''
-                  } h-5 w-5 text-purple-500`}
+                  } h-5 w-5 text-orange-500`}
                 />
               </Disclosure.Button>
                           <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
@@ -92,7 +93,7 @@ export default function Example() {
         </Disclosure>
       </div>
           <div className='w-full'>
-          
+          <img src={blogImage} alt="" />
           </div>
        
     </div>

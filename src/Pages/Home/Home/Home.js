@@ -9,10 +9,10 @@ const Home = () => {
     return (
         <div className='mx-5'>
             <Banner></Banner>
-            <InfoCards></InfoCards>
+            {/* <InfoCards></InfoCards>
             <Services></Services>
             <MakeAppointment></MakeAppointment>
-            <Testimonial></Testimonial>
+            <Testimonial></Testimonial> */}
         </div>
     );
 };
