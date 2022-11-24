@@ -1,0 +1,29 @@
+[
+    {
+        "_id":1564,
+        "Product_id": "01",
+        "title": "Non-frost refrigerator",
+        "img": "https://i.ibb.co/JpC4P2d/Capturrre-removebg-preview.png",
+        "total_product":"5"
+       
+    },
+    {
+        "_id":4531,
+        "Product_id": "02",
+        "title": "beverage cooler",
+        "img": "https://i.ibb.co/KKRfjLH/Capturtye-removebg-preview.png",
+        "total_product":"2"
+       
+    },
+    {
+        "_id":21313,
+        "Product_id": "03",
+        "title": "deep freezer",
+        "img": "https://i.ibb.co/prndvFX/Captureee-removebg-preview.png",
+        "total_product":"3"
+        
+       
+    }
+    
+    
+]
