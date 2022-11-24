@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const CategoryCard = ({categories}) => {
     
-        const {title, img,total_product } = categories;
+        const {title, img,total_product, _id} = categories;
         return (
             <PhotoProvider>
             <div className="card card-compact w-80 bg-base-100 shadow-xl">
@@ -14,13 +14,13 @@ const CategoryCard = ({categories}) => {
                             <img src={img} alt="Shoes" />
                         </PhotoView></figure>
             <div className="card-body flex-grow-0 text-center">
-                          <h2 className="text-center">{title }</h2>
-                          <p className='text-xl font-semibold text-orange-600'>total_product :{total_product}</p>
+                          <h2 className="text-center font-bold text-warning text-xl">{title }</h2>
+                          <p className=' font-semibold'>Total Item :{total_product}</p>
                           <div className='flex align-middle justify-items-center'>
                          </div>
                           
                          <div className="card-actions justify-center">
-                    <Link to='{`/services/${_id}`}'><button className="btn btn-accent">View Detail</button></Link>
+                    <Link to={`/category/${_id}`}><button className="btn btn-warning">View All Product</button></Link>
           
           </div>
             </div>

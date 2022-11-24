@@ -1,48 +1,18 @@
 import React from 'react';
-import img1 from '../../../assets/images/2.png'
-import img2 from '../../../assets/images/3.png'
-
-import BannerItem from './BannerItem';
-
-
-const bannerData = [
-  {
-        image: img1,
-      para:'A refrigerator is an open system that dispels heat from a closed space to a warmer area, usually a kitchen or another room. ',
-      text:'Welcome to IceBox site',
-    prev: 2,
-    id: 1,
-    next: 2
-  },
-    {
-        para:'Refrigeration is an essential food storage technique around the world. The lower temperature lowers the reproduction rate of bacteria',
-        text:'Get your need easily',
-    image: img2,
-    prev: 1,
-    id: 2,
-    next: 1
-  }
-
-  
-]
-
-
 
 const Banner = () => {
   return (
-    
-      <div className="carousel w-full py-5">
-        {
-          bannerData.map(slide => <BannerItem
-            key={slide.id}
-           slide={slide}>
-            
-          </BannerItem>)
-      }
+    <div className="hero min-h-screen rounded-md" style={{ backgroundImage: `url("https://i.ibb.co/mNxZgVm/1.jpg")` }}>
+      <div className="hero-overlay bg-opacity-60"></div>
+      <div className="hero-content text-center text-neutral-content">
+        <div className="max-w-md">
+          <h1 className="mb-5 text-5xl font-bold">Welcome there</h1>
+          <p className="mb-5">Icebox is a platform on which you can buy and sell any type of refrigerator! We help people buy and sell.</p>
+          <button className="btn btn-warning">Get Started</button>
+        </div>
       </div>
-    
+    </div>
   );
 };
 
 export default Banner;
-
