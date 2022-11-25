@@ -24,12 +24,15 @@ const Signup = () => {
             console.log(user);
             toast.success('User created successfully')
             const userInfo = {
-                displayName:data.name
+                displayName: data.name
+                // displayUser: data.userType
             }
             updateUser(userInfo)
-                .then(() => { })
+                .then(() => { 
+                    saveUser(data.name, data.email, data.userType);
+                })
             .catch(err=>console.log(err))
-            navigate(from, { replace: true })
+            
         })
         .catch(error => {
             console.log(error)
@@ -38,14 +41,29 @@ const Signup = () => {
     }
 
    
-
+  
 
     const handleGoogleSignIn = () => {
         signInWithGoogle().then(result => {
           console.log(result.user)
           navigate(from, { replace: true })
         })
-      }
+    }
+    
+    const saveUser = (name, email, userType) =>{
+        const user ={name, email, userType};
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            navigate(from, { replace: true });
+        })
+    }
 
     return (
         <div className='h-[600px] flex justify-center items-center'>
@@ -55,17 +73,17 @@ const Signup = () => {
                     <label className='text-center'> 
                     <p className='text-center mt-2'> What type of account?</p>        
     <div>
-                            <input className='mx-1' type="radio" value="Seller" {...register("User", { required: 'please select one'})} />
+                            <input className='mx-1' type="radio" value="Seller" {...register("userType",{ required: 'please select one'})} />
       Seller
     </div>
                 </label>
                 <label className='text-center'>
     <div>
-      <input className='mx-1' type="radio" value="Normal" {...register("User",{ required: 'please select one'})}  />
+      <input className='mx-1' type="radio" value="Normal" {...register("userType",{ required: 'please select one'})}  />
      Normal
     </div>
                     </label>
-                    {errors.User && <p className='text-red-600 text-left' role="alert">{errors.User?.message}</p>} 
+                    {errors.userType && <p className='text-red-600 text-left' role="alert">{errors.userType?.message}</p>} 
                 <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>

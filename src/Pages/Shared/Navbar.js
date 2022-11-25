@@ -9,8 +9,10 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 
 const Navbar = () => {
+
     //authcontext theke user k nilm
     const { user, logOut } = useContext(AuthContext);
+
     //redirect
     const navigate = useNavigate()
     const location = useLocation()
@@ -38,7 +40,10 @@ const Navbar = () => {
         <li><Link to="/blogs">Blogs</Link></li>
         {
             user?.uid ?
+                <>
+                    <li><Link to="/dashboard">Dashboard</Link></li>
                 <li><button onClick={handleLogOut} className='btn btn-warning btn-outline'>LogOut</button></li>
+                </>
                 :
                 <li><Link to="/login" className='btn btn-warning'>Login</Link></li>
         }
@@ -68,7 +73,9 @@ const Navbar = () => {
                     {menuItems}
                 </ul>
             </div>
-           
+            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
         </div>
     );
 };

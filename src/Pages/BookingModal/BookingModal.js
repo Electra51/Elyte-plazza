@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const BookingModal = ({ productModals,setProductModals }) => {
-    const { item_name, seller_name, resale_price } = productModals;
+    const { item_name, item_img, seller_name, resale_price } = productModals;
     const { user } = useContext(AuthContext);
 
 
@@ -18,7 +18,9 @@ const BookingModal = ({ productModals,setProductModals }) => {
         const booking = {
             itemName: item_name,
             seller_name:seller_name,
-            Username:name,
+            Username: name,
+            imageUrl: item_img,
+            price:resale_price,
             email,
             phone,
             location
@@ -56,6 +58,7 @@ const BookingModal = ({ productModals,setProductModals }) => {
                     <h3 className="text-lg font-bold">{item_name}</h3>
                     <p className="">Seller Name: {seller_name}</p>
                     <p className=' text-primary'>Price: ${resale_price}</p>
+                    <img src={item_img} alt="" width={100}/>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
                     <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
                         <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input w-full input-bordered" />
