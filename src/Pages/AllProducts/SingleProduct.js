@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider';
+import DotLoader from "react-spinners/DotLoader";
 
 const SingleProduct = ({ oneProduct, setProductModals }) => {
+    const { loading } = useContext(AuthContext);
     const { item_img, item_name, location, original_price, resale_price, seller_name, year_of_use } = oneProduct;
-
+    if(loading){
+        return  <DotLoader
+        color={'#E9C211'}
+        loading={loading}
+        
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    }
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">

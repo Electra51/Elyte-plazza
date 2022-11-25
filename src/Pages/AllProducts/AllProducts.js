@@ -23,7 +23,8 @@ const AllProducts = () => {
             </div>
             {
                productModals && <BookingModal
-            productModals={productModals}></BookingModal>
+                    productModals={productModals}
+                    setProductModals={setProductModals}></BookingModal>
             }
             
        </div>

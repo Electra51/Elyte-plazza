@@ -7,28 +7,36 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const [userEmail, setUserEmail] = useState('')
+    
+    //get by authContext
+    const { resetPassword, signIn, signInWithGoogle } = useContext(AuthContext);
+//redirect
     const location = useLocation();
     const navigate = useNavigate();
-    const { resetPassword, signIn, signInWithGoogle } = useContext(AuthContext);
     const from = location.state?.from?.pathname || '/';
     const { register, handleSubmit, formState: { errors } } = useForm();
+    //for error
     const [loginError, setLoginError] = useState('');
 
     const handleLogin = data => {
         console.log(data);
         navigate(from, { replace: true })
         setLoginError('');
+        //login
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                
             })
             .catch(error => {
                 console.log(error.message)
                 setLoginError(error.message);
             });
     }
+
+    //google log in
     const handleGoogleSignIn = () => {
         signInWithGoogle().then(result => {
           console.log(result.user)
@@ -58,19 +66,20 @@ const Login = () => {
             <div className='w-96 p-5 border border-warning rounded-md'>
                 <h1 className='text-3xl font-bold text-center'>Login</h1>
                 <form onSubmit={handleSubmit((handleLogin))}>
-                <label>
+                <label className='text-center'> 
+                    <p className='text-center mt-2'> What type of account?</p>        
     <div>
-      <input className='mx-1 ' type="radio" value="Seller" {...register("User")} />
+                            <input className='mx-1' type="radio" value="Seller" {...register("User", { required: 'please select one'})} />
       Seller
     </div>
                 </label>
-                <label>
+                <label className='text-center'>
     <div>
-      <input className='mx-1 ' type="radio" value="Normal" {...register("User")}  />
+      <input className='mx-1' type="radio" value="Normal" {...register("User",{ required: 'please select one'})}  />
      Normal
     </div>
-  </label>
-                    
+                    </label>
+                    {errors.User && <p className='text-red-600 text-left' role="alert">{errors.User?.message}</p>}      
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>

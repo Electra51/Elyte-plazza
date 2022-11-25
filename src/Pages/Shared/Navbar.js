@@ -1,13 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from 'react-lottie';
 import logo from '../../shopping-cart-icon.json';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 
 
 
 
 const Navbar = () => {
+    //authcontext theke user k nilm
+    const { user, logOut } = useContext(AuthContext);
+    //redirect
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     
     const defaultOptions = {
         loop: true,
@@ -18,10 +25,23 @@ const Navbar = () => {
         }
     }
 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err))
+            navigate(from, { replace: true })
+}
+
+
     const menuItems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/blogs">Blogs</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        {
+            user?.uid ?
+                <li><button onClick={handleLogOut} className='btn btn-warning btn-outline'>LogOut</button></li>
+                :
+                <li><Link to="/login" className='btn btn-warning'>Login</Link></li>
+        }
         
     </React.Fragment>
 

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Signup = () => {
-    const { createUser,signInWithGoogle,} = useContext(AuthContext)
+    const [signUpError, setSignUPError] = useState('');
+    const { createUser,signInWithGoogle,updateUser} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
@@ -13,16 +15,25 @@ const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     
     const handleSignUp = (data) => {
-        console.log(data)
+        console.log(data);
+        //notun kore sign up korle signup error empty
+        setSignUPError('');
         createUser(data.email, data.password)
         .then(result => {
             const user = result.user;
             console.log(user);
+            toast.success('User created successfully')
+            const userInfo = {
+                displayName:data.name
+            }
+            updateUser(userInfo)
+                .then(() => { })
+            .catch(err=>console.log(err))
             navigate(from, { replace: true })
         })
         .catch(error => {
             console.log(error)
-            
+            setSignUPError(error.message)
         });
     }
 
@@ -41,18 +52,20 @@ const Signup = () => {
             <div className='w-96 p-5 border border-warning rounded-md'>
                 <h1 className='text-3xl font-bold text-center'>Sign Up</h1>
                 <form onSubmit={handleSubmit((handleSignUp))}>
-                <label required>
+                    <label className='text-center'> 
+                    <p className='text-center mt-2'> What type of account?</p>        
     <div>
-      <input className='mx-1' type="radio" value="Seller" {...register("User")} />
+                            <input className='mx-1' type="radio" value="Seller" {...register("User", { required: 'please select one'})} />
       Seller
     </div>
                 </label>
-                <label>
+                <label className='text-center'>
     <div>
-      <input className='mx-1' type="radio" value="Normal" {...register("User")}  />
+      <input className='mx-1' type="radio" value="Normal" {...register("User",{ required: 'please select one'})}  />
      Normal
     </div>
-  </label>
+                    </label>
+                    {errors.User && <p className='text-red-600 text-left' role="alert">{errors.User?.message}</p>} 
                 <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>
@@ -82,8 +95,10 @@ const Signup = () => {
                         )}
                             className="input input-bordered border-warning" />
                         {errors.password && <p className='text-red-600 text-left' role="alert">{errors.password?.message}</p>}
+                        {signUpError && <p className='text-red-600'>{signUpError}</p>}
                     </div>
                     <input className='btn btn-warning w-full mt-5' type="submit" value='Sign Up' />
+                   
                     <p className='text-center'>Already have an account?  <Link to='/login' className='text-primary font-semibold underline'>please Login</Link> </p>
                     <div className="divider">OR</div>
                     <button onClick={handleGoogleSignIn} className='btn btn-outline btn-primary w-full text-black '>Continue with Google</button>
