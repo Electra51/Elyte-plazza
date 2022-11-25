@@ -20,7 +20,7 @@ const ProductsDetail = () => {
                         <img src="{img}" alt="Shoes" />
                     </PhotoView></figure>
         <div className="card-body flex-grow-0 text-center">
-                      <h2 className="text-center"></h2>
+                            <h2 className="text-center">{item.name}</h2>
                       <p className='text-xl font-semibold text-orange-600'>total_product :</p>
                       <div className='flex align-middle justify-items-center'>
                      </div>

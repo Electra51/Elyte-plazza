@@ -1,0 +1,91 @@
+[
+    {
+        "item_img":"https://i.ibb.co/vk95XZY/Capturwe2.png",
+        "category_id": "1",
+            "item_name":"Walton Non-frost refrigerator",
+            "resale_price":"$123.00",
+            "original_price":"$323.00",
+            "seller_name":"Jhon Herry",
+            "year_of_use":"2",
+            "location":"Belgium 123/45 road"
+    },
+    {
+       "item_img":"https://i.ibb.co/vk95XZY/Capturwe2.png",
+        "category_id": "1",
+        "item_name":"Samsung Non-frost refrigerator",
+        "resale_price":"$150.00",
+        "original_price":"$400.00",
+        "seller_name":"Susmita roy",
+        "year_of_use":"1",
+        "location":"Belgium 123/45 road"
+    },
+    {
+        "item_img":"https://i.ibb.co/vk95XZY/Capturwe2.png",
+        "category_id": "1",
+            "item_name":"Singer Non-frost refrigerator",
+            "resale_price":"$123.00",
+            "original_price":"$323.00",
+            "seller_name":"Jhon Herry",
+            "year_of_use":"4",
+            "location":"Belgium 123/45 road"
+     },
+
+   
+    {
+        "category_id": "2",
+        "item_img":"https://i.ibb.co/xgT0Jrm/Capture-removebg-preview-1.png",
+         "item_name":"Singer Beverage refrigerator",
+            "resale_price":"$123.00",
+            "original_price":"$323.00",
+            "seller_name":"Jhon Thapa",
+            "year_of_use":"2",
+            "location":"Belgium 123/45 road"
+       
+    },
+    {
+        "category_id": "2",
+        "item_img":"https://i.ibb.co/KKRfjLH/Capturtye-removebg-preview.png",
+          "item_name":"Walton Beverage refrigerator",
+            "resale_price":"$123.00",
+            "original_price":"$323.00",
+            "seller_name":"Jhon Herry",
+            "year_of_use":"3",
+            "location":"Belgium 123/45 road"
+       
+    },
+    {
+        "category_id": "3",
+        "item_img":"https://i.ibb.co/WgnttYz/Capturrrre-removebg-preview.png",
+         "item_name":"Samsung Deep Freezer",
+            "resale_price":"$223.00",
+            "original_price":"$523.00",
+            "seller_name":"Jhon Herry",
+            "year_of_use":"1",
+            "location":"Malayshia 13/45 road 2/1 building"
+       
+    },
+    {
+        "category_id": "3",
+        "item_img":"https://i.ibb.co/7YDHCB3/NFA-155-Ni-GOR-01-removebg-preview.png",
+          "item_name":"Singer Deep Freezer",
+            "resale_price":"$123.00",
+            "original_price":"$323.00",
+            "seller_name":"Tomas Henry",
+            "year_of_use":"2.5",
+            "location":"Singra 13/451 road"
+       
+    },
+    {
+        "category_id": "3",
+        "item_img":"https://i.ibb.co/LYNJtmd/vut-Rk-removebg-preview.png",
+         "item_name":"Walton Deep Freezer",
+            "resale_price":"$123.00",
+            "original_price":"$323.00",
+            "seller_name":"Jhon Herry",
+            "year_of_use":"2",
+            "location":"Belgium 123/45 road"
+       
+    }
+    
+    
+]
