@@ -41,7 +41,7 @@ const Signup = () => {
             <div className='w-96 p-5 border border-warning rounded-md'>
                 <h1 className='text-3xl font-bold text-center'>Sign Up</h1>
                 <form onSubmit={handleSubmit((handleSignUp))}>
-                <label>
+                <label required>
     <div>
       <input className='mx-1' type="radio" value="Seller" {...register("User")} />
       Seller
