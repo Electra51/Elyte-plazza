@@ -39,14 +39,14 @@ const BookingModal = ({ productModals,setProductModals }) => {
                 console.log(data);
                 if (data.acknowledged) {
                     setProductModals(null);
-                toast.success('booking confirmed')
+                toast.success('the item is booked')
                 }
             })
 
 
 
         console.log(booking);
-        toast.success('the item is booked')
+       
         
     }
     return (
