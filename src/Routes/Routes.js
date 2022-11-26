@@ -4,6 +4,7 @@ import Main from "../Layout/Main";
 import AllProducts from "../Pages/AllProducts/AllProducts";
 import Blogs from "../Pages/Blogs/Blogs";
 import MyOrders from "../Pages/DashBoard/MyOrders";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 import Home from "../Pages/Home/Home/Home";
 import ProductCategory from "../Pages/Home/ProductCategory/ProductCategory";
 import Login from "../Pages/Login/Login";
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             // {
             //     path: '/dashboard',
@@ -71,7 +73,13 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element:<MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader:({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
             }
+
         ]
     }
 ]);

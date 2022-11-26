@@ -1,9 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link, useNavigation } from 'react-router-dom';
+
 import { AuthContext } from '../../contexts/AuthProvider';
+import Loading from '../Shared/Loading';
 
 
-const MyOrders= () => {
+const MyOrders = () => {
+    const navigation = useNavigation();
+    // const { price, email, Username, } = booking;
+ 
     const { user } = useContext(AuthContext);
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
@@ -21,7 +27,13 @@ const MyOrders= () => {
         }
     })
 
+    if (navigation.state === "loading") {
+        return <Loading></Loading>
+    }
+   
+
     return (
+   
         <div>
             <h3 className="text-2xl mb-5">My Orders</h3>
             <div className="overflow-x-auto">
@@ -39,12 +51,12 @@ const MyOrders= () => {
                     <tbody>
                   
         
-      
+     
       
     
  
                         {
-                            bookings &&
+                            bookings?.length &&
                             bookings?.map((booking, i) => <tr key={booking._id}>
                                 <th>{i + 1}</th>
                                 <td>
@@ -58,28 +70,30 @@ const MyOrders= () => {
                                 </td>
                                 <td>{booking.itemName}</td>
                                 <td>{booking.price}</td>
-                                
+                               
                                 <td>
-                                    <button className='btn btn-primary btn-md'>pay</button>
-                                    {/* {
-                                        booking.price && !booking.paid && <Link
-                                            to={`/dashboard/payment/${booking._id}`}
-                                        >
-                                            <button
-                                                className='btn btn-primary btn-sm'
-                                            >Pay</button>
-                                        </Link>
-                                    } */}
-                                    {/* {
-                                        booking.price && booking.paid && <span className='text-green-500'>Paid</span>
-                                    } */}
+                                    {
+                                        booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}>
+                                        <button className='btn btn-primary btn-sm'>Pay</button></Link>
+
+                                    }
+                                    {
+                                         booking.price && booking.paid && <span className='text-green-500'>Paid</span>
+                                    }
+                                   
+                                  
+                                   
                                 </td>
                             </tr>)
-                        }
+                                    }
+                                    
                     </tbody>
                 </table>
             </div>
         </div>
+    //   )}
+    // </>
+        
     );
 };
 
