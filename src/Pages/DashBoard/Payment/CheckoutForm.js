@@ -9,7 +9,7 @@ const CheckoutForm = ({ booking }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
     const { price, email, Username,_id} = booking;
@@ -37,13 +37,14 @@ const CheckoutForm = ({ booking }) => {
         if (!stripe || !elements) {
             return
         }
+        setIsLoading(true);
 
         const card = elements.getElement(CardElement);
         if (card === null) {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.confirmPaymentMethod({
             type: 'card',
             card
         });

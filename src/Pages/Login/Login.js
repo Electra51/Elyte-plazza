@@ -75,20 +75,28 @@ const Login = () => {
             <div className='w-96 p-5 border border-warning rounded-md'>
                 <h1 className='text-3xl font-bold text-center'>Login</h1>
                 <form onSubmit={handleSubmit((handleLogin))}>
+                
                 <label className='text-center'> 
                     <p className='text-center mt-2'> What type of account?</p>        
     <div>
-                            <input className='mx-1' type="radio" value="Seller" {...register("User", { required: 'please select one'})} />
+                            <input className='mx-1' type="radio" value="seller" {...register("role", { required: 'please select one'})} />
       Seller
     </div>
                 </label>
                 <label className='text-center'>
     <div>
-      <input className='mx-1' type="radio" value="Normal" {...register("User",{ required: 'please select one'})}  />
-     Normal
+      <input className='mx-1' type="radio" value="buyer" {...register("role",{ required: 'please select one'})}  />
+     Buyer
     </div>
                     </label>
-                    {errors.User && <p className='text-red-600 text-left' role="alert">{errors.User?.message}</p>}      
+                    <label className='text-center'> 
+                          
+    <div>
+                            <input className='mx-1' type="radio" value="admin" {...register("role", { required: 'please select one'})} />
+      Admin
+    </div>
+                </label>
+                    {errors.role && <p className='text-red-600 text-left' role="alert">{errors.role?.message}</p>}      
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>

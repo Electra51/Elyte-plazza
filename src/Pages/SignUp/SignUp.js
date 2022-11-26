@@ -35,11 +35,11 @@ const Signup = () => {
             toast.success('User created successfully')
             const userInfo = {
                 displayName: data.name
-                // displayUser: data.userType
+                // displayUser: data.role
             }
             updateUser(userInfo)
                 .then(() => { 
-                    saveUser(data.name, data.email, data.userType);
+                    saveUser(data.name, data.email, data.role);
                 })
             .catch(err=>console.log(err))
             
@@ -60,8 +60,8 @@ const Signup = () => {
         })
     }
     
-    const saveUser = (name, email, userType) =>{
-        const user ={name, email, userType};
+    const saveUser = (name, email, role) =>{
+        const user ={name, email, role};
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -87,17 +87,18 @@ const Signup = () => {
                     <label className='text-center'> 
                     <p className='text-center mt-2'> What type of account?</p>        
     <div>
-                            <input className='mx-1' type="radio" value="Seller" {...register("userType",{ required: 'please select one'})} />
+                            <input className='mx-1' type="radio" value="seller" {...register("role",{ required: 'please select one'})} />
       Seller
     </div>
                 </label>
                 <label className='text-center'>
     <div>
-      <input className='mx-1' type="radio" value="Normal" {...register("userType",{ required: 'please select one'})}  />
-     Normal
+      <input className='mx-1' type="radio" value="buyer" {...register("role",{ required: 'please select one'})}  />
+     Buyer
     </div>
                     </label>
-                    {errors.userType && <p className='text-red-600 text-left' role="alert">{errors.userType?.message}</p>} 
+                    
+                    {errors.role && <p className='text-red-600 text-left' role="alert">{errors.role?.message}</p>} 
                 <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>
