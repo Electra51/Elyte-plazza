@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-// import { AuthContext } from '../contexts/AuthProvider';
-// import useAdmin from '../hooks/useAdmin';
+import { AuthContext } from '../contexts/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
 import Navbar from '../Pages/Shared/Navbar';
 
 
 const DashboardLayout = () => {
-//     const { user } = useContext(AuthContext);
-//     const [isAdmin]=useAdmin(user?.email)
+    const { user } = useContext(AuthContext);
+    const [isAdmin]=useAdmin(user?.email)
   
     return (
         <div>
@@ -22,15 +22,16 @@ const DashboardLayout = () => {
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                         <li><Link to="/dashboard">My Orders</Link></li>
                         <li><Link to="dashboard/allUsers">All Users</Link></li>
-                                <li><Link to="dashboard/allBuyers">All Buyers</Link></li>
+                        <li><Link to="dashboard/allBuyers">All Buyers</Link></li>
+                        <li><Link to="/dashboard/myProducts">My Products</Link></li>
+                        <li><Link to="/dashboard/addAProduct">Add A Product</Link></li>
                         {
-                            // isAdmin && <>
-                            //       {/* <li><Link to="dashboard/allUsers">All Users</Link></li>
-                            //     <li><Link to="dashboard/allBuyers">All Buyers</Link>
-                            //     </li> */}
-                            //     {/* <li><Link to="/dashboard/adddoctor">Add A Doctor</Link></li>
-                            //     <li><Link to="/dashboard/managedoctors">Manage Doctors</Link></li> */}
-                            //  </>
+                            isAdmin && <>
+                                <li><Link to="dashboard/allUsers">All Users</Link></li>
+                                <li><Link to="dashboard/allBuyers">All Buyers</Link></li>
+                                {/* <li><Link to="/dashboard/adddoctor">Add A Doctor</Link></li>
+                                <li><Link to="/dashboard/managedoctors">Manage Doctors</Link></li> */}
+                             </>
                         }
 
                     </ul>

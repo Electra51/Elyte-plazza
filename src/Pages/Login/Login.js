@@ -79,24 +79,17 @@ const Login = () => {
                 <label className='text-center'> 
                     <p className='text-center mt-2'> What type of account?</p>        
     <div>
-                            <input className='mx-1' type="radio" value="seller" {...register("role", { required: 'please select one'})} />
+                            <input className='mx-1' type="radio" value="seller" {...register("userType")} />
       Seller
     </div>
                 </label>
                 <label className='text-center'>
     <div>
-      <input className='mx-1' type="radio" value="buyer" {...register("role",{ required: 'please select one'})}  />
+      <input className='mx-1' type="radio" value="buyer" {...register("userType")}  />
      Buyer
     </div>
                     </label>
-                    <label className='text-center'> 
-                          
-    <div>
-                            <input className='mx-1' type="radio" value="admin" {...register("role", { required: 'please select one'})} />
-      Admin
-    </div>
-                </label>
-                    {errors.role && <p className='text-red-600 text-left' role="alert">{errors.role?.message}</p>}      
+                    {errors.userType && <p className='text-red-600 text-left' role="alert">{errors.userType?.message}</p>}      
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>

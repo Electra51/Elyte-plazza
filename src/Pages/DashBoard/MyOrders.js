@@ -8,13 +8,13 @@ import Loading from '../Shared/Loading';
 
 const MyOrders = () => {
     const navigation = useNavigation();
-    // const { price, email, Username, } = booking;
+    
  
     const { user } = useContext(AuthContext);
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: bookings = [] } = useQuery({
+    const { data: bookings = [] ,isLoading} = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -28,6 +28,9 @@ const MyOrders = () => {
     })
 
     if (navigation.state === "loading") {
+        return <Loading></Loading>
+    }
+    if (isLoading) {
         return <Loading></Loading>
     }
    

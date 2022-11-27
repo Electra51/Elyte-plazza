@@ -3,9 +3,11 @@ import DashboardLayOut from "../Layout/DashboardLayOut";
 import Main from "../Layout/Main";
 import AllProducts from "../Pages/AllProducts/AllProducts";
 import Blogs from "../Pages/Blogs/Blogs";
+import AddAProduct from "../Pages/DashBoard/AddAProduct";
 import AllBuyers from "../Pages/DashBoard/AllBuyers";
 import AllUsers from "../Pages/DashBoard/AllUsers";
 import MyOrders from "../Pages/DashBoard/MyOrders";
+import MyProducts from "../Pages/DashBoard/MyProducts";
 import Payment from "../Pages/DashBoard/Payment/Payment";
 import Home from "../Pages/Home/Home/Home";
 import ProductCategory from "../Pages/Home/ProductCategory/ProductCategory";
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <AllProducts></AllProducts>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.category_id}`),
+                loader: ({ params }) => fetch(`http://localhost:5000/category?name=${params.name}`),
                 
                 
                 
@@ -73,27 +75,36 @@ const router = createBrowserRouter([
     //     element: <PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
     //     errorElement:<ErrorPage></ErrorPage>,
         children: [
-    //         // {
-    //         //     path: '/dashboard',
-    //         //     element:<DashBoard></DashBoard>
-    //         // },
+            // {
+            //     path: '/dashboard',
+            //     element:<DashBoard></DashBoard>
+            // },
             {
                 path: '/dashboard',
                 element:<MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader:({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
+            {
+                path: 'dashboard/allBuyers',
+                element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: 'dashboard/allUsers',
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+
+            {
+                path: '/dashboard/myProducts',
+                element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/addAProduct',
+                element:<AddAProduct></AddAProduct>
             }
-    //         // {
-    //         //     path: '/dashboard/payment/:id',
-    //         //     element: <Payment></Payment>,
-    //         //     loader:({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
-    //         // },
-    //         // {
-    //         //     path: 'dashboard/allBuyers',
-    //         //     element: <AllBuyers></AllBuyers>
-    //         // },
-    //         // {
-    //         //     path: 'dashboard/allUsers',
-    //         //     element: <AllUsers></AllUsers>
-    //         // }
 
            
 

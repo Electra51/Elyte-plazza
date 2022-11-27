@@ -1,10 +1,24 @@
 import {FiXCircle } from 'react-icons/fi';
-import React from 'react'
-import { Link, useRouteError } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate, useRouteError } from 'react-router-dom'
+import { AuthContext } from '../../contexts/AuthProvider';
 
 
 const ErrorPage = () => {
+
+
+  const { logOut } = useContext(AuthContext);
   const error = useRouteError();
+  const navigate = useNavigate();
+
+
+  const handleLogOut = () => {
+    logOut()
+        .then(() => {
+            navigate('/login');
+         })
+        .catch(err => console.log(err));
+}
   return (
     <section className='flex items-center h-screen p-16 bg-gray-100 text-gray-900'>
       <div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
@@ -22,9 +36,8 @@ const ErrorPage = () => {
             {error.statusText || error.message}
           </p>
           <Link to='/'>
-            <button classes='btn btn-warning'>
-              Back to homepage
-            </button>
+          <h4 className="text-3xl"> Please <button className='btn btn-warning' onClick={handleLogOut}>Sign out</button></h4>
+            
           </Link>
         </div>
       </div>
