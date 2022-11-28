@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 import Loading from '../Shared/Loading';
 import MyProducts from './MyProducts';
 
@@ -11,10 +12,11 @@ import MyProducts from './MyProducts';
 const AddAProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
     const { data: categoryNames, isLoading } = useQuery({
         queryKey: ['Category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categoriesName');
+            const res = await fetch('https://icebox-server.vercel.app/categoriesName');
             const data = await res.json();
             return data;
         }
@@ -32,7 +34,7 @@ const AddAProduct = () => {
             price: data.price,
             image: data.image,
         }
-        fetch('http://localhost:5000/addProducts', {
+        fetch('https://icebox-server.vercel.app/addProducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -68,7 +70,7 @@ const AddAProduct = () => {
                     <label className="label"> <span className="label-text">Email</span></label>
                     <input type="text" {...register("email", {
                         required: true
-                    })} className="input input-bordered w-full " />
+                    })} defaultValue={user?.email} className="input input-bordered w-full " />
                     {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                 </div>
                 <div className="form-control w-full ">

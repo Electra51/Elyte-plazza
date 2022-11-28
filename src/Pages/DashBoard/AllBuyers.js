@@ -18,7 +18,7 @@ const AllBuyers = () => {
         queryKey: ['buyers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/users/buyer'
+                const res = await fetch('https://icebox-server.vercel.app/users/buyer'
                     // ,
                     // {
                     // headers: {
@@ -37,7 +37,7 @@ const AllBuyers = () => {
 
     const handleDeleteBuyer = buyer => {
         console.log(buyer);
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+        fetch(`https://icebox-server.vercel.app/users/${buyer._id}`, {
             method: 'DELETE'
             // ,
             // headers: {

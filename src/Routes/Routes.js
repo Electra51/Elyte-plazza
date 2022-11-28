@@ -43,8 +43,8 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
-                // loader: () => fetch('http://localhost:5000/products')
-                loader:({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+                // loader: () => fetch('https://icebox-server.vercel.app/products')
+                loader:({params})=>fetch(`https://icebox-server.vercel.app/products/${params.id}`)
 
              },
             {
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader:({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader:({params})=>fetch(`https://icebox-server.vercel.app/bookings/${params.id}`)
             },
            
             

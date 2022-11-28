@@ -8,7 +8,7 @@ const Available = () => {
         queryKey: ['availables'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/addProducts/available'
+                const res = await fetch('https://icebox-server.vercel.app/addProducts/available'
                     // ,
                     // {
                     // headers: {

@@ -20,7 +20,7 @@ const ReportItem = () => {
         queryKey: ['reportedItems'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/products/report/report'
+                const res = await fetch('https://icebox-server.vercel.app/products/report/report'
                     ,
                     {
                     headers: {
@@ -39,7 +39,7 @@ const ReportItem = () => {
 
     const handleDeleteReportedItem = reportedItem => {
         console.log(reportedItem);
-        fetch(`http://localhost:5000/products/${reportedItem._id}`, {
+        fetch(`https://icebox-server.vercel.app/products/${reportedItem._id}`, {
             method: 'DELETE'
             // ,
             // headers: {

@@ -24,7 +24,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     }
 
     const handleMakeReport = id => {
-        fetch(`http://localhost:5000/products/report/${id}`, {
+        fetch(`https://icebox-server.vercel.app/products/report/${id}`, {
             method: 'PUT'
             ,
             headers: {

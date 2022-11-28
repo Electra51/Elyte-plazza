@@ -20,7 +20,7 @@ const AllSellers = () => {
         queryKey: ['sellers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/users/seller'
+                const res = await fetch('https://icebox-server.vercel.app/users/seller'
                     // ,
                     // {
                     // headers: {
@@ -39,7 +39,7 @@ const AllSellers = () => {
 
     //handleMakeAvailable
     const handleMakeVerified = id => {
-        fetch(`http://localhost:5000/users/verify/${id}`, {
+        fetch(`https://icebox-server.vercel.app/users/verify/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -60,7 +60,7 @@ const AllSellers = () => {
 
     const handleDeleteSeller = seller => {
         console.log(seller);
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://icebox-server.vercel.app/users/${seller._id}`, {
             method: 'DELETE'
             // ,
             // headers: {

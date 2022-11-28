@@ -50,7 +50,7 @@ const Login = () => {
                 console.log(result.user)
                 navigate(from, { replace: true })
 
-                fetch('http://localhost:5000/googleUsers', {
+                fetch('https://icebox-server.vercel.app/googleUsers', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

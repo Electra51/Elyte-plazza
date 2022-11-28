@@ -21,7 +21,7 @@ const MyProducts = () => {
         queryKey: ['addProducts'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/addProducts', {
+                const res = await fetch('https://icebox-server.vercel.app/addProducts', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -39,7 +39,7 @@ const MyProducts = () => {
 
 //handleMakeAvailable
     const handleMakeAvailable = id => {
-        fetch(`http://localhost:5000/addProducts/available/${id}`, {
+        fetch(`https://icebox-server.vercel.app/addProducts/available/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -63,7 +63,7 @@ const MyProducts = () => {
 
     const handleDeleteProduct = product => {
         console.log(product);
-        fetch(`http://localhost:5000/addProducts/${product._id}`, {
+        fetch(`https://icebox-server.vercel.app/addProducts/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
