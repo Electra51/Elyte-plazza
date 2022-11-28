@@ -1,3 +1,5 @@
+
+
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -5,26 +7,26 @@ import { useNavigate } from 'react-router-dom';
 import ConfirmationModal from '../Shared/ConfirmationModal';
 import Loading from '../Shared/Loading';
 
-const AllBuyers = () => {
-    const [deletingBuyer, setDeletingBuyer] = useState([null]);
+const ReportItem = () => {
+    const [deletingReportedItem, setDeletingReportedItem] = useState([null]);
     const navigate = useNavigate();
 
     const closeModal = () => {
-        setDeletingBuyer(null);
+        setDeletingReportedItem(null);
     }
 
 
-    const { data: buyers, isLoading, refetch } = useQuery({
-        queryKey: ['buyers'],
+    const { data: reportedItems, isLoading, refetch } = useQuery({
+        queryKey: ['reportedItems'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/users/buyer'
-                    // ,
-                    // {
-                    // headers: {
-                    //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-                    // }
-                    // }
+                const res = await fetch('http://localhost:5000/products/report/report'
+                    ,
+                    {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                    }
                 );
                 const data = await res.json();
                 return data;
@@ -35,9 +37,9 @@ const AllBuyers = () => {
         }
     });
 
-    const handleDeleteBuyer = buyer => {
-        console.log(buyer);
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+    const handleDeleteReportedItem = reportedItem => {
+        console.log(reportedItem);
+        fetch(`http://localhost:5000/products/${reportedItem._id}`, {
             method: 'DELETE'
             // ,
             // headers: {
@@ -49,7 +51,7 @@ const AllBuyers = () => {
                 console.log(data);
                 if (data.deletedCount > 0) {
                     refetch();
-                    toast.success(`Buyer ${buyer.name} deleted successfully`)
+                    toast.success(`${reportedItem.name} deleted successfully`)
                 }
             })
     }
@@ -61,7 +63,7 @@ const AllBuyers = () => {
 
     return (
         <div className='px-10'>
-           <h3 className="text-2xl mb-5 ">All buyers</h3>
+           <h3 className="text-2xl mb-5 ">Reported Item here</h3>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -70,7 +72,7 @@ const AllBuyers = () => {
                             <th></th>
                             
                             <th>name</th>
-                            <th>Email</th>
+                            <th>Price</th>
                             
                             <th>Delete</th>
 
@@ -78,13 +80,13 @@ const AllBuyers = () => {
                     </thead>
                     <tbody>
                         {
-                            buyers?.map((buyer, i) =>
-                            <tr key={buyer._id}>
+                            reportedItems?.map((reportedItem, i) =>
+                            <tr key={reportedItem._id}>
         <th>{1+i}</th>
-        <td>{buyer.name}</td>
-        <td>{buyer.email}</td>
+        <td>{reportedItem.name}</td>
+        <td>{reportedItem.resale_price}</td>
         <td>
-                                    <label onClick={() => setDeletingBuyer(buyer)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
+                                    <label onClick={() => setDeletingReportedItem(reportedItem)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                 </td>
       </tr>)
 
@@ -98,12 +100,12 @@ const AllBuyers = () => {
                 </table>
             </div>
             {
-                deletingBuyer && <ConfirmationModal
+                deletingReportedItem && <ConfirmationModal
                     title={`Are you sure you want to delete?`}
-                    message={`If you delete ${deletingBuyer.name}. It cannot be undone.`}
-                    successAction={handleDeleteBuyer}
+                    message={`If you delete ${deletingReportedItem.name}. It cannot be undone.`}
+                    successAction={handleDeleteReportedItem}
                     successButtonName="Delete"
-                    modalData={deletingBuyer}
+                    modalData={deletingReportedItem}
                     closeModal={closeModal}
                 ></ConfirmationModal>
             }
@@ -112,4 +114,4 @@ const AllBuyers = () => {
     );
 };
 
-export default AllBuyers;
+export default ReportItem;

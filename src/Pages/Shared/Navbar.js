@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from 'react-lottie';
 import logo from '../../shopping-cart-icon.json';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 
 
@@ -42,11 +43,21 @@ const Navbar = () => {
             user?.uid ?
                 <>
                     <li><Link to="/dashboard">Dashboard</Link></li>
+                    <button className='btn btn-outline mr-2'>  <Link className='ml-2 pr-3' to="/profile">
+                            {user?.photoURL ?
+                                <img title={user.displayName} style={{ height: '35px' }} alt=''
+                                    roundedCircle
+                                    src={user?.photoURL}>
+                                </img>
+                                : <FaUser></FaUser>
+                            }
+                        </Link>{user?.displayName}</button>
                 <li><button onClick={handleLogOut} className='btn btn-warning btn-outline'>LogOut</button></li>
                 </>
                 :
                 <li><Link to="/login" className='btn btn-warning'>Login</Link></li>
         }
+        
         
     </React.Fragment>
 

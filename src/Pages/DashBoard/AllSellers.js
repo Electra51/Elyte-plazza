@@ -83,8 +83,8 @@ const AllSellers = () => {
 
 
     return (
-        <div>
-            All buyers
+        <div className='px-10'>
+           <h3 className="text-2xl mb-5 ">All Seller</h3>
 
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -112,7 +112,7 @@ const AllSellers = () => {
                                           seller?.type !=='verified' && <button onClick={() => handleMakeVerified(seller._id)} className='btn btn-primary btn-sm'>Verify</button>
                                         }
                                         {
-                                          seller?.type ==='verified' && <button onClick={() => handleMakeVerified(seller._id)} className='btn btn-outline btn-sm'>Verified</button>
+                                          seller?.type ==='verified' && <button className='btn btn-outline btn-sm'>Verified</button>
                                     }
                                     </td>
         <td>

@@ -103,7 +103,7 @@ const CheckoutForm = ({ booking }) => {
     }
 
     return (
-        <div className='bg-gray-200 p-6 border border'>
+        <div className='bg-gray-200 p-6 border rounded-md m-10'>
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{

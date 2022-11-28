@@ -86,8 +86,8 @@ const MyProducts = () => {
 
 
     return (
-        <div>
-            <h3 className="text-2xl mb-5">My Products</h3>
+        <div className='px-10'>
+            <h3 className="text-2xl mb-5 ">My Products</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

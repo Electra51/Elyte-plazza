@@ -26,7 +26,7 @@ const Available = () => {
     });
 
     const notify = e => {
-        toast('please Log in')
+        toast('Coming soon.......')
     }
     
 

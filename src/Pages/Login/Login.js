@@ -31,7 +31,7 @@ const Login = () => {
         navigate(from, { replace: true })
         setLoginError('');
         //login
-        signIn(data.email, data.password)
+        signIn(data.email, data.password,data.seller,data.admin)
             .then(result => {
                 const user = result.user;
                 console.log(user);

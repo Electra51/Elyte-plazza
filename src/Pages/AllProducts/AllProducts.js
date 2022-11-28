@@ -4,13 +4,15 @@ import BookingModal from '../BookingModal/BookingModal';
 import SingleProduct from './SingleProduct';
 
 const AllProducts = () => {
-    const products = useLoaderData();
+    const loaderData= useLoaderData()
+    const products = loaderData
     console.log(products);
     const [productModals, setProductModals] = useState(null);
     
     
     return (
         <div>
+           
              <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 my-10'>
             
             {
