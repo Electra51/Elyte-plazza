@@ -57,7 +57,7 @@ const BookingModal = ({ productModals,setProductModals }) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{item_name}</h3>
                     <p className="">Seller Name: {seller_name}</p>
-                    <p className=' text-primary'>Price: ${resale_price}</p>
+                    <p className=' text-primary'>Price: {resale_price}</p>
                     <img src={item_img} alt="" width={100}/>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
                     <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />

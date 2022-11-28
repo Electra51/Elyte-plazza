@@ -1,4 +1,5 @@
 import React from 'react';
+import Available from '../Available';
 import Banner from '../Banner/Banner';
 import ProductCategory from '../ProductCategory/ProductCategory';
 import Stat from '../Stat/Stat';
@@ -9,6 +10,7 @@ const Home = () => {
         <div>
         <Banner></Banner>,
             <ProductCategory></ProductCategory>
+            <Available></Available>
            <Stat></Stat>
         </div>
         

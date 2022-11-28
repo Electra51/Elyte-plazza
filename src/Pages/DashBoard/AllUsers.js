@@ -25,10 +25,10 @@ const AllUsers = () => {
         .then(res => res.json())
             .then(data => {
                 console.log(data);
-            if(data.modifiedCount > 0){
-                toast.success('Make admin successful.')
-                refetch();
-            }
+            // if(data.modifiedCount > 0){
+            //     toast.success('Make admin successful.')
+            //     refetch();
+            // }
             
         })
     }
@@ -55,7 +55,7 @@ const AllUsers = () => {
         <td>{user.email}</td>
         <td>
             {
-                user?.role !== 'admin' && <button onClick={handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>
+                <button onClick={handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>
             }</td>
         <td><button className='btn btn-xs btn-danger'>Delete</button></td>
       </tr>)
@@ -70,6 +70,8 @@ const AllUsers = () => {
 
 export default AllUsers;
 
-// // onClick={() => handleMakeAdmin(user._id)}
+
+
+
 
 

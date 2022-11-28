@@ -5,10 +5,13 @@ import AllProducts from "../Pages/AllProducts/AllProducts";
 import Blogs from "../Pages/Blogs/Blogs";
 import AddAProduct from "../Pages/DashBoard/AddAProduct";
 import AllBuyers from "../Pages/DashBoard/AllBuyers";
+import AllSellers from "../Pages/DashBoard/AllSellers";
+import AllSeller from "../Pages/DashBoard/AllSellers";
 import AllUsers from "../Pages/DashBoard/AllUsers";
 import MyOrders from "../Pages/DashBoard/MyOrders";
 import MyProducts from "../Pages/DashBoard/MyProducts";
 import Payment from "../Pages/DashBoard/Payment/Payment";
+import Available from "../Pages/Home/Available";
 import Home from "../Pages/Home/Home/Home";
 import ProductCategory from "../Pages/Home/ProductCategory/ProductCategory";
 import Login from "../Pages/Login/Login";
@@ -31,8 +34,9 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/category',
-                element:<ProductCategory></ProductCategory>
+                path: '/category/',
+                element: <ProductCategory></ProductCategory>,
+               
             },
             {
                 path: '/category/:id',
@@ -43,13 +47,21 @@ const router = createBrowserRouter([
                 
             },
             {
-                path: '/category/:id',
-                element: <AllProducts></AllProducts>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category?name=${params.name}`),
+                path: '/Available',
+                element: <Available></Available>
+               
                 
                 
                 
             },
+            // {
+            //     path: '/category/:id',
+            //     element: <AllProducts></AllProducts>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/category${params.id}`),
+                
+                
+                
+            // },
 
             {
                 path: '/login',
@@ -88,13 +100,10 @@ const router = createBrowserRouter([
                 element: <Payment></Payment>,
                 loader:({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
             },
-            {
-                path: 'dashboard/allBuyers',
-                element: <AllBuyers></AllBuyers>
-            },
+           
             {
                 path: 'dashboard/allUsers',
-                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+                element: <AllUsers></AllUsers>
             },
 
             {
@@ -104,9 +113,16 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addAProduct',
                 element:<AddAProduct></AddAProduct>
-            }
+            },
 
-           
+           {
+               path: '/dashboard/allBuyers',
+               element:<AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashboard/allSellers',
+                element:<AllSellers></AllSellers>
+            }
 
         ]
     }

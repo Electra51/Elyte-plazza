@@ -12,10 +12,10 @@ const Login = () => {
     const [token] = useToken(loginUserEmail);
     //get by authContext
     const { resetPassword, signIn, signInWithGoogle } = useContext(AuthContext);
-//redirect
+    //redirect
     const location = useLocation();
     const navigate = useNavigate();
-    
+
     const from = location.state?.from?.pathname || '/';
     const { register, handleSubmit, formState: { errors } } = useForm();
     //for error
@@ -25,7 +25,7 @@ const Login = () => {
     if (token) {
         navigate(from, { replace: true });
     }
-    
+
     const handleLogin = data => {
         console.log(data);
         navigate(from, { replace: true })
@@ -35,9 +35,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(data.email)
-               
-                
+                setLoginUserEmail(data.email);
             })
             .catch(error => {
                 console.log(error.message)
@@ -47,27 +45,40 @@ const Login = () => {
 
     //google log in
     const handleGoogleSignIn = () => {
-        signInWithGoogle().then(result => {
-          console.log(result.user)
-         
-          navigate(from, { replace: true })
-        })
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                navigate(from, { replace: true })
+
+                fetch('http://localhost:5000/googleUsers', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(result.user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+            })
     }
-    
+
+    //password reset
     const handleReset = () => {
         resetPassword(userEmail)
-          .then(() => {
-            toast.success('Please check your email for reset link')
-          })
-          .catch(err => {
-            toast.error(err.message)
-            console.log(err)
-            
-          })
-      }
-    
-   
-      
+            .then(() => {
+                toast.success('Please check your email for reset link')
+            })
+            .catch(err => {
+                toast.error(err.message)
+                console.log(err)
+
+            })
+    }
+
+
+
 
 
     return (
@@ -75,21 +86,6 @@ const Login = () => {
             <div className='w-96 p-5 border border-warning rounded-md'>
                 <h1 className='text-3xl font-bold text-center'>Login</h1>
                 <form onSubmit={handleSubmit((handleLogin))}>
-                
-                <label className='text-center'> 
-                    <p className='text-center mt-2'> What type of account?</p>        
-    <div>
-                            <input className='mx-1' type="radio" value="seller" {...register("userType")} />
-      Seller
-    </div>
-                </label>
-                <label className='text-center'>
-    <div>
-      <input className='mx-1' type="radio" value="buyer" {...register("userType")}  />
-     Buyer
-    </div>
-                    </label>
-                    {errors.userType && <p className='text-red-600 text-left' role="alert">{errors.userType?.message}</p>}      
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
