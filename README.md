@@ -1,7 +1,18 @@
-# Getting Started with Create React App
+# Getting Started with Create React App Icebox project
 
+LiveSite Link: https://icebox-5795c.web.app/
 Admin email: bitajap519@xegge.com
 Admin password: bitajap519
+
+Technology:
+- react js
+- react hot toast
+- tailwindcss
+- daisyui
+- firebase authorization and hosting
+- payment gatway stripe
+- react icon
+- react animation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
