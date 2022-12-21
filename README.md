@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+Admin email: bitajap519@xegge.com
+Admin password: bitajap519
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
