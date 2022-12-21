@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import ConfirmationModal from '../Shared/ConfirmationModal';
 import Loading from '../Shared/Loading';
-
+import { BiBadgeCheck } from 'react-icons/bi';
 const AllSellers = () => {
     const [deletingSeller, setDeletingSeller] = useState([null]);
     const navigate = useNavigate();
@@ -86,10 +86,10 @@ const AllSellers = () => {
         <div className='px-10'>
            <h3 className="text-2xl mb-5 ">All Seller</h3>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto" data-aos="zoom-in-up" data-aos-duration="3000">
                 <table className="table w-full">
                     <thead>
-                        <tr>
+                        <tr className='text-black'>
                             <th></th>
                             
                             <th>name</th>
@@ -109,10 +109,10 @@ const AllSellers = () => {
                                     <td>
                                    
                                     {
-                                          seller?.type !=='verified' && <button onClick={() => handleMakeVerified(seller._id)} className='btn btn-primary btn-sm'>Verify</button>
+                                          seller?.type !=='verified' && <button onClick={() => handleMakeVerified(seller._id)} className='btn btn-warning btn-sm'>Verify</button>
                                         }
                                         {
-                                          seller?.type ==='verified' && <button className='btn btn-outline btn-sm'>Verified</button>
+                                          seller?.type ==='verified' && <span className='text-green-500 font-semibold flex items-center'>Verified <BiBadgeCheck/></span>
                                     }
                                     </td>
         <td>

@@ -45,7 +45,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     }
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 shadow-xl border">
                 <figure className="px-10 pt-10">
                     <img src={item_img} alt="fridge" className="rounded-xl" />
                 </figure>
@@ -59,7 +59,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
                     <div className='flex justify-between items-center'>
                     <div className="">
                         <label onClick={()=>setProductModals(oneProduct)}
-                            htmlFor="booking-modal" className="btn btn-primary">Book Now</label>
+                            htmlFor="booking-modal" className="btn btn-warning">Book Now</label>
                         
                         </div>
                         {

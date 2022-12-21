@@ -88,10 +88,10 @@ const MyProducts = () => {
     return (
         <div className='px-10'>
             <h3 className="text-2xl mb-5 ">My Products</h3>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto" data-aos="zoom-in-up" data-aos-duration="3000">
                 <table className="table w-full">
                     <thead>
-                        <tr>
+                        <tr className='text-black'>
                             <th></th>
                             <th>Image</th>
                             <th>name</th>
@@ -119,7 +119,10 @@ const MyProducts = () => {
                                 <td>{addProduct.price}</td>
                                 <td>
                                     {
-                                        addProduct?.role !=='available' && <button onClick={() => handleMakeAvailable(addProduct._id)} className='btn btn-primary btn-sm'>Make Advertise</button>
+                                        addProduct?.role !=='available' && <button onClick={() => handleMakeAvailable(addProduct._id)} className='btn btn-warning btn-sm'>Make Advertise</button>
+                                    }
+                                     {
+                                        addProduct?.role ==='available' && <button onClick={() => handleMakeAvailable(addProduct._id)} className='text-green-500 font-semibold'>Advertised</button>
                                     }
                                     
                                    

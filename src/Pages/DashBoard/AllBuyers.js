@@ -63,10 +63,10 @@ const AllBuyers = () => {
         <div className='px-10'>
            <h3 className="text-2xl mb-5 ">All buyers</h3>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto" data-aos="zoom-in-up" data-aos-duration="3000">
                 <table className="table w-full">
                     <thead>
-                        <tr>
+                        <tr className='text-black'>
                             <th></th>
                             
                             <th>name</th>

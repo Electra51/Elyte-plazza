@@ -25,7 +25,7 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-base-content bg-gray-200">
-                    <li><Link to="/dashboard/MyOrders">My Orders</Link></li>
+                    <li><button className='btn btn-warning'><Link to="/dashboard/MyOrders" className='text-black'>My Orders</Link></button></li>
                        
                             
                                 
@@ -35,9 +35,10 @@ const DashboardLayout = () => {
                        
                         {
                             isAdmin && <>
-                                <li><Link to="/dashboard/allBuyers">All Buyers</Link></li>
-                                <li><Link to="/dashboard/allSellers">All Sellers</Link></li>
-                                <li><Link to="/dashboard/reportItem">Reported Item</Link></li>
+                                
+                                <li><button className='btn btn-warning mt-2 text-black'><Link to="/dashboard/allBuyers">All Buyers</Link></button></li>
+                                <li><button className='btn btn-warning my-2 text-black'><Link to="/dashboard/allSellers">All Sellers</Link></button></li>
+                                <li><button  className='btn btn-warning text-black'><Link to="/dashboard/reportItem">Reported Item</Link></button></li>
                                 
                                
                              </>
@@ -45,8 +46,8 @@ const DashboardLayout = () => {
                         
                             {
                                 isSeller && <>
-                                <li><Link to="/dashboard/myProducts">My Products</Link></li>
-                                <li><Link to="/dashboard/addAProduct">Add A Product</Link></li>
+                                <li><button className='btn btn-warning my-2 text-black'><Link to="/dashboard/myProducts">My Products</Link></button></li>
+                                <li><button className='btn btn-warning text-black'><Link to="/dashboard/addAProduct">Add A Product</Link></button></li>
                                    
                                  </>
                             }

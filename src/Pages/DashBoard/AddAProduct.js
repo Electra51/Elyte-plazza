@@ -58,7 +58,7 @@ const AddAProduct = () => {
         <div className='w-full p-7'>
 
             <h2 className="text-4xl">Add A Product</h2>
-            <form onSubmit={handleSubmit(handleAddProduct)}>
+            <form onSubmit={handleSubmit(handleAddProduct)} data-aos="zoom-in-up" data-aos-duration="3000">
                 <div className="form-control w-full">
                     <label className="label"> <span className="label-text">Product Name</span></label>
                     <input type="text" {...register("name", {
@@ -125,13 +125,13 @@ const AddAProduct = () => {
                     </select>
                 </div>
                 <div className="form-control w-full">
-                    <label className="label"> <span className="label-text">Photo</span></label>
+                    <label className="label"> <span className="label-text">Photo URL</span></label>
                     <input type="text" {...register("image", {
                         required: "Photo is Required"
                     })} className="input input-bordered w-full " />
                     {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                 </div>
-                <input className='btn btn-accent w-full mt-4' value="Add Product" type="submit" />
+                <input className='btn btn-warning w-full mt-4' value="Add Product" type="submit" />
             </form>
            
         </div>

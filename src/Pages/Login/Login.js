@@ -7,11 +7,12 @@ import useToken from '../../hooks/useToken';
 
 
 const Login = () => {
+    
     const [userEmail, setUserEmail] = useState('')
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
     //get by authContext
-    const { resetPassword, signIn, signInWithGoogle } = useContext(AuthContext);
+    const { resetPassword, signIn, signInWithGoogle} = useContext(AuthContext);
     //redirect
     const location = useLocation();
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Login = () => {
 
     const handleLogin = data => {
         console.log(data);
-        navigate(from, { replace: true })
+        
         setLoginError('');
         //login
         signIn(data.email, data.password,data.seller,data.admin)
@@ -67,15 +68,16 @@ const Login = () => {
     //password reset
     const handleReset = () => {
         resetPassword(userEmail)
-            .then(() => {
-                toast.success('Please check your email for reset link')
-            })
-            .catch(err => {
-                toast.error(err.message)
-                console.log(err)
-
-            })
-    }
+          .then(() => {
+            toast.success('Please check your email for reset link')
+          })
+          .catch(err => {
+            toast.error(err.message)
+            console.log(err)
+           
+          })
+      }
+ 
 
 
 
@@ -113,7 +115,7 @@ const Login = () => {
                     </label>
                     <input className='btn btn-warning w-full mt-5' type="submit" value='Log In' />
                     <div>
-                        {loginError && <p className='text-red-600'>{loginError}</p>}
+                        {loginError && <p className='text-red-600'>{loginError} Please create account first.</p>}
                     </div>
                     <p className='text-center'>New to icebox? <Link to='/signup' className='text-primary font-semibold underline'>Sign Up</Link> </p>
                     <div className="divider">OR</div>

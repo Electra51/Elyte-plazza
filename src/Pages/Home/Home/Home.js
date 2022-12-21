@@ -8,10 +8,11 @@ import Stat from '../Stat/Stat';
 const Home = () => {
     return (
         <div>
-        <Banner></Banner>,
+        <Banner></Banner>
             <ProductCategory></ProductCategory>
+            <Stat></Stat>
             <Available></Available>
-           <Stat></Stat>
+           
         </div>
         
           

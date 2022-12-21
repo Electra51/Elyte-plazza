@@ -17,11 +17,11 @@ const ProductsDetail = () => {
                     <div className="card card-compact w-80 bg-base-100 shadow-xl" key={item._id} >
                 <figure>
                 <PhotoView src={item.item_img}>
-                        <img src="{img}" alt="img" />
+                        <img src={ item.item_img} alt="img" />
                     </PhotoView></figure>
         <div className="card-body flex-grow-0 text-center">
                             <h2 className="text-center">{item.name}</h2>
-                      <p className='text-xl font-semibold text-orange-600'>total_product :</p>
+                      {/* <p className='text-xl font-semibold text-orange-600'>total_product :</p> */}
                       <div className='flex align-middle justify-items-center'>
                      </div>
                       

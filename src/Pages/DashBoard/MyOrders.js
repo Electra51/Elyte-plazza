@@ -56,10 +56,10 @@ const MyOrders = () => {
    
         <div className='px-10'>
             <h3 className="text-2xl mb-5">My Orders</h3>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto" data-aos="zoom-in-up" data-aos-duration="3000">
                 <table className="table w-full">
-                    <thead>
-                        <tr>
+                    <thead className=''>
+                        <tr className='text-black'>
                             <th></th>
                             <th>Image</th>
                             <th>Title</th>
@@ -89,11 +89,11 @@ const MyOrders = () => {
                                 <td>
                                     {
                                         booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}>
-                                        <button className='btn btn-primary btn-sm'>Pay</button></Link>
+                                        <button className='btn btn-warning btn-sm '>Pay</button></Link>
 
                                     }
                                     {
-                                         booking.price && booking.paid && <span className='text-green-500'>Paid</span>
+                                         booking.price && booking.paid && <span className='text-green-500 font-semibold'>Paid</span>
                                     }
                                    
                                   

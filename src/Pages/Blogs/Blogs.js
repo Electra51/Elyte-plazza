@@ -7,8 +7,8 @@ export default function Example() {
   
 
   return (
-      <div className="w-full px-4 pt-16 grid grid-cols-1 lg:grid-cols-2 items-center">
-             <div className="mx-auto w-full max-w-2xl rounded-2xl bg-white p-2">
+      <div className="w-full px-4 pt-16 grid grid-cols-1 lg:grid-cols-2 items-center" >
+             <div className="mx-auto w-full max-w-2xl rounded-2xl bg-white p-2" data-aos="fade-up-right" data-aos-duration="3000">
         <Disclosure>
           {({ open }) => (
             <>
@@ -92,7 +92,7 @@ export default function Example() {
           )}
         </Disclosure>
       </div>
-          <div className='w-full'>
+          <div className='w-full mb-20' data-aos="fade-up-left" data-aos-duration="3000">
           <img src={blogImage} alt="" />
           </div>
        

@@ -122,7 +122,7 @@ const CheckoutForm = ({ booking }) => {
                     }}
                 />
                 <button
-                    className='btn btn-sm mt-4 btn-primary'
+                    className='btn btn-sm mt-4 btn-warning'
                     type="submit"
                     disabled={!stripe || !clientSecret || processing}>
                     Pay
@@ -132,7 +132,7 @@ const CheckoutForm = ({ booking }) => {
             {
                 success && <div>
                     <p className='text-green-500'>{success}</p>
-                    <p>Your transactionId: <span className='font-bold'>{transactionId}</span></p>
+                    <p className='text-blue-800'>Your transactionId: <span className='font-bold text-blue-500'>{transactionId}</span></p>
                 </div>
             }
         </div>
