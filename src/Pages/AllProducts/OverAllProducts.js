@@ -5,21 +5,29 @@ import SingleProduct from "./SingleProduct";
 import { IoMdSearch } from "react-icons/io";
 import Pagination from "../Shared/Pagination";
 import { useQuery } from "@tanstack/react-query";
-const AllProducts = () => {
-  const loaderData = useLoaderData();
-  const products = loaderData;
+const OverAllProducts = () => {
+  // const loaderData = useLoaderData();
+  // const products = loaderData;
   const [productModals, setProductModals] = useState(null);
   const [searchQueryAllProduct, setSearchQueryForAllProduct] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [page, setPage] = useState(0);
-
-  const allProductss = products?.filter((product) => {
+  const { data: productOver = [] } = useQuery({
+    queryKey: ["productOver"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/products");
+      const data = await res.json();
+      return data;
+    },
+  });
+  const allProductss = productOver?.filter((product) => {
     const matchesSearch = product?.item_name
       ?.toLowerCase()
       .includes(searchQueryAllProduct.toLowerCase());
 
     return matchesSearch;
   });
+
   const { data: productCategories = [] } = useQuery({
     queryKey: ["productCategories"],
     queryFn: async () => {
@@ -29,7 +37,7 @@ const AllProducts = () => {
     },
   });
 
-  console.log("productCategories", productCategories);
+  console.log("ooverrr", productOver);
   return (
     <div className="max-w-[1280px] mx-auto">
       <div className="flex justify-between items-center gap-3 mt-6">
@@ -99,4 +107,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default OverAllProducts;

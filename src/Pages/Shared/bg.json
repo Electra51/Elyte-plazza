@@ -1,0 +1,317 @@
+[
+  {
+    "name": "Televisions (TV)",
+    "category_id": "1",
+    "subCategory": [
+      {
+        "TvNumber": "1",
+        "subName": "LED TV"
+      },
+      {
+        "TvNumber": "2",
+        "subName": "Smart HD TV"
+      },
+      {
+        "TvNumber": "3",
+        "subName": "Android TV"
+      },
+      {
+        "TvNumber": "4",
+        "subName": "4K TV"
+      }
+    ]
+  },
+  {
+    "name": "Refrigerators & Freezers",
+    "category_id": "2",
+    "subCategory": [
+      {
+        "fridgeNumber": "1",
+        "subName": "Non-Frost Refrigerator"
+      },
+      {
+        "fridgeNumber": "2",
+        "subName": "Beverage Cooler"
+      },
+      {
+        "fridgeNumber": "3",
+        "subName": "Freezer"
+      }
+    ]
+  },
+  {
+    "name": "Washing Machines",
+    "category_id": "3"
+  },
+  {
+    "name": "Microwave & Electric Oven",
+    "category_id": "4",
+    "subCategory": [
+      {
+        "ovenNumber": "1",
+        "subName": "Microwave Oven"
+      },
+      {
+        "ovenNumber": "2",
+        "subName": "Electric Oven"
+      }
+    ]
+  },
+  {
+    "name": "Air Conditioner",
+    "category_id": "5",
+    "subCategory": [
+      {
+        "acNumber": "1",
+        "subName": "Split AC"
+      },
+      {
+        "acNumber": "2",
+        "subName": "Ceilling AC"
+      }
+    ]
+  },
+  {
+    "name": "Room Heaters",
+    "category_id": "6"
+  },
+  {
+    "name": "Blender & Mixer Grinder",
+    "category_id": "6",
+    "subCategory": [
+      {
+        "blenderNumber": "1",
+        "subName": "Blender & Juicer"
+      },
+      {
+        "blenderNumber": "2",
+        "subName": "Mixer Grinder"
+      }
+    ]
+  }
+]
+
+// "img": "https://i.ibb.co/JpC4P2d/Capturrre-removebg-preview.png",
+// "img": "https://i.ibb.co/GxpgVJr/GUEST-b387957e-e698-4bc1-b9ec-0e019c232467-removebg-preview.png",
+// "img": "https://i.ibb.co/prndvFX/Captureee-removebg-preview.png",
+
+
+
+
+[
+  {
+"item_img":"https://i.ibb.co/R3YCpk9/led1-removebg-preview.png",
+"category_id":"1",
+"TvNumber": "1",
+"item_name":"Haier H32D2M 32 Inch Miracast LED Television",
+"resale_price":"123.00",
+"original_price":"323.00",
+"seller_name":"Jhon Herry",
+"seller_email":"jhon@h.com",
+"details":"Haier H32D2M is a 32 Inch Miracast HD Non-Smart LED Television. The Panel Type of this TV is DLED. It has a System of Analog TVï¼ˆVIDEO/AUDIO) of PAL/BG. But as it is part of the H-Cast Series it supports Miracast. The Aspect Ratio is 16:9. The resolution support is 1366x768 pixels with a refresh rate of 60Hz.",
+"display_type":"Non-Smart LED",
+"screen_size":"32",
+"Model":"H32D2M",
+"Input":"HDMI x 3, USB x 1",
+"resolution":"1366 x 768 (HD)",
+"speaker_system":"Stereo Speaker",
+"weight":"4.4 kg",
+"brand":"Haier",
+"year_of_use":"4",
+"location":"Belgium 123/45 road",
+"role":"available"
+  },
+   {
+"item_img":"https://i.ibb.co/gwNtkKb/Capture-removebg-preview.png",
+"category_id":"1",
+"TvNumber": "1",
+"item_name":"Sony Bravia KD-55X75K 55 Inch LED TV",
+"resale_price":"80.00",
+"original_price":"123.00",
+"seller_name":"Brenden Fira",
+"seller_email":"ben@f.com",
+"details":"Sony Bravia KD-55X75K Smart 55 Inch TV comes with a 55 4K UHD (3840 x 2160) LCD panel with a Direct LED backlight. The new Bravia KD-55X75K is a 2022 model from Sony. The Sony Bravia KD-55X75K 55 Inch 4K Ultra HD Smart LED TV has built-in Wi-Fi and Ethernet connectivity that allows access to the Google Play store, apps, and internet-based content via its Android TV operating system, plus content sharing and screen mirroring via Apple AirPlay.",
+"display_type":"LED",
+"screen_size":"55",
+"Model":"Bravia KD-55X75K",
+"Input":"10 W+10 W",
+"resolution":"4K Ultra HD (3840 x 2160)",
+"speaker_system":"Full Range (Bass Reflex) x 2
+Open Baffle Speaker",
+"weight":"30.7 lb (13.9 kg)",
+"brand":"Sony",
+"year_of_use":"1",
+"location":"Malayshiya 123/45 road",
+"role":"available"
+  },
+  {
+"item_img":"https://i.ibb.co/6Yt720v/Capture-removebg-preview-1.png",
+"category_id":"1",
+"TvNumber": "2",
+"item_name":"Smart SEL-50S224KKS Android Television",
+"resale_price":"80.00",
+"original_price":"123.00",
+"seller_name":"Anthony Devid",
+"seller_email":"an@d.com",
+"details":"The Smart SEL-50S224KKS 50 4K Voice Control Android TV is a fantastic all-around performer. This television includes 50 Inch Screen You will also be able to enjoy the crisp image quality, which will further enhance your viewing experience, The smart TV comes with 4k Resolution (3840 x 2160) Pixels. This Smart TV will also provide you with a Standard sound experience, as well as an immersive sound experience.",
+"display_type":"Android",
+"screen_size":"50",
+"Model":"SEL-50S224KKS",
+"Input":"2x HDMI, 2x USB",
+"resolution":"3840x2160",
+"speaker_system":"Bass Reflex x2 Baffle Speaker",
+"weight":"30.7 lb (13.9 kg)",
+"brand":"Smart",
+"year_of_use":"1.5",
+"location":"Bangladesh 123/45 road",
+"role":"available"
+  }
+]
+
+
+
+
+
+
+
+
+
+
+{
+  "name": "Non-frost refrigerator",
+  "type": "report",
+  "_id": {
+    "$oid": "637f7253345d495b77cbb430"
+  },
+  "item_name": "Walton Non-frost refrigerator",
+  "resale_price": "123.00",
+  "year_of_use": "2",
+  "location": "Belgium 123/45 road",
+  "item_img": "https://i.ibb.co/8N3GtFZ/istockphoto-958992618-612x612-removebg-preview.png",
+  "category_id": "1",
+  "original_price": "323.00",
+  "seller_name": "Jhon Herry"
+}
+{
+  "name": "Non-frost refrigerator",
+  "_id": {
+    "$oid": "637f7253345d495b77cbb431"
+  },
+  "category_id": "1",
+  "resale_price": "150.00",
+  "original_price": "400.00",
+  "year_of_use": "1",
+  "item_img": "https://i.ibb.co/Bgzj8rR/Capturrre-removebg-preview.png",
+  "item_name": "Samsung Non-frost refrigerator",
+  "seller_name": "Susmita roy",
+  "location": "Belgium 123/45 road",
+  "type": "report"
+}
+{
+  "original_price": "323.00",
+  "year_of_use": "4",
+  "location": "Belgium 123/45 road",
+  "role": "available",
+  "item_img": "https://i.ibb.co/tLkdX4n/Capturwe2-removebg-preview-removebg-preview.png",
+  "item_name": "Singer Non-frost refrigerator",
+  "resale_price": "123.00",
+  "name": "Non-frost refrigerator",
+  "_id": {
+    "$oid": "637f7253345d495b77cbb432"
+  },
+  "category_id": "1",
+  "seller_name": "Jhon Herry"
+}
+{
+  "year_of_use": "2",
+  "resale_price": "123.00",
+  "seller_name": "Jhon Herry",
+  "category_id": "637f3e39345d495b7789b2bf",
+  "item_name": "Walton WT56 Non-frost refrigerator",
+  "original_price": "323.00",
+  "location": "Belgium 123/45 road",
+  "_id": {
+    "$oid": "6384da5281ee8976168c2651"
+  },
+  "item_img": "https://i.ibb.co/WKVZ8PZ/images-removebg-preview-1.png"
+}
+{
+  "item_img": "https://i.ibb.co/d5h82jH/istockphoto-1086056164-612x612-removebg-preview-1.png",
+  "item_name": "CE675 Samsung Non-frost refrigerator",
+  "location": "Belgium 123/45 road",
+  "_id": {
+    "$oid": "6384da5281ee8976168c2652"
+  },
+  "category_id": "637f3e39345d495b7789b2bf",
+  "resale_price": "150.00",
+  "original_price": "400.00",
+  "seller_name": "Susmita roy",
+  "year_of_use": "1"
+}
+{
+  "_id": {
+    "$oid": "6384da5281ee8976168c2653"
+  },
+  "item_img": "https://i.ibb.co/tLkdX4n/Capturwe2-removebg-preview-removebg-preview.png",
+  "seller_name": "Jhon Herry",
+  "year_of_use": "4",
+  "location": "Belgium 123/45 road",
+  "category_id": "637f3e39345d495b7789b2bf",
+  "item_name": "Singer Non-frost refrigerator",
+  "resale_price": "123.00",
+  "original_price": "323.00"
+}
+
+{
+  "location": "Belgium 123/45 road",
+  "item_img": "https://i.ibb.co/xgT0Jrm/Capture-removebg-preview-1.png",
+  "seller_name": "Jhon Thapa",
+  "item_name": "Singer Beverage refrigerator",
+  "resale_price": "123.00",
+  "original_price": "323.00",
+  "year_of_use": "2",
+  "_id": {
+    "$oid": "6384da5281ee8976168c2654"
+  },
+  "category_id": "637f3e39345d495b7789b2c0"
+}
+{
+  "original_price": "523.00",
+  "year_of_use": "1",
+  "location": "Malayshia 13/45 road 2/1 building",
+  "_id": {
+    "$oid": "6384da5281ee8976168c2656"
+  },
+  "category_id": "637f3e39345d495b7789b2c1",
+  "item_img": "https://i.ibb.co/WgnttYz/Capturrrre-removebg-preview.png",
+  "item_name": "Samsung Deep Freezer",
+  "resale_price": "223.00",
+  "seller_name": "Jhon Herry"
+}
+{
+  "_id": {
+    "$oid": "6384da5281ee8976168c2657"
+  },
+  "item_name": "Singer Deep Freezer",
+  "year_of_use": "2.5",
+  "location": "Singra 13/451 road",
+  "category_id": "637f3e39345d495b7789b2c1",
+  "item_img": "https://i.ibb.co/7YDHCB3/NFA-155-Ni-GOR-01-removebg-preview.png",
+  "resale_price": "123.00",
+  "original_price": "323.00",
+  "seller_name": "Tomas Henry"
+}
+
+{
+  "_id": {
+    "$oid": "6384da5281ee8976168c2658"
+  },
+  "category_id": "637f3e39345d495b7789b2c1",
+  "item_name": "Walton Deep Freezer",
+  "seller_name": "Jhon Herry",
+  "location": "Belgium 123/45 road",
+  "item_img": "https://i.ibb.co/LYNJtmd/vut-Rk-removebg-preview.png",
+  "resale_price": "123.00",
+  "original_price": "323.00",
+  "year_of_use": "2"
+}

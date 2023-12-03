@@ -1,0 +1,14 @@
+.input:focus {
+  outline: none !important;
+}
+.btn-circle {
+  background: transparent;
+  border: none;
+  color: black;
+}
+.btn:hover {
+  background: transparent !important;
+}
+.modal-box {
+  max-width: 40rem !important;
+}

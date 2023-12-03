@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+.active {
+  background-color: #a6a6dd78;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +37,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.carousel .thumbs-wrapper {
+  margin: 20px;
+  overflow: hidden;
+  visibility: hidden !important;
+}
+.carousel-status {
+  visibility: hidden !important;
+}
+.modal-box {
+  border-radius: 0px !important;
+}
+.input-disabled,
+.input[disabled] {
+  background-color: #e5e7eb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 4px;
+  color: #b2b2b3;
+  font-weight: 500;
+}
+.input {
+  border-radius: 4px !important;
+  border: 1px solid #e5e7eb !important;
 }

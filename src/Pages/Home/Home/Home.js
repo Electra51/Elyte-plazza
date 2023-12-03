@@ -1,22 +1,20 @@
-import React from 'react';
-import Available from '../Available';
-import Banner from '../Banner/Banner';
-import ProductCategory from '../ProductCategory/ProductCategory';
-import Stat from '../Stat/Stat';
-
+import React from "react";
+import Available from "../Available";
+import ProductCategory from "../ProductCategory/ProductCategory";
+import Stat from "../Stat/Stat";
+import Banner from "../Banner/Banner";
+import Activity from "../Activity/Activity";
 
 const Home = () => {
-    return (
-        <div>
-        <Banner></Banner>
-            <ProductCategory></ProductCategory>
-            <Stat></Stat>
-            <Available></Available>
-           
-        </div>
-        
-          
-    );
+  return (
+    <div>
+      <Banner />
+      <ProductCategory></ProductCategory>
+      <Stat></Stat>
+      <Available></Available>
+      <Activity />
+    </div>
+  );
 };
 
 export default Home;

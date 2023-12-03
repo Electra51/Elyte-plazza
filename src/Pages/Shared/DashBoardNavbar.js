@@ -1,19 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiOutlineUser,
-} from "react-icons/ai";
-import { TbLayoutDashboard } from "react-icons/tb";
-import { FaRegUserCircle, FaUser } from "react-icons/fa";
+import { AiOutlineUser } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
-import NavbarFirstPart from "./NavbarFirstPart";
-import NavbarLastPart from "./NavbarLastPart";
-import { RiLogoutCircleRLine } from "react-icons/ri";
-
-const Navbar = () => {
+const DashBoardNavbar = () => {
   const [fix, setFix] = useState(false);
   function setFixed() {
     if (window.scrollY >= 392) {
@@ -22,6 +13,7 @@ const Navbar = () => {
       setFix(false);
     }
   }
+
   window.addEventListener("scroll", setFixed);
   //dark light toggle
   const [dark, setDark] = useState(false);
@@ -46,47 +38,15 @@ const Navbar = () => {
   }, [dark]);
 
   //authcontext theke user k nilm
-  const { user, logOut } = useContext(AuthContext);
-
+  const { user } = useContext(AuthContext);
+  console.log("user...", user);
   //redirect
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogOut = () => {
-    logOut()
-      .then(() => {})
-      .catch((err) => console.log(err));
-    navigate(from, { replace: true });
-  };
-
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  window.onclick = function (event) {
-    if (!event.target.matches(".dropbtn")) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains("show")) {
-          openDropdown.classList.remove("show");
-        }
-      }
-    }
-  };
   const menuItems = (
     <React.Fragment>
-      <li>
-        <button className="bg-transparent rounded-none">
-          <AiOutlineShoppingCart />
-        </button>
-      </li>
-      <li>
-        <button className="bg-transparent rounded-none pr-5">
-          <AiOutlineHeart />
-        </button>
-      </li>
       <label className="swap swap-rotate mr-2">
         <input type="checkbox" onClick={handleDark} />
 
@@ -116,34 +76,15 @@ const Navbar = () => {
           <Link to="/blogs">Blogs</Link>
         </button>
       </li>
+
       {user?.uid ? (
         <>
-          {/* <button className="btn btn-outline mr-2">
-            {" "}
-            <Link className="ml-2 pr-3" to="/profile">
-              {user?.photoURL ? (
-                <img
-                  title={user.displayName}
-                  style={{ height: "35px" }}
-                  alt=""
-                  roundedCircle
-                  src={user?.photoURL}
-                ></img>
-              ) : (
-                <FaUser></FaUser>
-              )}
-            </Link>
-            {user?.displayName}
-          </button> */}
-
           <ul>
-            <div className="dropdown mt-3">
+            <div className="dropdown mt-3.5">
               <button className="dropbtn flex justify-center items-center mr-2">
-                {" "}
-                {/* <Link className="ml-2 pr-3" to="/profile"> */}
                 {user?.photoURL ? (
                   <img
-                    title={`Click & view option`}
+                    title={user?.displayName}
                     style={{ height: "35px" }}
                     alt=""
                     roundedcircle="true"
@@ -152,49 +93,9 @@ const Navbar = () => {
                 ) : (
                   <FaUser></FaUser>
                 )}
-                {/* </Link> */}
-                {/* {user?.displayName} */}
               </button>
-              <div
-                onClick={myFunction}
-                id="myDropdown"
-                className="p-4 mx-3 shadow rounded-[4px] menu dropdown-content !right-0 z-[1] w-52 bg-white"
-                style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
-              >
-                <Link to="/dashboard/profile">
-                  <div className="hover:bg-[#146CDA] border-b hover:text-white rounded-[4px] flex justify-center items-center gap-2 py-2 cursor-pointer">
-                    <FaRegUserCircle className="text-[18px] font-medium" /> My
-                    Profile
-                  </div>
-                </Link>
-                <Link to="/dashboard/dashboard">
-                  <div className="mt-2 hover:bg-[#146CDA] border-b hover:text-white rounded-[4px] flex justify-center items-center gap-2 py-2 cursor-pointer">
-                    {" "}
-                    <TbLayoutDashboard className="text-[18px] font-medium" />
-                    Dashboard
-                  </div>
-                </Link>
-
-                <button
-                  onClick={handleLogOut}
-                  className="mt-2 hover:bg-[#146CDA] border-b hover:text-white rounded-[4px] flex justify-center items-center gap-2 py-2 cursor-pointer"
-                >
-                  {" "}
-                  <RiLogoutCircleRLine className="text-[18px] font-medium" />
-                  LogOut{" "}
-                </button>
-              </div>
             </div>
           </ul>
-
-          {/* <li>
-            <button
-              onClick={handleLogOut}
-              className="border border-[#146CDA] text-[#146CDA] rounded-[4px]"
-            >
-              LogOut
-            </button>
-          </li> */}
         </>
       ) : (
         <li>
@@ -208,8 +109,10 @@ const Navbar = () => {
   );
 
   return (
-    <div className="">
-      <NavbarFirstPart />
+    <div
+      className="fixed top-0 w-full"
+      style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+    >
       <div
         className={
           fix
@@ -277,11 +180,9 @@ const Navbar = () => {
             />
           </svg>
         </label>
-        {/* <div className="h-3 bg-red-600"></div> */}
       </div>
-      <NavbarLastPart />
     </div>
   );
 };
 
-export default Navbar;
+export default DashBoardNavbar;
