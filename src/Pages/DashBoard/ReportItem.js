@@ -36,12 +36,12 @@ const ReportItem = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) {}
+      } catch (error) { }
     },
   });
 
   const handleDeleteReportedItem = (reportedItem) => {
-    // console.log(reportedItem);
+
     fetch(`https://icebox-server.vercel.app/products/${reportedItem._id}`, {
       method: "DELETE",
       // ,
@@ -51,7 +51,7 @@ const ReportItem = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
         if (data.deletedCount > 0) {
           refetch();
           toast.success(`${reportedItem.name} deleted successfully`);
@@ -106,9 +106,9 @@ const ReportItem = () => {
         {reportProduct
           ?.slice(6 * page, 6 * (page + 1))
           .map((reportedItem, i) => {
-            // console.log("reportedItems", reportedItems);
+
             return (
-              <div
+              <div key={i}
                 className="w-full flex items-center justify-between mt-4 border-b p-3"
                 style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}
               >

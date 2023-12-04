@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
 import DotLoader from "react-spinners/DotLoader";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import useBuyer from "../../hooks/useBuyer";
 import useAdmin from "../../hooks/useAdmin";
 import { MdOutlineReportProblem } from "react-icons/md";
 
@@ -11,12 +10,35 @@ import { IoIosPricetag } from "react-icons/io";
 import { FcBusinessman } from "react-icons/fc";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
+import WishContext from "../../contexts/WishContext";
 const SingleProduct = ({ oneProduct, setProductModals }) => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
+  console.log("product", oneProduct);
+  const { addItemToCart, cart } = useContext(WishContext);
+  console.log("product", cart.cartItems);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+  useEffect(() => {
+    // Check if the product is in the wishlist when the component mounts
+    const isInWishlistStored = localStorage.getItem(`wishlist_${oneProduct._id}`);
+    setIsInWishlist(!!isInWishlistStored);
+  }, [oneProduct._id]);
+  const addToCardHandler = () => {
+    console.log("first")
+    addItemToCart({
+      product: oneProduct?._id,
+      item_name: oneProduct.item_name,
+      resale_price: oneProduct?.resale_price,
+      item_img: oneProduct.item_img,
+      original_price: oneProduct?.original_price,
+      seller_name: oneProduct?.seller_name,
+      year_of_use: oneProduct?.year_of_use,
+    });
+    setIsInWishlist(true); localStorage.setItem(`wishlist_${oneProduct._id}`, "true");
+  };
   const navigate = useNavigate();
   const { loading } = useContext(AuthContext);
-  const {
+  const { _id,
     item_img,
     item_name,
     location,
@@ -25,6 +47,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     seller_name,
     year_of_use,
   } = oneProduct;
+
   if (loading) {
     return (
       <DotLoader
@@ -46,7 +69,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
         if (data.modifiedCount > 0) {
           toast.success("Reported this item");
           // refetch()
@@ -145,11 +168,15 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
               </label>
             </div>
 
-            <div className="hover:bg-[#0246b0] border border-[#0246b0] h-8 w-8 rounded-full text-[#0246b0] flex justify-center items-center hover:text-white font-semibold">
+            {/* <div className="hover:bg-[#0246b0] border border-[#0246b0] h-8 w-8 rounded-full text-[#0246b0] flex justify-center items-center hover:text-white font-semibold">
               <IoCartOutline />
-            </div>
-            <div className="hover:bg-[#0246b0] border border-[#0246b0] h-8 w-8 rounded-full text-[#0246b0] flex justify-center items-center hover:text-white">
-              <FaRegHeart />
+            </div> */}
+            <div className="hover:bg-[#156CDA] border border-[#156CDA] h-8 w-8 rounded-full text-[#156CDA] flex justify-center items-center hover:text-white">
+              {/* <FaRegHeart onClick={addToCardHandler} /> */}
+              <FaRegHeart
+                onClick={addToCardHandler}
+                style={{ color: isInWishlist ? "red" : "#156CDA" }}
+              />
             </div>
           </div>
         </div>

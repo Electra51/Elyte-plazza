@@ -41,14 +41,14 @@ const BookingModal = ({ productModals, setProductModals }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
         if (data.acknowledged) {
           setProductModals(null);
           toast.success("the item is booked");
         }
       });
 
-    // console.log(booking);
+
   };
   return (
     <>

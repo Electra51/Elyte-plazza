@@ -13,7 +13,7 @@ const NavbarLastPart = () => {
     },
   });
 
-  // console.log("productCategories", productCategories);
+
   function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }

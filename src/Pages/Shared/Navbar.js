@@ -12,6 +12,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import NavbarFirstPart from "./NavbarFirstPart";
 import NavbarLastPart from "./NavbarLastPart";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+import WishContext from "../../contexts/WishContext";
 
 const Navbar = () => {
   const [fix, setFix] = useState(false);
@@ -32,7 +33,7 @@ const Navbar = () => {
   };
   useEffect(() => {
     const localDark = JSON.parse(localStorage.getItem("dark-mode"));
-    console.log(localDark);
+    // console.log(localDark);
     setDark(localDark);
   }, []);
   useEffect(() => {
@@ -44,7 +45,9 @@ const Navbar = () => {
         .setAttribute("data-theme", "pickColorTheme");
     }
   }, [dark]);
-
+  const { cart } = useContext(WishContext);
+  const cartItems = cart?.cartItems;
+  console.log("cartItems", cart)
   //authcontext theke user k nilm
   const { user, logOut } = useContext(AuthContext);
 
@@ -55,7 +58,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((err) => console.log(err));
     navigate(from, { replace: true });
   };
@@ -77,21 +80,22 @@ const Navbar = () => {
   };
   const menuItems = (
     <React.Fragment>
-      <li>
-        <button className="bg-transparent rounded-none">
-          <AiOutlineShoppingCart />
-        </button>
-      </li>
-      <li>
-        <button className="bg-transparent rounded-none pr-5">
-          <AiOutlineHeart />
-        </button>
-      </li>
+      <button className="btn btn-ghost btn-circle">
+        <div className="indicator">
+          <AiOutlineHeart className="text-2xl" />
+          {cartItems?.length > 0 && (
+            <span className="badge badge-sm indicator-item bg-blue-500 text-white dark:text-gray-300">
+              {cartItems?.length}
+            </span>
+          )}
+        </div>
+      </button>
+
       <label className="swap swap-rotate mr-2">
         <input type="checkbox" onClick={handleDark} />
 
         <svg
-          className="swap-on fill-current w-4 h-4"
+          className="swap-on fill-current w-6 h-6"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -99,7 +103,7 @@ const Navbar = () => {
         </svg>
 
         <svg
-          className="swap-off fill-current w-4 h-4"
+          className="swap-off fill-current w-6 h-6"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

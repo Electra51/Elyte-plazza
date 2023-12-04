@@ -5,12 +5,12 @@ import SingleProduct from "./SingleProduct";
 import { IoMdSearch } from "react-icons/io";
 import Pagination from "../Shared/Pagination";
 import { useQuery } from "@tanstack/react-query";
+
 const OverAllProducts = () => {
-  // const loaderData = useLoaderData();
-  // const products = loaderData;
   const [productModals, setProductModals] = useState(null);
   const [searchQueryAllProduct, setSearchQueryForAllProduct] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedYearOfUse, setSelectedYearOfUse] = useState("all");
+  const [typeFilter, setTypeFilter] = useState("all");
   const [page, setPage] = useState(0);
   const { data: productOver = [] } = useQuery({
     queryKey: ["productOver"],
@@ -20,12 +20,33 @@ const OverAllProducts = () => {
       return data;
     },
   });
+
+  const productTypes = Array.from(
+    new Set(productOver?.map((e) => e?.category_id))
+  );
   const allProductss = productOver?.filter((product) => {
     const matchesSearch = product?.item_name
       ?.toLowerCase()
       .includes(searchQueryAllProduct.toLowerCase());
 
-    return matchesSearch;
+    const matchesType =
+      typeFilter === "all" || product?.category_id === typeFilter;
+    const matchesYearOfUse = () => {
+      if (selectedYearOfUse === "all") {
+        return true;
+      } else if (selectedYearOfUse === "0-1") {
+        return product?.year_of_use <= 1;
+      } else if (selectedYearOfUse === "1-2") {
+        return product?.year_of_use > 1 && product?.year_of_use <= 2;
+      } else if (selectedYearOfUse === "2-3") {
+        return product?.year_of_use > 2 && product?.year_of_use <= 3;
+      } else if (selectedYearOfUse === "more") {
+        return product?.year_of_use > 3;
+      }
+      return false;
+    };
+
+    return matchesSearch && matchesType && matchesYearOfUse();
   });
 
   const { data: productCategories = [] } = useQuery({
@@ -37,7 +58,7 @@ const OverAllProducts = () => {
     },
   });
 
-  console.log("ooverrr", productOver);
+
   return (
     <div className="max-w-[1280px] mx-auto">
       <div className="flex justify-between items-center gap-3 mt-6">
@@ -66,10 +87,10 @@ const OverAllProducts = () => {
               }}
               placeholder="Search products..."
             />
-          </div>{" "}
+          </div>
           <div className="mt-6">
-            {productCategories?.map((e, i) => {
-              console.log("hihihi", e.subCategory);
+            {/* {productCategories?.map((e, i) => {
+            
               return (
                 <div
                 // onClick={() => {
@@ -83,7 +104,45 @@ const OverAllProducts = () => {
                   {!e.subCategory ? <p>{e.name}</p> : ""}
                 </div>
               );
-            })}
+            })} */}
+            <p className="mb-2">Year of Use:</p>
+            <hr />
+            <div className="my-3">
+              {["all", "0-1", "1-2", "2-3", "more"].map((year, index) => (
+                <p
+                  key={index}
+                  className={`cursor-pointer ${selectedYearOfUse === year ? "font-bold" : ""
+                    }`}
+                  onClick={() => setSelectedYearOfUse(year)}
+                >
+                  {year === "all"
+                    ? "All"
+                    : year === "0-1"
+                      ? "0-1 year"
+                      : year === "1-2"
+                        ? "1-2 years"
+                        : year === "2-3"
+                          ? "2-3 years"
+                          : "More than 3 years"}
+                </p>
+              ))}
+            </div>
+
+            <p className="mb-2">Categories:</p>
+            <hr />
+            <div className="flex flex-wrap gap-2 justify-stretch items-center mt-3">
+
+              {productTypes?.map((type, index) => (
+                <div
+                  className={`px-2 py-1 rounded-[4px] text-black border border-[#156CDA] cursor-pointer text-[12px] ${typeFilter === type ? "bg-[#156CDA] text-white" : "bg-white"
+                    }`}
+                  onClick={() => setTypeFilter(type)}
+                  key={index}
+                >
+                  {type == "1" ? "Televisions (TV)" : type == "2" ? "Refrigerators & Freezers" : type == "3" ? "Washing Machines" : type == "4" ? "Microwave & Electric Oven" : type == "5" ? "Air Conditioner" : type == "6" ? "Room Heaters" : type == "7" ? "Blender & Mixer Grinder" : ""}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

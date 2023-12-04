@@ -24,7 +24,7 @@ const DashBoardNavbar = () => {
   };
   useEffect(() => {
     const localDark = JSON.parse(localStorage.getItem("dark-mode"));
-    console.log(localDark);
+    // console.log(localDark);
     setDark(localDark);
   }, []);
   useEffect(() => {
@@ -39,7 +39,7 @@ const DashBoardNavbar = () => {
 
   //authcontext theke user k nilm
   const { user } = useContext(AuthContext);
-  console.log("user...", user);
+  // console.log("user...", user);
   //redirect
   const navigate = useNavigate();
   const location = useLocation();

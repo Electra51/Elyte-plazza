@@ -5,19 +5,10 @@ import { FaDollarSign, FaUserPlus } from "react-icons/fa";
 import { FiUsers } from "react-icons/fi";
 import { MdOutlineReportProblem } from "react-icons/md";
 
-// import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 const AdminDashboard = () => {
   const totalOrder = localStorage.getItem("bookings");
 
-  // const data = [
-  //   { name: "Group A", value: 400 },
-  //   { name: "Group B", value: 300 },
-  //   { name: "Group C", value: 300 },
-  //   { name: "Group D", value: 200 },
-  // ];
-  // const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-  // console.log("oooo", localStorage.getItem("totalSellers"));
   const totalSellers = localStorage.getItem("totalSellers");
   const totalBuyers = localStorage?.getItem("totalBuyers");
   const totalReportedItem = localStorage?.getItem("reportedItems");

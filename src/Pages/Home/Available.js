@@ -20,14 +20,14 @@ const Available = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) {}
+      } catch (error) { }
     },
   });
 
   const notify = (e) => {
     toast("Coming soon.......");
   };
-  // console.log("availables", availables);
+
   return (
     <div
       data-aos="fade-up"

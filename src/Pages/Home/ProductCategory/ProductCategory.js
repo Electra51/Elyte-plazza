@@ -13,7 +13,7 @@ const ProductCategory = () => {
       return data;
     },
   });
-  // console.log("object", productCategories);
+
   const settings = {
     dots: false,
     infinite: true,

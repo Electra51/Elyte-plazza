@@ -38,7 +38,7 @@ const AllSellers = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) {}
+      } catch (error) { }
     },
   });
 
@@ -52,7 +52,7 @@ const AllSellers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
         if (data.modifiedCount > 0) {
           toast.success("Make verified.");
           refetch();
@@ -62,7 +62,7 @@ const AllSellers = () => {
   };
 
   const handleDeleteSeller = (seller) => {
-    // console.log(seller);
+
     fetch(`https://icebox-server.vercel.app/users/${seller._id}`, {
       method: "DELETE",
       // ,
@@ -72,7 +72,7 @@ const AllSellers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
         if (data.deletedCount > 0) {
           refetch();
           toast.success(`Buyer ${seller.name} deleted successfully`);

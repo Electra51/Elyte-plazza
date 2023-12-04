@@ -34,11 +34,11 @@ const MyProducts = () => {
         });
         const data = await res.json();
         return data;
-      } catch (error) {}
+      } catch (error) { }
     },
   });
 
-  console.log("addProducts", addProducts);
+
   const AddProductsForUser = addProducts?.filter((newAdd) => {
     const matchesSearch =
       newAdd?.arrival == "new" && newAdd?.seller_email == user?.email;
@@ -46,7 +46,8 @@ const MyProducts = () => {
     return matchesSearch;
   });
 
-  console.log("e", AddProductsForUser);
+
+  localStorage.setItem("AddProductsForUser", AddProductsForUser.length)
 
   const FilterAddProduct = AddProductsForUser?.filter((filterProduct) => {
     const matchesSearch = filterProduct?.item_name
@@ -66,7 +67,7 @@ const MyProducts = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
         if (data.modifiedCount > 0) {
           toast.success("Make available.");
           refetch();
@@ -78,7 +79,7 @@ const MyProducts = () => {
   //for delete
 
   const handleDeleteProduct = (product) => {
-    console.log("product e", product);
+
     fetch(`http://localhost:5000/addProducts/${product._id}`, {
       method: "DELETE",
       headers: {
@@ -129,7 +130,7 @@ const MyProducts = () => {
       </div>
       <div>
         {FilterAddProduct?.map((e, i) => {
-          console.log("hi e", e._id);
+
           return (
             <div
               key={i}
@@ -156,18 +157,18 @@ const MyProducts = () => {
                   {e.category_id == 1
                     ? "Televisions (TV)"
                     : e.category_id == 2
-                    ? "Refrigerators & Freezers"
-                    : e.category_id == 3
-                    ? "Washing Machines"
-                    : e.category_id == 4
-                    ? "Microwave & Electric Oven"
-                    : e.category_id == 5
-                    ? "Air Conditioner"
-                    : e.category_id == 6
-                    ? "Room Heaters"
-                    : e.category_id == 7
-                    ? "Blender & Mixer Grinder"
-                    : ""}
+                      ? "Refrigerators & Freezers"
+                      : e.category_id == 3
+                        ? "Washing Machines"
+                        : e.category_id == 4
+                          ? "Microwave & Electric Oven"
+                          : e.category_id == 5
+                            ? "Air Conditioner"
+                            : e.category_id == 6
+                              ? "Room Heaters"
+                              : e.category_id == 7
+                                ? "Blender & Mixer Grinder"
+                                : ""}
                 </p>
                 <p>Brand: {e?.brand}</p>
               </div>

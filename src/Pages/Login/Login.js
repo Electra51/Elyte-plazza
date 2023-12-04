@@ -34,18 +34,18 @@ const Login = () => {
   }
 
   const handleLogin = (data) => {
-    console.log(data);
+
 
     setLoginError("");
     //login
     signIn(data.email, data.password, data.seller, data.admin)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
         setLoginUserEmail(data.email);
       })
       .catch((error) => {
-        console.log(error.message);
+
         setLoginError(error.message);
       });
   };
@@ -53,7 +53,7 @@ const Login = () => {
   //google log in
   const handleGoogleSignIn = () => {
     signInWithGoogle().then((result) => {
-      console.log(result.user);
+
       navigate(from, { replace: true });
 
       fetch("https://icebox-server.vercel.app/googleUsers", {
@@ -65,7 +65,7 @@ const Login = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
         });
     });
   };
@@ -78,7 +78,7 @@ const Login = () => {
       })
       .catch((err) => {
         toast.error(err.message);
-        console.log(err);
+        // console.log(err);
       });
   };
 

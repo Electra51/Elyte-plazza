@@ -29,7 +29,7 @@ const AllProducts = () => {
     },
   });
 
-  console.log("productCategories", productCategories);
+
   return (
     <div className="max-w-[1280px] mx-auto">
       <div className="flex justify-between items-center gap-3 mt-6">
@@ -61,16 +61,16 @@ const AllProducts = () => {
           </div>{" "}
           <div className="mt-6">
             {productCategories?.map((e, i) => {
-              console.log("hihihi", e.subCategory);
+
               return (
-                <div
+                <div key={i}
                 // onClick={() => {
                 //   setSelectedCategory(e.name);
                 //   setPage(0);
                 // }}
                 >
                   {e.subCategory?.map((ea, i) => {
-                    return <p>{ea.subName}</p>;
+                    return <p key={i}>{ea.subName}</p>;
                   })}
                   {!e.subCategory ? <p>{e.name}</p> : ""}
                 </div>

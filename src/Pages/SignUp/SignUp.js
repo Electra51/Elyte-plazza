@@ -33,7 +33,7 @@ const Signup = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         toast.success("User created successfully");
         const userInfo = { displayName: data.name };
         updateUser(userInfo)
@@ -43,14 +43,14 @@ const Signup = () => {
           .catch((err) => console.log(err));
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setSignUPError(error.message);
       });
   };
 
   const handleGoogleSignIn = () => {
     signInWithGoogle().then((result) => {
-      console.log(result.user);
+      // console.log(result.user);
       navigate(from, { replace: true });
       fetch("https://icebox-server.vercel.app/googleUsers", {
         method: "POST",
@@ -61,7 +61,7 @@ const Signup = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
         });
     });
   };

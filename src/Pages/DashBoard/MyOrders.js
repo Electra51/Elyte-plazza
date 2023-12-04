@@ -31,7 +31,7 @@ const MyOrders = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) {}
+      } catch (error) { }
     },
     // queryFn: async () => {
     //     const res = await fetch(url, {
@@ -65,7 +65,7 @@ const MyOrders = () => {
   // color: #0047AF
 
   localStorage.setItem("bookings", bookings.length);
-  // console.log("bookings", bookings);
+
   return (
     <div className="px-10 mt-24">
       <div className="overflow-x-auto">
@@ -96,7 +96,7 @@ const MyOrders = () => {
         {bookingProduct.length > 0 ? (
           <div className="grid grid-cols-2 gap-5 mt-5">
             {bookingProduct.map((booking, i) => (
-              <div className="grid grid-cols-3 mt-5 gap-5 border-b ml-4 hover:shadow-md hover:bg-[#0047af] px-5 py-5 hover:text-white rounded-sm">
+              <div className="grid grid-cols-3 mt-5 gap-5 border-b ml-4 hover:shadow-md hover:bg-[#0047af] px-5 py-5 hover:text-white rounded-sm" key={i}>
                 <div className="col-span-2 flex justify-start items-center gap-2">
                   <div>{i + 1}.</div>
                   <div className="avatar">

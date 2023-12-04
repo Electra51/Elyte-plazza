@@ -37,12 +37,12 @@ const AllBuyers = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) {}
+      } catch (error) { }
     },
   });
 
   const handleDeleteBuyer = (buyer) => {
-    // console.log(buyer);
+
     fetch(`https://icebox-server.vercel.app/users/${buyer._id}`, {
       method: "DELETE",
       // ,
@@ -52,7 +52,7 @@ const AllBuyers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+
         if (data.deletedCount > 0) {
           refetch();
           toast.success(`Buyer ${buyer.name} deleted successfully`);

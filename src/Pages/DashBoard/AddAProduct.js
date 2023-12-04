@@ -24,7 +24,7 @@ const AddAProduct = () => {
     },
   });
 
-  console.log("categoryNames", categoryNames);
+
   const handleAddProduct = (data) => {
     const product = {
       item_name: data.item_name,
@@ -45,7 +45,7 @@ const AddAProduct = () => {
       item_img: data.item_img,
     };
 
-    console.log("product", product);
+
     fetch("http://localhost:5000/addProducts", {
       method: "POST",
       headers: {
@@ -56,7 +56,6 @@ const AddAProduct = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result);
         toast.success(`${data.name} is added successfully`);
         navigate("/dashboard/myProducts");
       });
@@ -341,24 +340,24 @@ const AddAProduct = () => {
                 className="select input-bordered w-full"
               >
                 {categoryNames?.map((names, i) => {
-                  console.log("names", names.category_id);
+
                   return (
                     <option key={i} value={names.category_id}>
                       {names.category_id == 1
                         ? "Televisions (TV)"
                         : names.category_id == 2
-                        ? "Refrigerators & Freezers"
-                        : names.category_id == 3
-                        ? "Washing Machines"
-                        : names.category_id == 4
-                        ? "Microwave & Electric Oven"
-                        : names.category_id == 5
-                        ? "Air Conditioner"
-                        : names.category_id == 6
-                        ? "Room Heaters"
-                        : names.category_id == 7
-                        ? "Blender & Mixer Grinder"
-                        : ""}
+                          ? "Refrigerators & Freezers"
+                          : names.category_id == 3
+                            ? "Washing Machines"
+                            : names.category_id == 4
+                              ? "Microwave & Electric Oven"
+                              : names.category_id == 5
+                                ? "Air Conditioner"
+                                : names.category_id == 6
+                                  ? "Room Heaters"
+                                  : names.category_id == 7
+                                    ? "Blender & Mixer Grinder"
+                                    : ""}
                     </option>
                   );
                 })}
