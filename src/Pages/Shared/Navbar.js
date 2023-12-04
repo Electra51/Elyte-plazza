@@ -8,7 +8,6 @@ import { TbLayoutDashboard } from "react-icons/tb";
 import { FaRegUserCircle, FaUser } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-
 import NavbarFirstPart from "./NavbarFirstPart";
 import NavbarLastPart from "./NavbarLastPart";
 import { RiLogoutCircleRLine } from "react-icons/ri";
@@ -47,7 +46,7 @@ const Navbar = () => {
   }, [dark]);
   const { cart } = useContext(WishContext);
   const cartItems = cart?.cartItems;
-  console.log("cartItems", cart)
+  console.log("cartItems", cart);
   //authcontext theke user k nilm
   const { user, logOut } = useContext(AuthContext);
 
@@ -58,7 +57,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
+      .then(() => {})
       .catch((err) => console.log(err));
     navigate(from, { replace: true });
   };
@@ -80,22 +79,32 @@ const Navbar = () => {
   };
   const menuItems = (
     <React.Fragment>
-      <Link to="/wishlist"><button className="btn btn-ghost btn-circle">
-        <div className="indicator">
-          <AiOutlineHeart className="text-2xl" />
-          {cartItems?.length > 0 && (
-            <span className="badge badge-sm indicator-item bg-blue-500 text-white dark:text-gray-300">
-              {cartItems?.length}
-            </span>
-          )}
-        </div>
-      </button></Link>
+      <Link to="/wishlist">
+        <button className="btn btn-ghost btn-circle">
+          <div className="indicator">
+            <AiOutlineHeart
+              className={fix ? "text-white text-xl font-semibold" : "text-xl"}
+            />
+            {cartItems?.length > 0 && (
+              <span
+                className={
+                  fix
+                    ? "badge badge-sm indicator-item bg-white text-blue-500 dark:text-gray-300 border-0"
+                    : "badge badge-sm indicator-item bg-blue-500 text-white dark:text-gray-300 border-0"
+                }
+              >
+                {cartItems?.length}
+              </span>
+            )}
+          </div>
+        </button>
+      </Link>
 
-      <label className="swap swap-rotate mr-2">
+      <label className="swap swap-rotate ml-2">
         <input type="checkbox" onClick={handleDark} />
 
         <svg
-          className="swap-on fill-current w-6 h-6"
+          className="swap-on fill-current w-5 h-5"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -103,7 +112,7 @@ const Navbar = () => {
         </svg>
 
         <svg
-          className="swap-off fill-current w-6 h-6"
+          className="swap-off fill-current w-5 h-5"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -111,12 +120,12 @@ const Navbar = () => {
         </svg>
       </label>
       <li>
-        <button className="bg-transparent rounded-none">
-          <Link to="/home">Home</Link>
+        <button className="bg-transparent rounded-none font-medium">
+          <Link to="/">Home</Link>
         </button>
       </li>
       <li>
-        <button className="bg-transparent rounded-none">
+        <button className="bg-transparent rounded-none !pl-0 font-medium">
           <Link to="/blogs">Blogs</Link>
         </button>
       </li>
@@ -141,7 +150,7 @@ const Navbar = () => {
           </button> */}
 
           <ul>
-            <div className="dropdown mt-3">
+            <div className="dropdown mt-4">
               <button className="dropbtn flex justify-center items-center mr-2">
                 {" "}
                 {/* <Link className="ml-2 pr-3" to="/profile"> */}
@@ -248,7 +257,7 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="normal-case text-xl font-bold flex justify-center items-center"
+            className="normal-case text-[22px] font-black flex justify-center items-center"
           >
             <img
               src="https://i.ibb.co/Q8vpRcM/Capture-removebg-preview.png"

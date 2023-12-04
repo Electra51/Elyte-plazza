@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import BookingModal from "../BookingModal/BookingModal";
 import SingleProduct from "./SingleProduct";
 import { IoMdSearch } from "react-icons/io";
@@ -12,6 +11,7 @@ const OverAllProducts = () => {
   const [selectedYearOfUse, setSelectedYearOfUse] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
   const [page, setPage] = useState(0);
+
   const { data: productOver = [] } = useQuery({
     queryKey: ["productOver"],
     queryFn: async () => {
@@ -58,7 +58,6 @@ const OverAllProducts = () => {
     },
   });
 
-
   return (
     <div className="max-w-[1280px] mx-auto">
       <div className="flex justify-between items-center gap-3 mt-6">
@@ -89,57 +88,56 @@ const OverAllProducts = () => {
             />
           </div>
           <div className="mt-6">
-            {/* {productCategories?.map((e, i) => {
-            
-              return (
-                <div
-                // onClick={() => {
-                //   setSelectedCategory(e.name);
-                //   setPage(0);
-                // }}
-                >
-                  {e.subCategory?.map((ea, i) => {
-                    return <p>{ea.subName}</p>;
-                  })}
-                  {!e.subCategory ? <p>{e.name}</p> : ""}
-                </div>
-              );
-            })} */}
             <p className="mb-2">Year of Use:</p>
             <hr />
             <div className="my-3">
               {["all", "0-1", "1-2", "2-3", "more"].map((year, index) => (
                 <p
                   key={index}
-                  className={`cursor-pointer ${selectedYearOfUse === year ? "font-bold" : ""
-                    }`}
+                  className={`cursor-pointer ${
+                    selectedYearOfUse === year ? "font-bold" : ""
+                  }`}
                   onClick={() => setSelectedYearOfUse(year)}
                 >
                   {year === "all"
                     ? "All"
                     : year === "0-1"
-                      ? "0-1 year"
-                      : year === "1-2"
-                        ? "1-2 years"
-                        : year === "2-3"
-                          ? "2-3 years"
-                          : "More than 3 years"}
+                    ? "0-1 year"
+                    : year === "1-2"
+                    ? "1-2 years"
+                    : year === "2-3"
+                    ? "2-3 years"
+                    : "More than 3 years"}
                 </p>
               ))}
             </div>
 
             <p className="mb-2">Categories:</p>
             <hr />
-            <div className="flex flex-wrap gap-2 justify-stretch items-center mt-3">
-
+            <div className="flex flex-wrap gap-2 justify-stretch items-center mt-3 pb-6">
               {productTypes?.map((type, index) => (
                 <div
-                  className={`px-2 py-1 rounded-[4px] text-black border border-[#156CDA] cursor-pointer text-[12px] ${typeFilter === type ? "bg-[#156CDA] text-white" : "bg-white"
-                    }`}
+                  className={`px-2 py-1 rounded-[4px] text-black border border-[#156CDA] cursor-pointer text-[13px] ${
+                    typeFilter === type ? "bg-[#156CDA] text-white" : "bg-white"
+                  }`}
                   onClick={() => setTypeFilter(type)}
                   key={index}
                 >
-                  {type == "1" ? "Televisions (TV)" : type == "2" ? "Refrigerators & Freezers" : type == "3" ? "Washing Machines" : type == "4" ? "Microwave & Electric Oven" : type == "5" ? "Air Conditioner" : type == "6" ? "Room Heaters" : type == "7" ? "Blender & Mixer Grinder" : ""}
+                  {type == "1"
+                    ? "Televisions (TV)"
+                    : type == "2"
+                    ? "Refrigerators & Freezers"
+                    : type == "3"
+                    ? "Washing Machines"
+                    : type == "4"
+                    ? "Microwave & Electric Oven"
+                    : type == "5"
+                    ? "Air Conditioner"
+                    : type == "6"
+                    ? "Room Heaters"
+                    : type == "7"
+                    ? "Blender & Mixer Grinder"
+                    : ""}
                 </div>
               ))}
             </div>
@@ -147,13 +145,16 @@ const OverAllProducts = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 my-10 col-span-3">
-          {allProductss.slice(6 * page, 6 * (page + 1)).map((product) => (
-            <SingleProduct
-              key={product._id}
-              oneProduct={product}
-              setProductModals={setProductModals}
-            ></SingleProduct>
-          ))}
+          {allProductss &&
+            allProductss
+              .slice(6 * page, 6 * (page + 1))
+              .map((product) => (
+                <SingleProduct
+                  key={product._id}
+                  oneProduct={product}
+                  setProductModals={setProductModals}
+                />
+              ))}
         </div>
       </div>
       {productModals && (

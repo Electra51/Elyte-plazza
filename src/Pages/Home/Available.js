@@ -20,7 +20,7 @@ const Available = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) { }
+      } catch (error) {}
     },
   });
 
@@ -40,7 +40,7 @@ const Available = () => {
           Available Products here that you can select one easily
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 my-32">
+        <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 mb-32">
           {availables?.map((available) => (
             <div
               className="h-96 bg-gray-200 shadow-xl relative"
