@@ -80,7 +80,7 @@ const Navbar = () => {
   };
   const menuItems = (
     <React.Fragment>
-      <button className="btn btn-ghost btn-circle">
+      <Link to="/wishlist"><button className="btn btn-ghost btn-circle">
         <div className="indicator">
           <AiOutlineHeart className="text-2xl" />
           {cartItems?.length > 0 && (
@@ -89,7 +89,7 @@ const Navbar = () => {
             </span>
           )}
         </div>
-      </button>
+      </button></Link>
 
       <label className="swap swap-rotate mr-2">
         <input type="checkbox" onClick={handleDark} />

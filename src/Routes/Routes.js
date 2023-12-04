@@ -24,6 +24,7 @@ import PrivateRoute from "./PrivateRoutes";
 import SellerRoute from "./SellerRoute";
 import UserProfile from "../Pages/ProfilePage/UserProfile";
 import OverAllProducts from "../Pages/AllProducts/OverAllProducts";
+import WishList from "../Pages/Wishlist/WishList";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/wishlist",
+        element: <WishList />
       },
       {
         path: "/category/",

@@ -26,7 +26,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
   const addToCardHandler = () => {
     console.log("first")
     addItemToCart({
-      product: oneProduct?._id,
+      product: oneProduct._id,
       item_name: oneProduct.item_name,
       resale_price: oneProduct?.resale_price,
       item_img: oneProduct.item_img,
