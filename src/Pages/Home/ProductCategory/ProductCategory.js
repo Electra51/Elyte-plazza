@@ -22,32 +22,48 @@ const ProductCategory = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
     <div
       data-aos="fade-up"
       data-aos-duration="2200"
-      className="max-w-6xl mx-auto"
+      className="max-w-[340px] lg:max-w-6xl mx-auto"
     >
-      <div className="text-center mt-32">
-        <p className="text-2xl font-bold" id="categories">
+      <div className="text-center mt-4 lg:mt-32">
+        <p className="text-[18px] lg:text-2xl font-bold" id="categories">
           CATEGORIES
         </p>
-        <p className="mb-20">
+        <p className="mb-8 lg:mb-20">
           Here show some category that you can select one easily
         </p>
       </div>
-      {/* <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center'>
-                {
-                    productCategories.map(categories => <CategoryCard
-                        key={categories._id}
-                        categories={categories}
-                    ></CategoryCard>)
-                }
-
-            </div> */}
-
       <Slider {...settings}>
         {productCategories.map((categories, i) => (
           <CategoryCard

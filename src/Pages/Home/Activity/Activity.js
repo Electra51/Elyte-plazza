@@ -5,7 +5,7 @@ import { RiWechatLine } from "react-icons/ri";
 import { MdPayment } from "react-icons/md";
 const Activity = () => {
   return (
-    <div className="grid grid-cols-4 bg-[#2465b76b] text-[#0246B0] my-24 py-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 bg-[#2465b76b] text-[#0246B0] my-12 lg:my-24 py-4">
       <div className="flex justify-center items-center gap-3 py-7 px-3">
         <div className="flex justify-center items-center h-10 w-10 border border-[#0246B0] rounded-full">
           <MdOutlineLocalShipping className="text-xl" />

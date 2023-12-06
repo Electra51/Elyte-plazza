@@ -3,7 +3,7 @@ import img from "../../../assets/images/1.jpg";
 const Stat = () => {
   return (
     <div
-      className="mt-40 bg-blue-300 bg-fixed bg-opacity-40 bg-no-repeat"
+      className="mt-20 lg:mt-40 bg-blue-300 bg-fixed bg-opacity-40 bg-no-repeat"
       style={{
         backgroundImage: `url(${img})`,
         backgroundSize: "cover",
@@ -11,14 +11,14 @@ const Stat = () => {
         backgroundBlendMode: "overlay",
       }}
     >
-      <div className="max-w-6xl mx-auto flex justify-normal gap-32 items-center py-16 px-5">
+      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-normal gap-32 items-center py-16 px-5">
         <div
           className="text-center text-white"
           data-aos="fade-up"
           data-aos-duration="3000"
         >
-          <p className="text-2xl font-bold">I AM PROFESSIONAL AT MY SKILLS</p>
-          <p className="">More than 2000+ customers trusted me</p>
+          <p className="text-[18px] text-black lg:text-white lg:text-2xl font-bold">I AM PROFESSIONAL AT MY SKILLS</p>
+          <p className="text-black lg:text-white">More than 2000+ customers trusted me</p>
           <button className="mt-5 px-4 py-2 bg-[#166CDA] rounded-[4px] hover:bg-blue-500">
             Explore more
           </button>

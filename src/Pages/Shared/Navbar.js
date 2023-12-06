@@ -12,6 +12,7 @@ import NavbarFirstPart from "./NavbarFirstPart";
 import NavbarLastPart from "./NavbarLastPart";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import WishContext from "../../contexts/WishContext";
+import { MdOutlineMenu } from "react-icons/md";
 
 const Navbar = () => {
   const [fix, setFix] = useState(false);
@@ -101,6 +102,7 @@ const Navbar = () => {
       </Link>
 
       <label className="swap swap-rotate ml-2">
+
         <input type="checkbox" onClick={handleDark} />
 
         <svg
@@ -125,7 +127,7 @@ const Navbar = () => {
         </button>
       </li>
       <li>
-        <button className="bg-transparent rounded-none !pl-0 font-medium">
+        <button className="bg-transparent rounded-none lg:!pl-0 font-medium">
           <Link to="/blogs">Blogs</Link>
         </button>
       </li>
@@ -150,7 +152,7 @@ const Navbar = () => {
           </button> */}
 
           <ul>
-            <div className="dropdown mt-4">
+            <div className="dropdown mt-4 ml-3 lg:ml-0">
               <button className="dropbtn flex justify-center items-center mr-2">
                 {" "}
                 {/* <Link className="ml-2 pr-3" to="/profile"> */}
@@ -171,7 +173,7 @@ const Navbar = () => {
               <div
                 onClick={myFunction}
                 id="myDropdown"
-                className="p-4 mx-3 shadow rounded-[4px] menu dropdown-content !right-0 z-[1] w-52 bg-white"
+                className="p-4 mx-3 shadow rounded-[4px] menu dropdown-content lg:!right-0 z-[1] w-52 bg-white"
                 style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
               >
                 <Link to="/dashboard/profile">
@@ -233,24 +235,11 @@ const Navbar = () => {
         <div className="navbar-start mx-5">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+              <MdOutlineMenu className="text-2xl" />
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-none w-52"
             >
               {menuItems}
             </ul>
@@ -270,7 +259,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
-        <label
+        {/* <label
           htmlFor="dashboard-drawer"
           tabIndex={2}
           className="btn btn-ghost lg:hidden"
@@ -289,7 +278,7 @@ const Navbar = () => {
               d="M4 6h16M4 12h8m-8 6h16"
             />
           </svg>
-        </label>
+        </label> */}
         {/* <div className="h-3 bg-red-600"></div> */}
       </div>
       <NavbarLastPart />

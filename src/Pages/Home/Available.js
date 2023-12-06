@@ -39,10 +39,10 @@ const Available = () => {
       <div
         data-aos="fade-up"
         data-aos-duration="2300"
-        className="max-w-6xl mx-auto"
+        className="max-w-[340px] lg:max-w-6xl mx-auto"
       >
-        <div className="text-center mt-40">
-          <p className="text-2xl font-bold">NEW ARRIVALS</p>
+        <div className="text-center mt-20 lg:mt-40">
+          <p className="text-[18px] lg:text-2xl font-bold">NEW ARRIVALS</p>
           <p className="mb-20">
             Available Products here that you can select one easily
           </p>
