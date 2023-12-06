@@ -22,7 +22,7 @@ const DashboardLayout = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((err) => console.log(err));
     // navigate(from, { replace: true });
   };
@@ -101,7 +101,7 @@ const DashboardLayout = () => {
               <TbLayoutDashboard className="text-[18px] font-medium" />
               DashBoard
             </NavLink>
-            {!isAdmin && !isSeller && (
+            {!isAdmin && (
               <>
                 <NavLink
                   to="/dashboard/MyOrders"
@@ -109,28 +109,19 @@ const DashboardLayout = () => {
                 >
                   <CiShoppingTag className="text-[18px]" /> Orders
                 </NavLink>
-
-                <NavLink
-                  to="/dashboard/cart"
-                  className="text-white border-b-2 border-[#a6a6dd78] w-full p-2 px-3 flex justify-start items-center gap-2 pl-5"
-                >
-                  <AiOutlineShoppingCart className="text-[18px]" />
-                  Cart
-                </NavLink>
-
                 <NavLink
                   to="/dashboard/wishlist"
                   className="border-b-2 border-[#a6a6dd78] w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"
                 >
-                  {" "}
+
                   <AiOutlineHeart className="text-[18px]" />
                   WishList
                 </NavLink>
                 <NavLink
-                  to="/dashboard/wishlist"
+                  to="/dashboard/payment"
                   className="border-b-2 border-[#a6a6dd78] w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"
                 >
-                  {" "}
+
                   <FaDollarSign className="text-[18px]" />
                   Payment
                 </NavLink>

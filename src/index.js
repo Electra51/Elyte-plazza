@@ -9,17 +9,19 @@ import {
 } from '@tanstack/react-query'
 import AuthProvider from './contexts/AuthProvider';
 import WishlistProvider from './contexts/WishlistProvider';
-
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <WishlistProvider> <App /></WishlistProvider>
+      <PrimeReactProvider>
+        <AuthProvider>
+          <WishlistProvider> <App /></WishlistProvider>
 
-      </AuthProvider>
+        </AuthProvider>
+      </PrimeReactProvider>
     </QueryClientProvider>
 
   </React.StrictMode>

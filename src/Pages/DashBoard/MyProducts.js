@@ -47,7 +47,7 @@ const MyProducts = () => {
   });
 
 
-  localStorage.setItem("AddProductsForUser", AddProductsForUser.length)
+  localStorage.setItem("AddProductsForUser", AddProductsForUser?.length)
 
   const FilterAddProduct = AddProductsForUser?.filter((filterProduct) => {
     const matchesSearch = filterProduct?.item_name

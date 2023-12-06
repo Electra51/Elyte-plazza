@@ -25,6 +25,8 @@ import SellerRoute from "./SellerRoute";
 import UserProfile from "../Pages/ProfilePage/UserProfile";
 import OverAllProducts from "../Pages/AllProducts/OverAllProducts";
 import WishList from "../Pages/Wishlist/WishList";
+import MyWishList from "../Pages/DashBoard/MyWishList";
+import MyPayment from "../Pages/DashBoard/MyPayment";
 
 const router = createBrowserRouter([
   {
@@ -42,14 +44,16 @@ const router = createBrowserRouter([
         element: <WishList />
       },
       {
-        path: "/category/",
-        element: <OverAllProducts />,
+        path: "/category",
+        element: <PrivateRoute>
+          <OverAllProducts />
+        </PrivateRoute>,
       },
       {
         path: "/category/:id",
         element: (
           <PrivateRoute>
-            <AllProducts></AllProducts>
+            <AllProducts />
           </PrivateRoute>
         ),
         // loader: () => fetch('https://icebox-server.vercel.app/products')
@@ -102,7 +106,14 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://icebox-server.vercel.app/bookings/${params.id}`),
       },
-
+      {
+        path: "/dashboard/wishlist",
+        element: <MyWishList />
+      },
+      {
+        path: "/dashboard/payment",
+        element: <MyPayment />
+      },
       {
         path: "/dashboard/myProducts",
         element: (
@@ -144,6 +155,7 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+
     ],
   },
 ]);

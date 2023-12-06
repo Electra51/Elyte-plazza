@@ -8,7 +8,7 @@ const useBuyer = (email) => {
       fetch(`https://icebox-server.vercel.app/users/buyer/${email}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+
           setIsBuyer(data.isAdmin);
           setIsBuyerLoading(false);
         });

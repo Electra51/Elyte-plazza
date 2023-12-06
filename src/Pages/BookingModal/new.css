@@ -12,3 +12,36 @@
 .modal-box {
   max-width: 40rem !important;
 }
+
+#pr_id_1_header_0 {
+  padding: 10px 15px;
+  background: #156cda;
+  color: white;
+  gap: 9px;
+  border-bottom: 1px solid #90b9dd;
+}
+#pr_id_1_header_1 {
+  padding: 10px 15px;
+  background: #156cda;
+  color: white;
+  gap: 9px;
+  border-bottom: 1px solid #90b9dd;
+}
+#pr_id_1_header_2 {
+  padding: 10px 15px;
+  background: #156cda;
+  color: white;
+  gap: 9px;
+  border-bottom: 1px solid #90b9dd;
+}
+#pr_id_1_header_3 {
+  padding: 10px 15px;
+  background: #156cda;
+  color: white;
+  gap: 9px;
+  border-bottom: 1px solid #90b9dd;
+}
+.p-accordion-content {
+  background: #6f9fdded;
+  color: white;
+}

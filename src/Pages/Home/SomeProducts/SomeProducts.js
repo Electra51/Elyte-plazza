@@ -2,7 +2,12 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import SingleProduct from "../../AllProducts/SingleProduct";
 import { useState } from "react";
+import LoaderModal from "../../Shared/LoaderModal";
+import { Link } from "react-router-dom";
+import BookingModal from "../../BookingModal/BookingModal";
+
 const SomeProducts = () => {
+
   const { data: productOver = [] } = useQuery({
     queryKey: ["productOver"],
     queryFn: async () => {
@@ -12,34 +17,52 @@ const SomeProducts = () => {
     },
   });
   const productsSome = productOver?.slice(0, 4).map((e) => e);
-  console.log("e", productsSome);
   const [productModals, setProductModals] = useState(null);
-  console.log("object", productOver);
-  return (
-    <div
-      data-aos="fade-up"
-      data-aos-duration="2300"
-      className="max-w-6xl mx-auto"
-    >
-      <div className="text-center mt-40">
-        <p className="text-2xl font-bold">OUR PRODUCTS</p>
-        <p className="mb-20">
-          Available Products here that you can select one easily
-        </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 mb-32">
-          {productsSome.map((product, i) => {
-            console.log(product);
-            return (
-              <SingleProduct
-                key={product._id}
-                oneProduct={product}
-                setProductModals={setProductModals}
-              ></SingleProduct>
-            );
-          })}
+  return (
+    <div>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="2300"
+        className="max-w-6xl mx-auto"
+      >
+        <div className="text-center mt-40 relative">
+          <p className="text-2xl font-bold">OUR PRODUCTS</p>
+          <Link to="/category">   <button className="text-[#166CDA] absolute top-5 right-0">See more products...</button></Link>
+          {/* <button className="text-[#166CDA] absolute top-5 right-0">See more products...</button> */}
+          <p className="mb-20">
+            Available Products here that you can select one easily
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 mb-32">
+            {productsSome.map((product, i) => {
+
+              return (
+                <SingleProduct
+                  key={product._id}
+                  oneProduct={product}
+                  setProductModals={setProductModals}
+                />
+              );
+            })}
+          </div>
         </div>
+
       </div>
+      {
+        productModals && (
+          <LoaderModal
+            productModals={productModals}
+            setProductModals={setProductModals}
+          ></LoaderModal>
+        )
+      }
+      {productModals && (
+        <BookingModal
+          productModals={productModals}
+          setProductModals={setProductModals}
+        ></BookingModal>
+      )}
     </div>
   );
 };

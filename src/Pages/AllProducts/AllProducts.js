@@ -19,7 +19,7 @@ const AllProducts = () => {
   const [typeFilter, setTypeFilter] = useState("all");
 
   const productTypes = Array.from(new Set(products?.map((e) => e?.subNumber)));
-  console.log("productTypes", productTypes);
+
 
   const allProductss = products?.filter((product) => {
     const matchesSearch = product?.item_name
@@ -87,20 +87,19 @@ const AllProducts = () => {
               {["all", "0-1", "1-2", "2-3", "more"].map((year, index) => (
                 <p
                   key={index}
-                  className={`cursor-pointer ${
-                    selectedYearOfUse === year ? "font-bold" : ""
-                  }`}
+                  className={`cursor-pointer ${selectedYearOfUse === year ? "font-bold" : ""
+                    }`}
                   onClick={() => setSelectedYearOfUse(year)}
                 >
                   {year === "all"
                     ? "All"
                     : year === "0-1"
-                    ? "0-1 year"
-                    : year === "1-2"
-                    ? "1-2 years"
-                    : year === "2-3"
-                    ? "2-3 years"
-                    : "More than 3 years"}
+                      ? "0-1 year"
+                      : year === "1-2"
+                        ? "1-2 years"
+                        : year === "2-3"
+                          ? "2-3 years"
+                          : "More than 3 years"}
                 </p>
               ))}
             </div>
@@ -115,37 +114,36 @@ const AllProducts = () => {
                 <div className="flex flex-wrap gap-2 justify-stretch items-center mt-3 pb-5">
                   {productTypes?.map((type, index) => (
                     <div
-                      className={`px-2 py-1 rounded-[4px] text-black border border-[#156CDA] cursor-pointer text-[13px] ${
-                        typeFilter === type
+                      className={`px-2 py-1 rounded-[4px] text-black border border-[#156CDA] cursor-pointer text-[13px] ${typeFilter === type
                           ? "bg-[#156CDA] text-white"
                           : "bg-white"
-                      }`}
+                        }`}
                       onClick={() => setTypeFilter(type)}
                       key={index}
                     >
                       {pathname == "/category/1" && type == "1"
                         ? "LED TV"
                         : pathname == "/category/2" && type == "1"
-                        ? "Non-Forst Refrigerator"
-                        : pathname == "/category/1" && type == "2"
-                        ? "Android TV"
-                        : pathname == "/category/2" && type == "2"
-                        ? "Beverage Cooler"
-                        : pathname == "/category/2" && type == "3"
-                        ? "Freezer"
-                        : pathname == "/category/4" && type == "1"
-                        ? "Microwave Oven"
-                        : pathname == "/category/4" && type == "2"
-                        ? "Electric Oven"
-                        : pathname == "/category/5" && type == "1"
-                        ? "Split AC"
-                        : pathname == "/category/5" && type == "2"
-                        ? "Ceilling AC"
-                        : pathname == "/category/7" && type == "1"
-                        ? "Blender & Juicer"
-                        : pathname == "/category/7" && type == "2"
-                        ? "Mixer Grinder"
-                        : ""}
+                          ? "Non-Forst Refrigerator"
+                          : pathname == "/category/1" && type == "2"
+                            ? "Android TV"
+                            : pathname == "/category/2" && type == "2"
+                              ? "Beverage Cooler"
+                              : pathname == "/category/2" && type == "3"
+                                ? "Freezer"
+                                : pathname == "/category/4" && type == "1"
+                                  ? "Microwave Oven"
+                                  : pathname == "/category/4" && type == "2"
+                                    ? "Electric Oven"
+                                    : pathname == "/category/5" && type == "1"
+                                      ? "Split AC"
+                                      : pathname == "/category/5" && type == "2"
+                                        ? "Ceilling AC"
+                                        : pathname == "/category/7" && type == "1"
+                                          ? "Blender & Juicer"
+                                          : pathname == "/category/7" && type == "2"
+                                            ? "Mixer Grinder"
+                                            : ""}
                     </div>
                   ))}
                 </div>

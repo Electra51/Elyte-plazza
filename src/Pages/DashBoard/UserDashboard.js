@@ -53,23 +53,7 @@ const UserDashboard = () => {
             </PieChart> */}
           </div>
         </div>
-        <div className="bg-base-100 shadow-xl rounded-[4px]">
-          <div className="card-body">
-            <h2 className="flex justify-between items-center font-bold">
-              Cart Product <AiOutlineShoppingCart className="text-[18px]" />
-            </h2>
-            <div className="flex justify-start items-center gap-3">
-              <p className="text-3xl font-bold">5</p>{" "}
-              <div
-                className="radial-progress"
-                style={{ "--value": 70 }}
-                role="progressbar"
-              >
-                70%
-              </div>{" "}
-            </div>
-          </div>
-        </div>
+
         <div className="bg-base-100 shadow-xl rounded-[4px]">
           <div className="card-body">
             <h2 className="flex justify-between items-center font-bold">

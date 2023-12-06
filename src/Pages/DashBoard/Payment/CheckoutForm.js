@@ -115,7 +115,7 @@ const CheckoutForm = ({ booking }) => {
           }}
         />
         <button
-          className="btn btn-sm mt-4 btn-warning"
+          className="bg-[#166cda] px-4 mt-5 text-white rounded-[4px] py-1"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >

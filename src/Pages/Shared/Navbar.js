@@ -46,7 +46,7 @@ const Navbar = () => {
   }, [dark]);
   const { cart } = useContext(WishContext);
   const cartItems = cart?.cartItems;
-  console.log("cartItems", cart);
+
   //authcontext theke user k nilm
   const { user, logOut } = useContext(AuthContext);
 
@@ -57,7 +57,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((err) => console.log(err));
     navigate(from, { replace: true });
   };
@@ -212,7 +212,7 @@ const Navbar = () => {
       ) : (
         <li>
           <Link to="/login" className="bg-transparent rounded-none ">
-            <AiOutlineUser className="bg-transparent rounded-none" />{" "}
+            <AiOutlineUser className="bg-transparent rounded-none" />
             Login/Register
           </Link>
         </li>
@@ -257,7 +257,7 @@ const Navbar = () => {
           </div>
           <Link
             to="/"
-            className="normal-case text-[22px] font-black flex justify-center items-center"
+            className="normal-case text-[18px] lg:text-[22px] font-black flex justify-center items-center"
           >
             <img
               src="https://i.ibb.co/Q8vpRcM/Capture-removebg-preview.png"

@@ -1,4 +1,4 @@
-import {FiXCircle } from 'react-icons/fi';
+import { FiXCircle } from 'react-icons/fi';
 import React, { useContext } from 'react'
 import { Link, useNavigate, useRouteError } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -14,21 +14,21 @@ const ErrorPage = () => {
 
   const handleLogOut = () => {
     logOut()
-        .then(() => {
-            navigate('/login');
-         })
-        .catch(err => console.log(err));
-}
+      .then(() => {
+        navigate('/login');
+      })
+      .catch(err => console.log(err));
+  }
   return (
     <section className='flex items-center h-screen p-16 bg-gray-100 text-gray-900'>
       <div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
-        
+
         <div className='max-w-md text-center'>
           <h2 className='mb-8 font-extrabold text-9xl text-gray-500'>
             <span className='sr-only'>Error</span>
             <div className='flex justify-center items-center h-full'>
               4
-              <div className='w-24 h-24  text-orange-400 mr-8'><FiXCircle/></div>
+              <div className='w-24 h-24  text-[#166cda] mr-8'><FiXCircle /></div>
               4
             </div>
           </h2>
@@ -36,8 +36,8 @@ const ErrorPage = () => {
             {error.statusText || error.message}
           </p>
           <Link to='/'>
-          <h4 className="text-3xl"> Please <button className='btn btn-warning' onClick={handleLogOut}>Sign out</button></h4>
-            
+            <h4 className="text-3xl"> Please <button className='bg-[#166cda] px-4 text-white text-[18px] rounded-[4px]' onClick={handleLogOut}>Sign out</button></h4>
+
           </Link>
         </div>
       </div>

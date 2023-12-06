@@ -19,7 +19,7 @@ const Stat = () => {
         >
           <p className="text-2xl font-bold">I AM PROFESSIONAL AT MY SKILLS</p>
           <p className="">More than 2000+ customers trusted me</p>
-          <button className="mt-5 px-4 py-2 bg-blue-600 rounded-[4px] hover:bg-blue-500">
+          <button className="mt-5 px-4 py-2 bg-[#166CDA] rounded-[4px] hover:bg-blue-500">
             Explore more
           </button>
         </div>

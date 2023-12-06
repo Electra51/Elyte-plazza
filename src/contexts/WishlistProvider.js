@@ -7,6 +7,8 @@ const WishlistProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
 
+
+
     useEffect(() => {
         setCartToState();
     }, []);
@@ -57,19 +59,19 @@ const WishlistProvider = ({ children }) => {
         setCartToState();
     };
 
-    const deleteItemFromCart = (id) => {
-        const newCartItems = cart?.cartItems?.filter((i) => i.product !== id);
-
-        localStorage.setItem("wish", JSON.stringify({ cartItems: newCartItems }));
-        setCartToState();
-    };
+    // const deleteItemFromCart = (id) => {
+    //     const newCartItems = cart?.cartItems?.filter((i) => i.product !== id);
+    //     console.log("newCartItems", newCartItems)
+    //     localStorage.setItem("wish", JSON.stringify({ cartItems: newCartItems }));
+    //     setCartToState();
+    // };
 
     return (
         <WishContext.Provider
             value={{
-                cart,
+                cart, setCartToState,
                 addItemToCart,
-                deleteItemFromCart,
+                // deleteItemFromCart,
             }}
         >
             {children}
