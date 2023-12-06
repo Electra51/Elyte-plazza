@@ -10,7 +10,7 @@ import { FaRegHeart } from "react-icons/fa";
 import WishContext from "../../contexts/WishContext";
 
 const SingleProduct = ({ oneProduct, setProductModals }) => {
-  console.log("oneProduct", oneProduct)
+  console.log("oneProduct", oneProduct);
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
 
@@ -18,11 +18,13 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
 
   const [isInWishlist, setIsInWishlist] = useState(false);
   useEffect(() => {
-    const isInWishlistStored = localStorage.getItem(`wishlist_${oneProduct._id}`);
+    const isInWishlistStored = localStorage.getItem(
+      `wishlist_${oneProduct._id}`
+    );
     setIsInWishlist(!!isInWishlistStored);
   }, [oneProduct._id]);
   const addToCardHandler = () => {
-    console.log("first")
+    console.log("first");
     addItemToCart({
       product: oneProduct._id,
       item_name: oneProduct.item_name,
@@ -32,11 +34,13 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
       seller_name: oneProduct?.seller_name,
       year_of_use: oneProduct?.year_of_use,
     });
-    setIsInWishlist(true); localStorage.setItem(`wishlist_${oneProduct._id}`, "true");
+    setIsInWishlist(true);
+    localStorage.setItem(`wishlist_${oneProduct._id}`, "true");
   };
   const navigate = useNavigate();
   const { loading } = useContext(AuthContext);
-  const { _id,
+  const {
+    _id,
     item_img,
     item_name,
     location,
@@ -67,7 +71,6 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-
         if (data.modifiedCount > 0) {
           toast.success("Reported this item");
           // refetch()
@@ -128,7 +131,9 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
           </p>
           <div className="absolute top-2 left-3">
             {oneProduct?.role == "available" && (
-              <button className="px-2 py-0.1 bg-green-500 text-white rounded-[4px] text-[14px]">New</button>
+              <button className="px-2 py-0.1 bg-green-500 text-white rounded-[4px] text-[14px]">
+                New
+              </button>
             )}
           </div>
           <div className="absolute top-2 right-2">
@@ -161,29 +166,29 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
           </div>
 
           <div className="mt-4 flex justify-between">
-            {
-              user?.email ? <div className="">
+            {user?.email ? (
+              <div className="">
                 <label
                   onClick={() => setProductModals(oneProduct)}
                   htmlFor="booking-modal"
-                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA]"
-                >
-                  Book Now
-                </label>
-              </div> : <div className="">
-                <label
-                  onClick={() => setProductModals(oneProduct)}
-                  htmlFor="loader-modal"
-                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA]"
+                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA] cursor-pointer"
                 >
                   Book Now
                 </label>
               </div>
-            }
-
+            ) : (
+              <div className="">
+                <label
+                  onClick={() => setProductModals(oneProduct)}
+                  htmlFor="loader-modal"
+                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA] cursor-pointer"
+                >
+                  Book Now
+                </label>
+              </div>
+            )}
 
             <div className="hover:bg-[#156CDA] border border-[#156CDA] h-8 w-8 rounded-full text-[#156CDA] flex justify-center items-center hover:text-white">
-
               <FaRegHeart
                 onClick={addToCardHandler}
                 style={{ color: isInWishlist ? "red" : "#156CDA" }}

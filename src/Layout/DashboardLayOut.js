@@ -13,7 +13,13 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FiUsers } from "react-icons/fi";
 import { FaUserPlus } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
-import { MdOutlineReportProblem, MdPostAdd, MdPreview } from "react-icons/md";
+import {
+  MdArrowBack,
+  MdOutlineReportProblem,
+  MdPostAdd,
+  MdPreview,
+} from "react-icons/md";
+
 const DashboardLayout = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
@@ -22,7 +28,7 @@ const DashboardLayout = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
+      .then(() => {})
       .catch((err) => console.log(err));
     // navigate(from, { replace: true });
   };
@@ -96,7 +102,7 @@ const DashboardLayout = () => {
           <ul className="pt-4 mx-3 text-base-content mt-16">
             <NavLink
               to="/dashboard/dashboard"
-              className="text-white border-b-2 border-[#a6a6dd78] w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
+              className="text-white w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
             >
               <TbLayoutDashboard className="text-[18px] font-medium" />
               DashBoard
@@ -105,23 +111,21 @@ const DashboardLayout = () => {
               <>
                 <NavLink
                   to="/dashboard/MyOrders"
-                  className="text-white border-b-2 border-[#a6a6dd78] w-full p-2 px-3 flex justify-start items-center gap-2 pl-5"
+                  className="text-white w-full p-2 px-3 flex justify-start items-center gap-2 pl-5"
                 >
                   <CiShoppingTag className="text-[18px]" /> Orders
                 </NavLink>
                 <NavLink
                   to="/dashboard/wishlist"
-                  className="border-b-2 border-[#a6a6dd78] w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"
+                  className="w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"
                 >
-
                   <AiOutlineHeart className="text-[18px]" />
                   WishList
                 </NavLink>
                 <NavLink
                   to="/dashboard/payment"
-                  className="border-b-2 border-[#a6a6dd78] w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"
+                  className="w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"
                 >
-
                   <FaDollarSign className="text-[18px]" />
                   Payment
                 </NavLink>
@@ -137,19 +141,19 @@ const DashboardLayout = () => {
                 </li> */}
                 <NavLink
                   to="/dashboard/allBuyers"
-                  className="text-white border-b-2 border-[#a6a6dd78] w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
+                  className="text-white w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
                 >
                   <FiUsers className="text-[18px] font-medium" /> All Buyers
                 </NavLink>
                 <NavLink
                   to="/dashboard/allSellers"
-                  className="text-white border-b-2 border-[#a6a6dd78] w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
+                  className="text-white w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
                 >
                   <FaUserPlus className="text-[18px] font-medium" /> All Sellers
                 </NavLink>
                 <NavLink
                   to="/dashboard/reportItem"
-                  className="text-white border-b-2 border-[#a6a6dd78] w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
+                  className="text-white w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
                 >
                   <MdOutlineReportProblem className="text-[18px] font-medium" />{" "}
                   Reported Item
@@ -160,7 +164,7 @@ const DashboardLayout = () => {
               <>
                 <NavLink
                   to="/dashboard/myProducts"
-                  className="text-white border-b-2 border-[#a6a6dd78] w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
+                  className="text-white w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
                 >
                   <MdPreview className="text-[18px] font-medium" /> My Products
                 </NavLink>
@@ -171,7 +175,7 @@ const DashboardLayout = () => {
                 </li> */}
                 <NavLink
                   to="/dashboard/addAProduct"
-                  className="text-white border-b-2 border-[#a6a6dd78] w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
+                  className="text-white w-full mt-1 p-2 px-3 flex justify-start items-center gap-2  pl-5"
                 >
                   <MdPostAdd className="text-[18px] font-medium" /> Add A
                   Product
@@ -181,7 +185,7 @@ const DashboardLayout = () => {
 
             <NavLink
               to="/dashboard/profile"
-              className="text-white border-b-2 border-[#a6a6dd78] w-full p-2 px-3 flex justify-start items-center gap-2 pl-5"
+              className="text-white w-full p-2 px-3 flex justify-start items-center gap-2 pl-5"
             >
               <FaRegUserCircle className="text-[18px]" />
               Profile
@@ -189,11 +193,18 @@ const DashboardLayout = () => {
 
             <NavLink
               to="/login"
-              className="text-white p-2 px-3 flex justify-start items-center gap-2 pl-5"
+              className="text-white border-b-2 border-[#a6a6dd78] p-2 px-3 flex justify-start items-center gap-2 pl-5 pb-3"
               onClick={handleLogOut}
             >
               <RiLogoutCircleRLine className="text-[18px]" />
               LogOut{" "}
+            </NavLink>
+            <NavLink
+              to="/"
+              className="text-white p-2 px-3 flex justify-start items-center gap-2 pl-5"
+            >
+              <MdArrowBack className="text-[18px]" />
+              Back to Home
             </NavLink>
           </ul>
         </div>{" "}
