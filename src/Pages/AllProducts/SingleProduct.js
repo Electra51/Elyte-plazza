@@ -10,10 +10,10 @@ import { FaRegHeart } from "react-icons/fa";
 import WishContext from "../../contexts/WishContext";
 
 const SingleProduct = ({ oneProduct, setProductModals }) => {
-  console.log("oneProduct", oneProduct);
   const { user } = useContext(AuthContext);
-  const [isAdmin] = useAdmin(user?.email);
 
+  const [isAdmin] = useAdmin(user?.email);
+  console.log("user", user);
   const { addItemToCart, cart } = useContext(WishContext);
 
   const [isInWishlist, setIsInWishlist] = useState(false);
@@ -121,7 +121,12 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
           />
         </figure>
         <div className="pt-6 h-40 px-5 items-center text-center text-black">
-          <h2 className="text-[16px] font-bold text-start">{item_name}</h2>
+          <h2
+            className="text-[16px] font-bold text-start cursor-pointer hover:underline hover:text-blue-600"
+            onClick={() => navigate(`/${_id}`)}
+          >
+            {item_name}
+          </h2>
           <p className="text-[15px] line-through text-start">
             Original Price:{" "}
             <span className="line-through">${original_price}</span>

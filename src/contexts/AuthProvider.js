@@ -32,6 +32,18 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, userInfo);
   };
 
+  const handleCreateuser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const handleUpdateUser = (name, image) => {
+    const profile = {
+      displayName: name,
+      photoURL: image,
+    };
+    return updateProfile(auth.currentUser, profile);
+  };
+
   // // update profile
   // const updateUserProfile = (name, photoURL) => {
   //   return updateProfile(auth.currentUser, {
@@ -82,6 +94,8 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     updateUser,
+    handleCreateuser,
+    handleUpdateUser,
   };
 
   return (

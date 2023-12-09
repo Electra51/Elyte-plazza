@@ -1,15 +1,21 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useSeller from "../../hooks/useSeller";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
 
+  const [isSeller] = useSeller(user?.email);
   return (
     <div className="flex justify-center text-center mt-32">
       <div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center my-4">
           {" "}
-          <img src={user?.photoURL} alt="" />
+          <div className="avatar">
+            <div className="w-48 rounded-full">
+              <img src={user?.photoURL} alt="" />
+            </div>
+          </div>
         </div>
         <p className="font-semibold text-xl">
           {" "}
