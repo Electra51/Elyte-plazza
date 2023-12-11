@@ -13,6 +13,7 @@ import NavbarLastPart from "./NavbarLastPart";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import WishContext from "../../contexts/WishContext";
 import { MdOutlineMenu } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [fix, setFix] = useState(false);
@@ -50,7 +51,7 @@ const Navbar = () => {
 
   //authcontext theke user k nilm
   const { user, logOut } = useContext(AuthContext);
-
+  console.log("user", user);
   //redirect
   const navigate = useNavigate();
   const location = useLocation();
@@ -58,9 +59,10 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => { })
+      .then(() => {})
       .catch((err) => console.log(err));
-    navigate(from, { replace: true });
+    navigate("/login");
+    toast.success("Logout Successfully");
   };
 
   function myFunction() {
@@ -102,7 +104,6 @@ const Navbar = () => {
       </Link>
 
       <label className="swap swap-rotate ml-2">
-
         <input type="checkbox" onClick={handleDark} />
 
         <svg

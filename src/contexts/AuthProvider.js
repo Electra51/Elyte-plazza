@@ -31,7 +31,6 @@ const AuthProvider = ({ children }) => {
   const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
   };
-
   // // update profile
   // const updateUserProfile = (name, photoURL) => {
   //   return updateProfile(auth.currentUser, {
@@ -64,10 +63,14 @@ const AuthProvider = ({ children }) => {
   //observer for user change hocche or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        setUser(currentUser);
+        setLoading(false);
+      } else {
+        setUser({});
+        setLoading(false);
+      }
     });
-
     return () => {
       unsubscribe();
     };

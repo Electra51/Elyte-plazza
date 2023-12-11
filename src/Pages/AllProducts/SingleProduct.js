@@ -10,7 +10,7 @@ import { FaRegHeart } from "react-icons/fa";
 import WishContext from "../../contexts/WishContext";
 
 const SingleProduct = ({ oneProduct, setProductModals }) => {
-  console.log("oneProduct", oneProduct);
+  // console.log("oneProduct", oneProduct);
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
 
@@ -24,7 +24,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     setIsInWishlist(!!isInWishlistStored);
   }, [oneProduct._id]);
   const addToCardHandler = () => {
-    console.log("first");
+    // console.log("first");
     addItemToCart({
       product: oneProduct._id,
       item_name: oneProduct.item_name,
