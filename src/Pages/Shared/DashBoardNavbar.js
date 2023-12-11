@@ -79,15 +79,29 @@ const DashBoardNavbar = () => {
             <div className="dropdown mt-3.5">
               <button className="dropbtn flex justify-center items-center mr-2">
                 {user?.photoURL ? (
-                  <img
-                    title={user?.displayName}
-                    style={{ height: "35px" }}
-                    alt=""
-                    roundedcircle="true"
-                    src={user?.photoURL}
-                  ></img>
+                  <div className="avatar">
+                    <div className="w-7 rounded-full ring ring-[#146CDA] ring-offset-base-100 ring-offset-1">
+                      <img
+                        title={`Click & view option`}
+                        style={{ height: "35px" }}
+                        alt=""
+                        roundedcircle="true"
+                        src={user?.photoURL}
+                      ></img>
+                    </div>
+                  </div>
                 ) : (
-                  <FaUser></FaUser>
+                  <div className="avatar">
+                    <div className="w-7 rounded-full ring ring-[#146CDA] ring-offset-base-100 ring-offset-2">
+                      <img
+                        title={`Click & view option`}
+                        style={{ height: "35px" }}
+                        alt=""
+                        roundedcircle="true"
+                        src="https://i.ibb.co/sVfgSr6/download.jpg"
+                      ></img>
+                    </div>
+                  </div>
                 )}
               </button>
             </div>

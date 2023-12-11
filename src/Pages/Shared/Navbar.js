@@ -13,8 +13,7 @@ import NavbarLastPart from "./NavbarLastPart";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import WishContext from "../../contexts/WishContext";
 import { MdOutlineMenu } from "react-icons/md";
-import toast from "react-hot-toast";
-
+import { toast } from "react-hot-toast";
 const Navbar = () => {
   const [fix, setFix] = useState(false);
   function setFixed() {
@@ -61,8 +60,8 @@ const Navbar = () => {
     logOut()
       .then(() => {})
       .catch((err) => console.log(err));
-    navigate("/login");
     toast.success("Logout Successfully");
+    navigate("/login");
   };
 
   function myFunction() {
@@ -158,15 +157,29 @@ const Navbar = () => {
                 {" "}
                 {/* <Link className="ml-2 pr-3" to="/profile"> */}
                 {user?.photoURL ? (
-                  <img
-                    title={`Click & view option`}
-                    style={{ height: "35px" }}
-                    alt=""
-                    roundedcircle="true"
-                    src={user?.photoURL}
-                  ></img>
+                  <div className="avatar">
+                    <div className="w-7 rounded-full ring ring-[#146CDA] ring-offset-base-100 ring-offset-1">
+                      <img
+                        title={`Click & view option`}
+                        style={{ height: "35px" }}
+                        alt=""
+                        roundedcircle="true"
+                        src={user?.photoURL}
+                      ></img>
+                    </div>
+                  </div>
                 ) : (
-                  <FaUser></FaUser>
+                  <div className="avatar">
+                    <div className="w-7 rounded-full ring ring-[#146CDA] ring-offset-base-100 ring-offset-2">
+                      <img
+                        title={`Click & view option`}
+                        style={{ height: "35px" }}
+                        alt=""
+                        roundedcircle="true"
+                        src="https://i.ibb.co/sVfgSr6/download.jpg"
+                      ></img>
+                    </div>
+                  </div>
                 )}
                 {/* </Link> */}
                 {/* {user?.displayName} */}
@@ -214,7 +227,10 @@ const Navbar = () => {
         </>
       ) : (
         <li>
-          <Link to="/login" className="bg-transparent rounded-none ">
+          <Link
+            to="/login"
+            className="bg-transparent rounded-none border border-gray-500"
+          >
             <AiOutlineUser className="bg-transparent rounded-none" />
             Login/Register
           </Link>

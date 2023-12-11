@@ -27,6 +27,7 @@ import OverAllProducts from "../Pages/AllProducts/OverAllProducts";
 import WishList from "../Pages/Wishlist/WishList";
 import MyWishList from "../Pages/DashBoard/MyWishList";
 import MyPayment from "../Pages/DashBoard/MyPayment";
+import ProductDetails from "../Pages/AllProducts/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -41,13 +42,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishlist",
-        element: <WishList />
+        element: <WishList />,
       },
       {
         path: "/category",
-        element: <PrivateRoute>
-          <OverAllProducts />
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <OverAllProducts />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/category/:id",
@@ -62,9 +65,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/Available",
-        element: <Available></Available>,
+        element: <Available />,
       },
-
+      {
+        path: "/:id",
+        element: <ProductDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
+      },
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
@@ -108,11 +116,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/wishlist",
-        element: <MyWishList />
+        element: <MyWishList />,
       },
       {
         path: "/dashboard/payment",
-        element: <MyPayment />
+        element: <MyPayment />,
       },
       {
         path: "/dashboard/myProducts",
@@ -155,7 +163,6 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-
     ],
   },
 ]);
