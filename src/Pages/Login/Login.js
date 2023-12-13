@@ -34,18 +34,15 @@ const Login = () => {
   }
 
   const handleLogin = (data) => {
-
-
     setLoginError("");
     //login
     signIn(data.email, data.password, data.seller, data.admin)
       .then((result) => {
         const user = result.user;
-
         setLoginUserEmail(data.email);
+        toast.success("login successfully");
       })
       .catch((error) => {
-
         setLoginError(error.message);
       });
   };
@@ -53,7 +50,6 @@ const Login = () => {
   //google log in
   const handleGoogleSignIn = () => {
     signInWithGoogle().then((result) => {
-
       navigate(from, { replace: true });
 
       fetch("https://icebox-server.vercel.app/googleUsers", {
@@ -108,9 +104,7 @@ const Login = () => {
                 </p>
               </div>
             </Link>
-
           </div>
-
         </div>
       </div>
 
@@ -124,12 +118,13 @@ const Login = () => {
             {" "}
             Worldwide Electronics Store
           </p>
-
         </div>
 
         <div className="text-sm breadcrumbs text-center flex justify-center items-center">
           <ul>
-            <li><Link to="/">Home</Link ></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
 
             <li>Login</li>
           </ul>

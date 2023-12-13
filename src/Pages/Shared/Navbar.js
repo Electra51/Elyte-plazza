@@ -153,12 +153,12 @@ const Navbar = () => {
 
           <ul>
             <div className="dropdown mt-4 ml-3 lg:ml-0">
-              <button className="dropbtn flex justify-center items-center mr-2">
+              <button className="dropbtn flex justify-center items-center mr-2 mt-[-4px]">
                 {" "}
                 {/* <Link className="ml-2 pr-3" to="/profile"> */}
                 {user?.photoURL ? (
                   <div className="avatar">
-                    <div className="w-7 rounded-full ring ring-[#146CDA] ring-offset-base-100 ring-offset-1">
+                    <div className="w-7 rounded-full">
                       <img
                         title={`Click & view option`}
                         style={{ height: "35px" }}

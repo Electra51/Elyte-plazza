@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import axios from "axios";
+
 import { MdImage } from "react-icons/md";
 
 const Signup = () => {
@@ -233,10 +233,10 @@ const Signup = () => {
             )}
           </div>{" "}
           <div className="flex justify-start items-center gap-12">
-            <label class="flex cursor-pointer flex-col w-1/2 h-20 border-2 rounded-md border-dashed hover:bg-gray-100 hover:border-gray-300">
-              <div class="flex flex-col items-center justify-center pt-4">
+            <label className="flex cursor-pointer flex-col w-1/2 h-20 border-2 rounded-md border-dashed hover:bg-gray-100 hover:border-gray-300">
+              <div className="flex flex-col items-center justify-center pt-4">
                 <MdImage className="text-2xl" />
-                <p class="pt-1 text-sm tracking-wider text-black group-hover:text-gray-600">
+                <p className="pt-1 text-sm tracking-wider text-black group-hover:text-gray-600">
                   Select a photo
                 </p>
               </div>
@@ -337,7 +337,7 @@ const Signup = () => {
               }`}
             >
               {loading ? (
-                <span className="loading loading-spinner text-white"></span>
+                <span className="loading loading-spinner text-info"></span>
               ) : (
                 "SignUp"
               )}

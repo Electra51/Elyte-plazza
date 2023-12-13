@@ -1,5 +1,11 @@
 import React, { useContext } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
 import useBuyer from "../hooks/useBuyer";
@@ -19,18 +25,22 @@ import {
   MdPostAdd,
   MdPreview,
 } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const DashboardLayout = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
   const [isBuyer] = useBuyer(user?.email);
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((err) => console.log(err));
-    // navigate(from, { replace: true });
+    toast.success("Logout Successfully");
+    navigate("/login");
   };
 
   return (

@@ -8,7 +8,7 @@ import { MdOutlineReportProblem } from "react-icons/md";
 import { FcBusinessman } from "react-icons/fc";
 import { FaRegHeart } from "react-icons/fa";
 import WishContext from "../../contexts/WishContext";
-
+import newImages from "../../assets/images/newImages1.png";
 const SingleProduct = ({ oneProduct, setProductModals }) => {
   // console.log("oneProduct", oneProduct);
   const { user } = useContext(AuthContext);
@@ -135,11 +135,17 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
           <p className="text-[15px] text-start">
             Resale Price: <span className="">${resale_price}</span>
           </p>
-          <div className="absolute top-2 left-3">
+          <div className="absolute top-[-2.5px] left-[-2.5px]">
             {oneProduct?.role == "available" && (
-              <button className="px-2 py-0.1 bg-green-500 text-white rounded-[4px] text-[14px]">
-                New
-              </button>
+              <img
+                src={newImages}
+                alt=""
+                width={50}
+                // className="absolute top-[-5px] right-[-5px]"
+              />
+              // <button className="px-2 py-0.1 bg-green-500 text-white rounded-[4px] text-[14px]">
+              //   New
+              // </button>
             )}
           </div>
           <div className="absolute top-2 right-2">
