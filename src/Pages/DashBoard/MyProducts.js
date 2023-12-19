@@ -124,80 +124,88 @@ const MyProducts = () => {
           setPage={setPage}
         />
       </div>
-      <div>
-        {FilterAddProduct?.map((e, i) => {
-          return (
-            <div
-              key={i}
-              className="grid grid-cols-7 justify-start items-center gap-2 mt-5"
-              style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}
-            >
-              <div className="flex justify-start items-center col-span-3">
-                <img src={e?.item_img} alt="" width={150} />
-                <div className="flex flex-col justify-start items-start gap-1">
-                  <p className="font-semibold text-[17px]">{e?.item_name}</p>
-                  <p className="text-[16px] font-medium">
-                    Year of Use: {e?.year_of_use}
+
+      {FilterAddProduct.length > 0 ? (
+        <div>
+          {FilterAddProduct?.map((e, i) => {
+            return (
+              <div
+                key={i}
+                className="grid grid-cols-7 justify-start items-center gap-2 mt-5"
+                style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}
+              >
+                <div className="flex justify-start items-center col-span-3">
+                  <img src={e?.item_img} alt="" width={150} />
+                  <div className="flex flex-col justify-start items-start gap-1">
+                    <p className="font-semibold text-[17px]">{e?.item_name}</p>
+                    <p className="text-[16px] font-medium">
+                      Year of Use: {e?.year_of_use}
+                    </p>
+                  </div>
+                </div>
+                <div className="text-[16px] font-medium flex flex-col justify-center items-center gap-1">
+                  {" "}
+                  <p>Original Price: ${e?.original_price}</p>
+                  <p>Resale Price: ${e?.resale_price}</p>
+                </div>
+                <div className="col-span-2 text-[16px] font-medium flex flex-col justify-center items-center gap-1">
+                  <p>
+                    Category Name:{" "}
+                    {e.category_id == 1
+                      ? "Televisions (TV)"
+                      : e.category_id == 2
+                      ? "Refrigerators & Freezers"
+                      : e.category_id == 3
+                      ? "Washing Machines"
+                      : e.category_id == 4
+                      ? "Microwave & Electric Oven"
+                      : e.category_id == 5
+                      ? "Air Conditioner"
+                      : e.category_id == 6
+                      ? "Room Heaters"
+                      : e.category_id == 7
+                      ? "Blender & Mixer Grinder"
+                      : ""}
                   </p>
+                  <p>Brand: {e?.brand}</p>
+                </div>
+
+                <div className="flex flex-col justify-center items-center gap-2">
+                  {" "}
+                  <label
+                    onClick={() => setDeletingProduct(e)}
+                    htmlFor="confirmation-modal"
+                    className="text-red-500 border border-red-500 rounded-[4px] px-3 cursor-pointer group-hover:text-white flex items-center gap-1"
+                  >
+                    Delete <MdDeleteOutline />
+                  </label>
+                  {e?.role !== "available" && (
+                    <button
+                      onClick={() => handleMakeAvailable(e._id)}
+                      className="bg-[#0047AF] px-3 py-1 rounded-[4px] text-white"
+                    >
+                      Make Advertise
+                    </button>
+                  )}
+                  {e?.role === "available" && (
+                    <button
+                      onClick={() => handleMakeAvailable(e._id)}
+                      className="text-green-500 font-semibold"
+                    >
+                      Advertised
+                    </button>
+                  )}
                 </div>
               </div>
-              <div className="text-[16px] font-medium flex flex-col justify-center items-center gap-1">
-                {" "}
-                <p>Original Price: ${e?.original_price}</p>
-                <p>Resale Price: ${e?.resale_price}</p>
-              </div>
-              <div className="col-span-2 text-[16px] font-medium flex flex-col justify-center items-center gap-1">
-                <p>
-                  Category Name:{" "}
-                  {e.category_id == 1
-                    ? "Televisions (TV)"
-                    : e.category_id == 2
-                    ? "Refrigerators & Freezers"
-                    : e.category_id == 3
-                    ? "Washing Machines"
-                    : e.category_id == 4
-                    ? "Microwave & Electric Oven"
-                    : e.category_id == 5
-                    ? "Air Conditioner"
-                    : e.category_id == 6
-                    ? "Room Heaters"
-                    : e.category_id == 7
-                    ? "Blender & Mixer Grinder"
-                    : ""}
-                </p>
-                <p>Brand: {e?.brand}</p>
-              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="text-red-500 text-xl flex flex-col justify-center items-center my-20  gap-4">
+          No products found.
+        </p>
+      )}
 
-              <div className="flex flex-col justify-center items-center gap-2">
-                {" "}
-                <label
-                  onClick={() => setDeletingProduct(e)}
-                  htmlFor="confirmation-modal"
-                  className="text-red-500 border border-red-500 rounded-[4px] px-3 cursor-pointer group-hover:text-white flex items-center gap-1"
-                >
-                  Delete <MdDeleteOutline />
-                </label>
-                {e?.role !== "available" && (
-                  <button
-                    onClick={() => handleMakeAvailable(e._id)}
-                    className="bg-[#0047AF] px-3 py-1 rounded-[4px] text-white"
-                  >
-                    Make Advertise
-                  </button>
-                )}
-                {e?.role === "available" && (
-                  <button
-                    onClick={() => handleMakeAvailable(e._id)}
-                    className="text-green-500 font-semibold"
-                  >
-                    Advertised
-                  </button>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
       {/* <div
         className="overflow-x-auto"
         data-aos="zoom-in-up"

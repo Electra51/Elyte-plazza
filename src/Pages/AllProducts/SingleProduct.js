@@ -6,17 +6,14 @@ import toast from "react-hot-toast";
 import useAdmin from "../../hooks/useAdmin";
 import { MdOutlineReportProblem } from "react-icons/md";
 import { FcBusinessman } from "react-icons/fc";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import WishContext from "../../contexts/WishContext";
 import newImages from "../../assets/images/newImages1.png";
+
 const SingleProduct = ({ oneProduct, setProductModals }) => {
-  // console.log("oneProduct", oneProduct);
   const { user } = useContext(AuthContext);
-
   const [isAdmin] = useAdmin(user?.email);
-  console.log("user", user);
   const { addItemToCart, cart } = useContext(WishContext);
-
   const [isInWishlist, setIsInWishlist] = useState(false);
   useEffect(() => {
     const isInWishlistStored = localStorage.getItem(
@@ -24,12 +21,21 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     );
     setIsInWishlist(!!isInWishlistStored);
   }, [oneProduct._id]);
+  const removeFromWishlistHandler = () => {
+    // Remove from localStorage
+    localStorage.removeItem(`wishlist_${oneProduct._id}`);
+
+    // Update state
+    setIsInWishlist(false);
+  };
+  console.log("hi", cart.cartItems);
   const addToCardHandler = () => {
-    // console.log("first");
     addItemToCart({
       product: oneProduct._id,
       item_name: oneProduct.item_name,
       resale_price: oneProduct?.resale_price,
+      role: oneProduct?.role,
+      type: oneProduct?.type,
       item_img: oneProduct.item_img,
       original_price: oneProduct?.original_price,
       seller_name: oneProduct?.seller_name,
@@ -44,7 +50,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     _id,
     item_img,
     item_name,
-    location,
+    role,
     original_price,
     resale_price,
     seller_name,
@@ -81,35 +87,6 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
   };
   return (
     <div>
-      {/* <div className="card w-96 bg-base-100 shadow-xl border">
-                <figure className="px-10 pt-10">
-                    <img src={item_img} alt="fridge" className="rounded-xl" />
-                </figure>
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title">{item_name}</h2>
-                    <p className=''>original_price: {original_price}</p>
-                    <p className=''>resale_price: {resale_price}</p>
-                    <p className=''>seller_name: {seller_name}</p>
-                    <p className=''>location: {location}</p>
-                    <p className=''>year_of_use: {year_of_use}</p>
-                    <div className='flex justify-between items-center'>
-                    <div className="">
-                        <label onClick={()=>setProductModals(oneProduct)}
-                            htmlFor="booking-modal" className="btn btn-warning">Book Now</label>
-                        
-                        </div>
-                        {
-                                        oneProduct?.type !=='report' && <Link onClick={() => handleMakeReport(oneProduct._id)} className='underline ml-5 text-primary'>Report to Admin</Link>
-                        }
-                        {
-                               
-                                oneProduct?.type ==='report' && <Link className='underline text-red-700 font-bold ml-5'>Reported</Link>
-                         
-                        }
-                        
-                    </div>
-                </div>
-            </div> */}
       <div
         className="h-[390px] bg-gray-200 shadow-xl relative rounded-[4px]"
         key={item_img._id}
@@ -137,15 +114,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
           </p>
           <div className="absolute top-[-2.5px] left-[-2.5px]">
             {oneProduct?.role == "available" && (
-              <img
-                src={newImages}
-                alt=""
-                width={50}
-                // className="absolute top-[-5px] right-[-5px]"
-              />
-              // <button className="px-2 py-0.1 bg-green-500 text-white rounded-[4px] text-[14px]">
-              //   New
-              // </button>
+              <img src={newImages} alt="" width={50} />
             )}
           </div>
           <div className="absolute top-2 right-2">
@@ -201,10 +170,17 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
             )}
 
             <div className="hover:bg-[#156CDA] border border-[#156CDA] h-8 w-8 rounded-full text-[#156CDA] flex justify-center items-center hover:text-white">
-              <FaRegHeart
-                onClick={addToCardHandler}
-                style={{ color: isInWishlist ? "red" : "#156CDA" }}
-              />
+              {isInWishlist ? (
+                <FaHeart
+                  className="text-red-500 cursor-pointer"
+                  onClick={removeFromWishlistHandler}
+                />
+              ) : (
+                <FaRegHeart
+                  onClick={addToCardHandler}
+                  className="text-[#156CDA] cursor-pointer"
+                />
+              )}
             </div>
           </div>
         </div>

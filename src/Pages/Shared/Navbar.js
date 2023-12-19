@@ -1,11 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiOutlineUser,
-} from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { TbLayoutDashboard } from "react-icons/tb";
-import { FaRegUserCircle, FaUser } from "react-icons/fa";
+import { FaRegUserCircle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import NavbarFirstPart from "./NavbarFirstPart";
@@ -14,6 +10,7 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import WishContext from "../../contexts/WishContext";
 import { MdOutlineMenu } from "react-icons/md";
 import { toast } from "react-hot-toast";
+
 const Navbar = () => {
   const [fix, setFix] = useState(false);
   function setFixed() {
@@ -33,7 +30,6 @@ const Navbar = () => {
   };
   useEffect(() => {
     const localDark = JSON.parse(localStorage.getItem("dark-mode"));
-    // console.log(localDark);
     setDark(localDark);
   }, []);
   useEffect(() => {
@@ -47,10 +43,8 @@ const Navbar = () => {
   }, [dark]);
   const { cart } = useContext(WishContext);
   const cartItems = cart?.cartItems;
-
   //authcontext theke user k nilm
   const { user, logOut } = useContext(AuthContext);
-  console.log("user", user);
   //redirect
   const navigate = useNavigate();
   const location = useLocation();
@@ -104,7 +98,6 @@ const Navbar = () => {
 
       <label className="swap swap-rotate ml-2">
         <input type="checkbox" onClick={handleDark} />
-
         <svg
           className="swap-on fill-current w-5 h-5"
           xmlns="http://www.w3.org/2000/svg"
@@ -133,29 +126,9 @@ const Navbar = () => {
       </li>
       {user?.uid ? (
         <>
-          {/* <button className="btn btn-outline mr-2">
-            {" "}
-            <Link className="ml-2 pr-3" to="/profile">
-              {user?.photoURL ? (
-                <img
-                  title={user.displayName}
-                  style={{ height: "35px" }}
-                  alt=""
-                  roundedCircle
-                  src={user?.photoURL}
-                ></img>
-              ) : (
-                <FaUser></FaUser>
-              )}
-            </Link>
-            {user?.displayName}
-          </button> */}
-
           <ul>
             <div className="dropdown mt-4 ml-3 lg:ml-0">
               <button className="dropbtn flex justify-center items-center mr-2 mt-[-4px]">
-                {" "}
-                {/* <Link className="ml-2 pr-3" to="/profile"> */}
                 {user?.photoURL ? (
                   <div className="avatar">
                     <div className="w-7 rounded-full">
@@ -181,8 +154,6 @@ const Navbar = () => {
                     </div>
                   </div>
                 )}
-                {/* </Link> */}
-                {/* {user?.displayName} */}
               </button>
               <div
                 onClick={myFunction}
@@ -215,23 +186,14 @@ const Navbar = () => {
               </div>
             </div>
           </ul>
-
-          {/* <li>
-            <button
-              onClick={handleLogOut}
-              className="border border-[#146CDA] text-[#146CDA] rounded-[4px]"
-            >
-              LogOut
-            </button>
-          </li> */}
         </>
       ) : (
         <li>
           <Link
             to="/login"
-            className="bg-transparent rounded-none border border-gray-500"
+            className="bg-transparent h-9 py-0 px-3 !rounded-[4px] mt-2 border border-gray-500 hover:bg-[#146CDA] hover:text-white hover:border-blue-600"
           >
-            <AiOutlineUser className="bg-transparent rounded-none" />
+            <AiOutlineUser className="bg-transparent !rounded-none" />
             Login/Register
           </Link>
         </li>
@@ -249,9 +211,9 @@ const Navbar = () => {
             : "navbar bg-base-100 flex justify-between p-0"
         }
       >
-        <div className="navbar-start mx-5">
+        <div className="navbar-start ml-3">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="lg:hidden">
               <MdOutlineMenu className="text-2xl" />
             </label>
             <ul
@@ -270,33 +232,12 @@ const Navbar = () => {
               alt="Capture-removebg-preview"
               width={30}
             />
-            Elyte Plazza
+            <p className="">Elyte Plazza</p>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
-        {/* <label
-          htmlFor="dashboard-drawer"
-          tabIndex={2}
-          className="btn btn-ghost lg:hidden"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h8m-8 6h16"
-            />
-          </svg>
-        </label> */}
-        {/* <div className="h-3 bg-red-600"></div> */}
       </div>
       <NavbarLastPart />
     </div>

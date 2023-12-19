@@ -125,13 +125,13 @@ const DashboardLayout = () => {
                 >
                   <CiShoppingTag className="text-[18px]" /> Orders
                 </NavLink>
-                <NavLink
+                {/* <NavLink
                   to="/dashboard/wishlist"
                   className="w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"
                 >
                   <AiOutlineHeart className="text-[18px]" />
                   WishList
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                   to="/dashboard/payment"
                   className="w-full p-2 px-3 flex justify-start items-center gap-2 text-white pl-5"

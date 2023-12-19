@@ -2,11 +2,14 @@ import React, { useContext, useState } from "react";
 import WishContext from "../../contexts/WishContext";
 import { FcBusinessman } from "react-icons/fc";
 import BookingModal from "../BookingModal/BookingModal";
-
+import newImages from "../../assets/images/newImages1.png";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { MdOutlineReportProblem } from "react-icons/md";
 const WishList = () => {
   const { cart, setCartToState } = useContext(WishContext);
   const [productModals, setProductModals] = useState(null);
-
+  const navigate = useNavigate();
   const deleteItemFromCart = (id) => {
     console.log("id", id);
     const newCartItems = cart?.cartItems?.filter((i) => i.product !== id);
@@ -14,8 +17,24 @@ const WishList = () => {
     localStorage.setItem("wish", JSON.stringify({ cartItems: newCartItems }));
     setCartToState();
   };
+  const handleMakeReport = (id) => {
+    fetch(`https://icebox-server.vercel.app/products/report/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Reported this item");
+          // refetch()
+          navigate("/dashboard/reportItem");
+        }
+      });
+  };
   return (
-    <div className="h-[100vh]">
+    <div>
       <p className="font-semibold text-xl py-5  max-w-6xl mx-auto">
         My WishList
       </p>
@@ -24,7 +43,6 @@ const WishList = () => {
       ) : (
         <div className="grid grid-cols-4 max-w-6xl mx-auto gap-7 pb-12 pt-6">
           {cart.cartItems?.map((e, i) => {
-            console.log("e", e.product);
             return (
               <div
                 className="h-[390px] bg-gray-200 shadow-xl relative rounded-[4px]"
@@ -37,6 +55,27 @@ const WishList = () => {
                     className="rounded-xl h-full w-full object-contain"
                   />
                 </figure>
+                <div className="absolute top-[-2.5px] left-[-2.5px]">
+                  {e?.role == "available" && (
+                    <img src={newImages} alt="" width={50} />
+                  )}
+                </div>{" "}
+                <div className="absolute top-2 right-2">
+                  {" "}
+                  {e?.type !== "report" && (
+                    <Link
+                      onClick={() => handleMakeReport(e.product)}
+                      className="underline text-primary text-[14px] flex justify-center items-center gap-1"
+                    >
+                      <MdOutlineReportProblem />
+                    </Link>
+                  )}
+                  {e?.type === "report" && (
+                    <Link className="underline text-red-500 font-medium ml-5">
+                      Reported
+                    </Link>
+                  )}
+                </div>
                 <div className="pt-6 h-40 px-5 items-center text-center text-black">
                   <h2 className="text-[16px] font-bold text-start">
                     {e.item_name}
