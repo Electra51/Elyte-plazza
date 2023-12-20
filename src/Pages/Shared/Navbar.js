@@ -89,7 +89,7 @@ const Navbar = () => {
                     : "badge badge-sm indicator-item bg-blue-500 text-white dark:text-gray-300 border-0"
                 }
               >
-                {cartItems?.length}
+                {cartItems?.length} 10
               </span>
             )}
           </div>
