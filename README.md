@@ -1,84 +1,118 @@
-# Getting Started with Create React App Icebox project
 
-LiveSite Link: https://icebox-5795c.web.app/
-Admin email: bitajap519@xegge.com
-Admin password: bitajap519
+# ElytePlazza - Online Electronics Store
+Welcome to ElytePlazza, your one-stop shop for high-quality electronic products. This web application is built using React.js and integrates with Stripe for secure and seamless online transactions.
 
-Technology:
-- react js
-- react hot toast
-- tailwindcss
-- daisyui
-- firebase authorization and hosting
-- payment gatway stripe
-- react icon
-- react animation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Logo](https://i.ibb.co/yQG5ygP/Screenshot-from-2023-12-29-17-35-30.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+**Client:** React Js, TailwindCSS, Tanstack react query, React hot tost
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Server:** Node Js, Express Js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Database:** Mongodb
 
-### `npm test`
+**Authenticarion:** Firebase, JWT
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Product Categories:**
+  - Televisions (TV)
+  - Refrigerators & Freezers
+  - Washing Machines
+  - Microwave & Electric Oven
+  - Air Conditioner
+  - Room Heaters
+  - Blender & Mixer Grinder
 
-### `npm run build`
+- **User Roles:**
+  - **Buyer:** Browse products, add them to the cart, make a purchase, report products, and manage wishlist.
+  - **Seller:** List products for sale, view and manage their inventory.
+  - **Admin:** Monitor all sellers and buyers, handle reported products, and manage the overall system.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Payment Integration:**
+  - Seamless payment processing through Stripe for a secure and convenient checkout experience.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Reporting System:**
+  - Buyers can report inappropriate products, and the admin can review and take necessary actions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Wishlist:**
+  - Buyers can add products to their wishlist for future reference.
 
-### `npm run eject`
+- **Mode:**
+  - Dark and Light Mode both here
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+https://elyte-plazza-7s07wuyod-electra51.vercel.app/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Color Reference
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Example Color | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
+| Example Color | ![#156cda](https://via.placeholder.com/10/156cda?text=+) #156cda |
+| Example Color | ![#FFFFFF](https://via.placeholder.com/10/#FFFFFF?text=+) #FFFFFF |
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Install elyte-plazza with npm
 
-### Code Splitting
+```bash
+  npm install my-project
+  cd my-project
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Install elyte-plazza server from this link
+https://github.com/Electra51/elyte-plazza-server 
+and follow this -
 
-### Analyzing the Bundle Size
+```bash
+  npm install my-project
+  cd my-project
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Run
+ Run my-project with npm
 
-### Making a Progressive Web App
+```bash
+  npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Admin Credentials
 
-### Advanced Configuration
+- Email:  admin@519.com
+- Password: admin@519.com
+## Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![App Screenshot](https://i.ibb.co/cDR5mDx/Screenshot-from-2023-12-29-17-51-20.png)
 
-### Deployment
+![App Screenshot](https://i.ibb.co/TcFXxKx/Screenshot-from-2023-12-29-18-26-13.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![App Screenshot](https://i.ibb.co/SKyW9ZX/Screenshot-from-2023-12-29-17-55-18.png)
 
-### `npm run build` fails to minify
+![App Screenshot](https://i.ibb.co/NtKCvJw/Screenshot-from-2023-12-29-17-59-51.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![App Screenshot](https://i.ibb.co/gTrmLzx/Screenshot-from-2023-12-29-18-40-05.png)
+
+## Buyer Dashboard:
+![App Screenshot](https://i.ibb.co/mSTVFFr/Screenshot-from-2023-12-29-18-02-18.png)
+
+![App Screenshot](https://i.ibb.co/YRGjKTJ/Screenshot-from-2023-12-29-18-01-43.png)
+
+## Seller Dashboard:
+![App Screenshot](https://i.ibb.co/XyFzTFM/Screenshot-from-2023-12-29-18-39-22.png)
+
+![App Screenshot](https://i.ibb.co/k9xwrYc/Screenshot-from-2023-12-29-18-31-52.png)
+
+## Admin Dashboard:
+![App Screenshot](https://i.ibb.co/CvXRHkx/Screenshot-from-2023-12-29-18-14-12.png)
+
+![App Screenshot](https://i.ibb.co/RNvHSPX/Screenshot-from-2023-12-29-18-14-26.png)
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://nextjs-my-portfolio-electra51.vercel.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/safayet-nur/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/nur_safaye51)
+
