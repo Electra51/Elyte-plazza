@@ -5,7 +5,9 @@ const useAdmin = (email) => {
   const [isAdminLoading, setIsAdminLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`https://icebox-server.vercel.app/users/admin/${email}`)
+      fetch(
+        `https://icebox-server-9upx1roo2-electra51.vercel.app/users/admin/${email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log("hi", data.isAdmin);

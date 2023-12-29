@@ -104,7 +104,7 @@ const Signup = () => {
   //                 userType: data.userType,
   //               };
   //               axios
-  //                 .post("http://localhost:5000/jwt", {
+  //                 .post("https://icebox-server-9upx1roo2-electra51.vercel.app/jwt", {
   //                   headers: {
   //                     authorization: `bearer ${localStorage.getItem("token")}`,
   //                   },
@@ -129,13 +129,16 @@ const Signup = () => {
     signInWithGoogle().then((result) => {
       // console.log(result.user);
       navigate(from, { replace: true });
-      fetch("https://icebox-server.vercel.app/googleUsers", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(result.user),
-      })
+      fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/googleUsers",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);
@@ -146,7 +149,7 @@ const Signup = () => {
   const saveUser = (name, email, userType) => {
     const user = { name, email, userType };
     console.log("user", user);
-    fetch("https://icebox-server.vercel.app/users", {
+    fetch("https://icebox-server-9upx1roo2-electra51.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -165,14 +168,12 @@ const Signup = () => {
         className="bg-[#146CDA] h-[100vh] w-[35%] flex justify-center items-center"
         style={{
           boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-        }}
-      >
+        }}>
         <div className="h-28 w-96 rounded-md bg-[#c7d7eb] bg-opacity-30 flex justify-center items-center">
           <div className="relative">
             <Link
               to="/"
-              className="normal-case text-3xl text-white font-bold flex justify-center items-center"
-            >
+              className="normal-case text-3xl text-white font-bold flex justify-center items-center">
               <img
                 src="https://i.ibb.co/Q8vpRcM/Capture-removebg-preview.png"
                 alt="Capture-removebg-preview"
@@ -334,8 +335,7 @@ const Signup = () => {
               type="submit"
               className={`bg-[#146CDA] hover:bg-[#285994] py-2.5 text-white w-full mt-5 rounded-[4px] ${
                 loading ? "btn-disabled" : ""
-              }`}
-            >
+              }`}>
               {loading ? (
                 <span className="loading loading-spinner text-info"></span>
               ) : (
@@ -347,16 +347,14 @@ const Signup = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-[#146CDA] font-semibold underline"
-            >
+              className="text-[#146CDA] font-semibold underline">
               please Login
             </Link>{" "}
           </p>
           <div className="divider">OR</div>
           <button
             onClick={handleGoogleSignIn}
-            className="py-2.5 border border-[#146CDA] text-[#146CDA] flex justify-center items-center gap-2 w-full rounded-[4px] hover:bg-[#146CDA] hover:text-white"
-          >
+            className="py-2.5 border border-[#146CDA] text-[#146CDA] flex justify-center items-center gap-2 w-full rounded-[4px] hover:bg-[#146CDA] hover:text-white">
             Continue with Google
             <FcGoogle className="text-xl" />
           </button>

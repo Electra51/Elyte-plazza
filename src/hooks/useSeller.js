@@ -5,7 +5,9 @@ const useSeller = (email) => {
   const [isSellerLoading, setIsSellerLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`https://icebox-server.vercel.app/users/seller/${email}`)
+      fetch(
+        `https://icebox-server-9upx1roo2-electra51.vercel.app/users/seller/${email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

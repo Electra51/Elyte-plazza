@@ -14,7 +14,7 @@ const UserProfile = () => {
   // const { data: users = [] } = useQuery({
   //   queryKey: ["users"],
   //   queryFn: async () => {
-  //     const res = await fetch("http://localhost:5000/users");
+  //     const res = await fetch("https://icebox-server-9upx1roo2-electra51.vercel.app/users");
   //     const data = await res.json();
   //     return data;
   //   },
@@ -35,7 +35,7 @@ const UserProfile = () => {
   //     toast.success("Your Request has been Pending");
   //     return;
   //   }
-  //   fetch(`http://localhost:5000/users/verify/${id}`, {
+  //   fetch(`https://icebox-server-9upx1roo2-electra51.vercel.app/users/verify/${id}`, {
   //     method: "PUT",
   //     // headers: {
   //     //   "content-type": "application/json",

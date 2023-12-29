@@ -14,14 +14,17 @@ const CheckoutForm = ({ booking }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://icebox-server.vercel.app/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://icebox-server-9upx1roo2-electra51.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -44,7 +47,6 @@ const CheckoutForm = ({ booking }) => {
     });
 
     if (error) {
-
       setCardError(error.message);
     } else {
       setCardError("");
@@ -67,7 +69,6 @@ const CheckoutForm = ({ booking }) => {
       return;
     }
     if (paymentIntent.status === "succeeded") {
-
       // store payment info in the database
       const payment = {
         price,
@@ -75,7 +76,7 @@ const CheckoutForm = ({ booking }) => {
         email,
         bookingId: _id,
       };
-      fetch("https://icebox-server.vercel.app/payments", {
+      fetch("https://icebox-server-9upx1roo2-electra51.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -85,7 +86,6 @@ const CheckoutForm = ({ booking }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-
           if (data.insertedId) {
             setSuccess("Congrats! your payment completed");
             setTransactionId(paymentIntent.id);
@@ -117,8 +117,7 @@ const CheckoutForm = ({ booking }) => {
         <button
           className="bg-[#166cda] px-4 mt-5 text-white rounded-[4px] py-1"
           type="submit"
-          disabled={!stripe || !clientSecret || processing}
-        >
+          disabled={!stripe || !clientSecret || processing}>
           Pay
         </button>
       </form>

@@ -18,12 +18,13 @@ const AddAProduct = () => {
   const { data: categoryNames, isLoading } = useQuery({
     queryKey: ["Category"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categoriesName");
+      const res = await fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/categoriesName"
+      );
       const data = await res.json();
       return data;
     },
   });
-
 
   const handleAddProduct = (data) => {
     const product = {
@@ -45,8 +46,7 @@ const AddAProduct = () => {
       item_img: data.item_img,
     };
 
-
-    fetch("http://localhost:5000/addProducts", {
+    fetch("https://icebox-server-9upx1roo2-electra51.vercel.app/addProducts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -71,8 +71,7 @@ const AddAProduct = () => {
       <hr className="mt-0 pb-5" />
       <form
         onSubmit={handleSubmit(handleAddProduct)}
-        className="grid grid-cols-2 gap-10"
-      >
+        className="grid grid-cols-2 gap-10">
         {" "}
         <div className="flex flex-col gap-2">
           <div className="form-control w-full">
@@ -192,8 +191,7 @@ const AddAProduct = () => {
               <p>Sub Category:</p>
               <select
                 {...register("subNumber")}
-                className="select input-bordered w-full"
-              >
+                className="select input-bordered w-full">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -337,27 +335,25 @@ const AddAProduct = () => {
               <p>Category:</p>
               <select
                 {...register("category_id")}
-                className="select input-bordered w-full"
-              >
+                className="select input-bordered w-full">
                 {categoryNames?.map((names, i) => {
-
                   return (
                     <option key={i} value={names.category_id}>
                       {names.category_id == 1
                         ? "Televisions (TV)"
                         : names.category_id == 2
-                          ? "Refrigerators & Freezers"
-                          : names.category_id == 3
-                            ? "Washing Machines"
-                            : names.category_id == 4
-                              ? "Microwave & Electric Oven"
-                              : names.category_id == 5
-                                ? "Air Conditioner"
-                                : names.category_id == 6
-                                  ? "Room Heaters"
-                                  : names.category_id == 7
-                                    ? "Blender & Mixer Grinder"
-                                    : ""}
+                        ? "Refrigerators & Freezers"
+                        : names.category_id == 3
+                        ? "Washing Machines"
+                        : names.category_id == 4
+                        ? "Microwave & Electric Oven"
+                        : names.category_id == 5
+                        ? "Air Conditioner"
+                        : names.category_id == 6
+                        ? "Room Heaters"
+                        : names.category_id == 7
+                        ? "Blender & Mixer Grinder"
+                        : ""}
                     </option>
                   );
                 })}

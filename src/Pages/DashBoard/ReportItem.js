@@ -27,7 +27,7 @@ const ReportItem = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "https://icebox-server.vercel.app/products/report/report",
+          "https://icebox-server-9upx1roo2-electra51.vercel.app/products/report/report",
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -36,22 +36,23 @@ const ReportItem = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) { }
+      } catch (error) {}
     },
   });
 
   const handleDeleteReportedItem = (reportedItem) => {
-
-    fetch(`https://icebox-server.vercel.app/products/${reportedItem._id}`, {
-      method: "DELETE",
-      // ,
-      // headers: {
-      //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-      // }
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/products/${reportedItem._id}`,
+      {
+        method: "DELETE",
+        // ,
+        // headers: {
+        //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+        // }
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-
         if (data.deletedCount > 0) {
           refetch();
           toast.success(`${reportedItem.name} deleted successfully`);
@@ -106,12 +107,11 @@ const ReportItem = () => {
         {reportProduct
           ?.slice(6 * page, 6 * (page + 1))
           .map((reportedItem, i) => {
-
             return (
-              <div key={i}
+              <div
+                key={i}
                 className="w-full flex items-center justify-between mt-4 border-b p-3"
-                style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}
-              >
+                style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}>
                 <div className=" w-[42%] flex justify-start items-center gap-3">
                   {" "}
                   <img src={reportedItem?.item_img} alt="" width={100} />
@@ -143,8 +143,7 @@ const ReportItem = () => {
                   <label
                     onClick={() => setDeletingReportedItem(reportedItem)}
                     htmlFor="confirmation-modal"
-                    className="text-red-500 cursor-pointer"
-                  >
+                    className="text-red-500 cursor-pointer">
                     <MdDeleteOutline className="text-xl" />
                   </label>
                 </div>
@@ -176,8 +175,7 @@ const ReportItem = () => {
           successAction={handleDeleteReportedItem}
           successButtonName="Delete"
           modalData={deletingReportedItem}
-          closeModal={closeModal}
-        ></ConfirmationModal>
+          closeModal={closeModal}></ConfirmationModal>
       )}
     </div>
   );

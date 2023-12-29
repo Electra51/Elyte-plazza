@@ -7,7 +7,9 @@ const NavbarLastPart = () => {
   const { data: productCategories = [] } = useQuery({
     queryKey: ["productCategories"],
     queryFn: async () => {
-      const res = await fetch("https://icebox-server.vercel.app/categories");
+      const res = await fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/categories"
+      );
       const data = await res.json();
       return data;
     },
@@ -50,8 +52,7 @@ const NavbarLastPart = () => {
               <div
                 id="myDropdown"
                 onClick={myFunction}
-                className="p-2 shadow menu dropdown-content z-[1] bg-[#146CDA] w-52"
-              >
+                className="p-2 shadow menu dropdown-content z-[1] bg-[#146CDA] w-52">
                 {e?.subCategory?.map((a, index) => (
                   <li key={index}>
                     <Link to={`/category/${e.category_id}`}> {a.subName}</Link>{" "}

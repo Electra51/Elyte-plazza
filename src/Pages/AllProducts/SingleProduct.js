@@ -70,12 +70,15 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
   }
 
   const handleMakeReport = (id) => {
-    fetch(`https://icebox-server.vercel.app/products/report/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/products/report/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -89,8 +92,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
     <div>
       <div
         className="h-[390px] bg-gray-200 shadow-xl relative rounded-[4px]"
-        key={item_img._id}
-      >
+        key={item_img._id}>
         <figure className="p-3 pt-10 h-40">
           <img
             src={item_img}
@@ -101,8 +103,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
         <div className="pt-6 h-40 px-5 items-center text-center text-black">
           <h2
             className="text-[16px] font-bold text-start cursor-pointer hover:underline hover:text-blue-600"
-            onClick={() => navigate(`/${_id}`)}
-          >
+            onClick={() => navigate(`/${_id}`)}>
             {item_name}
           </h2>
           <p className="text-[15px] line-through text-start">
@@ -125,8 +126,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
                 {oneProduct?.type !== "report" && (
                   <Link
                     onClick={() => handleMakeReport(oneProduct._id)}
-                    className="underline text-primary text-[14px] flex justify-center items-center gap-1"
-                  >
+                    className="underline text-primary text-[14px] flex justify-center items-center gap-1">
                     <MdOutlineReportProblem />
                   </Link>
                 )}
@@ -152,8 +152,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
                 <label
                   onClick={() => setProductModals(oneProduct)}
                   htmlFor="booking-modal"
-                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA] cursor-pointer"
-                >
+                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA] cursor-pointer">
                   Book Now
                 </label>
               </div>
@@ -162,8 +161,7 @@ const SingleProduct = ({ oneProduct, setProductModals }) => {
                 <label
                   onClick={() => setProductModals(oneProduct)}
                   htmlFor="loader-modal"
-                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA] cursor-pointer"
-                >
+                  className="text-white px-4 py-2 text-[14px] rounded-md bg-[#156CDA] cursor-pointer">
                   Book Now
                 </label>
               </div>

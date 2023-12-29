@@ -7,11 +7,12 @@ import { Link } from "react-router-dom";
 import BookingModal from "../../BookingModal/BookingModal";
 
 const SomeProducts = () => {
-
   const { data: productOver = [] } = useQuery({
     queryKey: ["productOver"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/products");
+      const res = await fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/products"
+      );
       const data = await res.json();
       return data;
     },
@@ -24,11 +25,15 @@ const SomeProducts = () => {
       <div
         data-aos="fade-up"
         data-aos-duration="2300"
-        className="max-w-[340px] lg:max-w-6xl mx-auto"
-      >
+        className="max-w-[340px] lg:max-w-6xl mx-auto">
         <div className="text-center mt-20 lg:mt-40 relative">
           <p className="text-[18px] lg:text-2xl font-bold">OUR PRODUCTS</p>
-          <Link to="/category">   <button className="invisible lg:visible text-[#166CDA] absolute top-5 right-0">See more products...</button></Link>
+          <Link to="/category">
+            {" "}
+            <button className="invisible lg:visible text-[#166CDA] absolute top-5 right-0">
+              See more products...
+            </button>
+          </Link>
           {/* <button className="text-[#166CDA] absolute top-5 right-0">See more products...</button> */}
           <p className="mb-10 lg:mb-20">
             Available Products here that you can select one easily
@@ -36,7 +41,6 @@ const SomeProducts = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 mb-32">
             {productsSome.map((product, i) => {
-
               return (
                 <SingleProduct
                   key={product._id}
@@ -47,21 +51,16 @@ const SomeProducts = () => {
             })}
           </div>
         </div>
-
       </div>
-      {
-        productModals && (
-          <LoaderModal
-            productModals={productModals}
-            setProductModals={setProductModals}
-          ></LoaderModal>
-        )
-      }
+      {productModals && (
+        <LoaderModal
+          productModals={productModals}
+          setProductModals={setProductModals}></LoaderModal>
+      )}
       {productModals && (
         <BookingModal
           productModals={productModals}
-          setProductModals={setProductModals}
-        ></BookingModal>
+          setProductModals={setProductModals}></BookingModal>
       )}
     </div>
   );

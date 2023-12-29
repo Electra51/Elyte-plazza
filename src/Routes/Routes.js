@@ -59,9 +59,11 @@ const router = createBrowserRouter([
             <AllProducts />
           </PrivateRoute>
         ),
-        // loader: () => fetch('https://icebox-server.vercel.app/products')
+        // loader: () => fetch('https://icebox-server-9upx1roo2-electra51.vercel.app/products')
         loader: ({ params }) =>
-          fetch(`https://icebox-server.vercel.app/products/${params.id}`),
+          fetch(
+            `https://icebox-server-9upx1roo2-electra51.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/Available",
@@ -71,7 +73,9 @@ const router = createBrowserRouter([
         path: "/:id",
         element: <ProductDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(
+            `https://icebox-server-9upx1roo2-electra51.vercel.app/product/${params.id}`
+          ),
       },
       {
         path: "/blogs",
@@ -120,7 +124,9 @@ const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`https://icebox-server.vercel.app/bookings/${params.id}`),
+          fetch(
+            `https://icebox-server-9upx1roo2-electra51.vercel.app/bookings/${params.id}`
+          ),
       },
       {
         path: "/dashboard/wishlist",

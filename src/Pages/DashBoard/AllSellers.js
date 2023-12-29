@@ -28,7 +28,7 @@ const AllSellers = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "https://icebox-server.vercel.app/users/seller"
+          "https://icebox-server-9upx1roo2-electra51.vercel.app/users/seller"
           // ,
           // {
           // headers: {
@@ -38,21 +38,23 @@ const AllSellers = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) { }
+      } catch (error) {}
     },
   });
 
   //handleMakeAvailable
   const handleMakeVerified = (id) => {
-    fetch(`https://icebox-server.vercel.app/users/verify/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/users/verify/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-
         if (data.modifiedCount > 0) {
           toast.success("Make verified.");
           refetch();
@@ -62,17 +64,18 @@ const AllSellers = () => {
   };
 
   const handleDeleteSeller = (seller) => {
-
-    fetch(`https://icebox-server.vercel.app/users/${seller._id}`, {
-      method: "DELETE",
-      // ,
-      // headers: {
-      //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-      // }
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/users/${seller._id}`,
+      {
+        method: "DELETE",
+        // ,
+        // headers: {
+        //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+        // }
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-
         if (data.deletedCount > 0) {
           refetch();
           toast.success(`Buyer ${seller.name} deleted successfully`);
@@ -128,14 +131,12 @@ const AllSellers = () => {
           <div
             key={i}
             className="mt-5 py-5 px-4 group hover:bg-[#0046ac] hover:text-white hover:bg-opacity-70"
-            style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}
-          >
+            style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}>
             <div className="flex justify-between items-center">
               {seller?.type !== "verified" && (
                 <button
                   onClick={() => handleMakeVerified(seller._id)}
-                  className="bg-[#0046ac] rounded-[4px] text-[14px] py-0.5 px-2 text-white mb-1"
-                >
+                  className="bg-[#0046ac] rounded-[4px] text-[14px] py-0.5 px-2 text-white mb-1">
                   Verify
                 </button>
               )}
@@ -148,8 +149,7 @@ const AllSellers = () => {
                 <label
                   onClick={() => setDeletingSeller(seller)}
                   htmlFor="confirmation-modal"
-                  className="text-red-500 cursor-pointer group-hover:text-white"
-                >
+                  className="text-red-500 cursor-pointer group-hover:text-white">
                   <MdDeleteOutline />
                 </label>
               </div>{" "}
@@ -178,8 +178,7 @@ const AllSellers = () => {
           successAction={handleDeleteSeller}
           successButtonName="Delete"
           modalData={deletingSeller}
-          closeModal={closeModal}
-        ></ConfirmationModal>
+          closeModal={closeModal}></ConfirmationModal>
       )}
     </div>
   );

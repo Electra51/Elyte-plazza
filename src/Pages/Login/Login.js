@@ -52,13 +52,16 @@ const Login = () => {
     signInWithGoogle().then((result) => {
       navigate(from, { replace: true });
 
-      fetch("https://icebox-server.vercel.app/googleUsers", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(result.user),
-      })
+      fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/googleUsers",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(result.user),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);
@@ -84,14 +87,12 @@ const Login = () => {
         className="bg-[#146CDA] h-[100vh] w-[35%] flex justify-center items-center"
         style={{
           boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-        }}
-      >
+        }}>
         <div className="h-28 w-96 rounded-md bg-[#c7d7eb] bg-opacity-30 flex justify-center items-center">
           <div className="relative">
             <Link
               to="/"
-              className="normal-case text-3xl text-white font-bold flex justify-center items-center"
-            >
+              className="normal-case text-3xl text-white font-bold flex justify-center items-center">
               <img
                 src="https://i.ibb.co/Q8vpRcM/Capture-removebg-preview.png"
                 alt="Capture-removebg-preview"
@@ -186,8 +187,7 @@ const Login = () => {
           <label className="label p-0 mt-0.5">
             <span
               onClick={handleReset}
-              className="label-text underline text-[#146CDA] cursor-pointer"
-            >
+              className="label-text underline text-[#146CDA] cursor-pointer">
               Forget Password?
             </span>
           </label>
@@ -207,16 +207,14 @@ const Login = () => {
             New to Elyte Plazza?{" "}
             <Link
               to="/signup"
-              className="text-[#146CDA] font-semibold underline"
-            >
+              className="text-[#146CDA] font-semibold underline">
               Sign Up
             </Link>{" "}
           </p>
           <div className="divider">OR</div>
           <button
             onClick={handleGoogleSignIn}
-            className="py-2.5 border border-[#146CDA] text-[#146CDA] flex justify-center items-center gap-2 w-full rounded-[4px] hover:bg-[#146CDA] hover:text-white"
-          >
+            className="py-2.5 border border-[#146CDA] text-[#146CDA] flex justify-center items-center gap-2 w-full rounded-[4px] hover:bg-[#146CDA] hover:text-white">
             Continue with Google <FcGoogle className="text-xl" />
           </button>
         </form>

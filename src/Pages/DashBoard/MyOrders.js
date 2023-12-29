@@ -11,7 +11,7 @@ const MyOrders = () => {
   const { user } = useContext(AuthContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(0);
-  // const url = `https://icebox-server.vercel.app/bookings?email=${user?.email}`;
+  // const url = `https://icebox-server-9upx1roo2-electra51.vercel.app/bookings?email=${user?.email}`;
 
   const {
     data: bookings = [],
@@ -22,7 +22,7 @@ const MyOrders = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `https://icebox-server.vercel.app/bookings?email=${user?.email}`,
+          `https://icebox-server-9upx1roo2-electra51.vercel.app/bookings?email=${user?.email}`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -98,8 +98,7 @@ const MyOrders = () => {
             {bookingProduct.map((booking, i) => (
               <div
                 className="grid grid-cols-3 mt-5 gap-5 border-b ml-4 hover:shadow-md hover:bg-[#0047af] px-5 py-5 hover:text-white  rounded-[4px]"
-                key={i}
-              >
+                key={i}>
                 <div className="col-span-2 flex justify-start items-center gap-2">
                   <div>{i + 1}.</div>
                   <div className="avatar">

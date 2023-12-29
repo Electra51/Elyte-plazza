@@ -15,7 +15,9 @@ const OverAllProducts = () => {
   const { data: productOver = [] } = useQuery({
     queryKey: ["productOver"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/products");
+      const res = await fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/products"
+      );
       const data = await res.json();
       return data;
     },
@@ -52,7 +54,9 @@ const OverAllProducts = () => {
   const { data: productCategories = [] } = useQuery({
     queryKey: ["productCategories"],
     queryFn: async () => {
-      const res = await fetch("https://icebox-server.vercel.app/categories");
+      const res = await fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/categories"
+      );
       const data = await res.json();
       return data;
     },
@@ -97,8 +101,7 @@ const OverAllProducts = () => {
                   className={`cursor-pointer ${
                     selectedYearOfUse === year ? "font-bold" : ""
                   }`}
-                  onClick={() => setSelectedYearOfUse(year)}
-                >
+                  onClick={() => setSelectedYearOfUse(year)}>
                   {year === "all"
                     ? "All"
                     : year === "0-1"
@@ -121,8 +124,7 @@ const OverAllProducts = () => {
                     typeFilter === type ? "bg-[#156CDA] text-white" : "bg-white"
                   }`}
                   onClick={() => setTypeFilter(type)}
-                  key={index}
-                >
+                  key={index}>
                   {type == "1"
                     ? "Televisions (TV)"
                     : type == "2"
@@ -160,8 +162,7 @@ const OverAllProducts = () => {
       {productModals && (
         <BookingModal
           productModals={productModals}
-          setProductModals={setProductModals}
-        ></BookingModal>
+          setProductModals={setProductModals}></BookingModal>
       )}
     </div>
   );

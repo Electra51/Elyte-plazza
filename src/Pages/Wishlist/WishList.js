@@ -18,12 +18,15 @@ const WishList = () => {
     setCartToState();
   };
   const handleMakeReport = (id) => {
-    fetch(`https://icebox-server.vercel.app/products/report/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/products/report/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -46,8 +49,7 @@ const WishList = () => {
             return (
               <div
                 className="h-[390px] bg-gray-200 shadow-xl relative rounded-[4px]"
-                key={i}
-              >
+                key={i}>
                 <figure className="p-3 pt-10 h-40">
                   <img
                     src={e.item_img}
@@ -65,8 +67,7 @@ const WishList = () => {
                   {e?.type !== "report" && (
                     <Link
                       onClick={() => handleMakeReport(e.product)}
-                      className="underline text-primary text-[14px] flex justify-center items-center gap-1"
-                    >
+                      className="underline text-primary text-[14px] flex justify-center items-center gap-1">
                       <MdOutlineReportProblem />
                     </Link>
                   )}
@@ -99,14 +100,12 @@ const WishList = () => {
                     <label
                       onClick={() => setProductModals(e)}
                       htmlFor="booking-modal"
-                      className="text-white px-16 py-2 text-[14px] rounded-md bg-[#156CDA] w-full cursor-pointer"
-                    >
+                      className="text-white px-16 py-2 text-[14px] rounded-md bg-[#156CDA] w-full cursor-pointer">
                       Book Now
                     </label>
                     <p
                       className="text-[12px] py-2 underline hover:text-blue-500 cursor-pointer"
-                      onClick={() => deleteItemFromCart(e.product)}
-                    >
+                      onClick={() => deleteItemFromCart(e.product)}>
                       Remove From Wishlist
                     </p>
                   </div>
@@ -120,8 +119,7 @@ const WishList = () => {
       {productModals && (
         <BookingModal
           productModals={productModals}
-          setProductModals={setProductModals}
-        ></BookingModal>
+          setProductModals={setProductModals}></BookingModal>
       )}
     </div>
   );

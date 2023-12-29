@@ -8,7 +8,9 @@ const ProductCategory = () => {
   const { data: productCategories = [] } = useQuery({
     queryKey: ["productCategories"],
     queryFn: async () => {
-      const res = await fetch("https://icebox-server.vercel.app/categories");
+      const res = await fetch(
+        "https://icebox-server-9upx1roo2-electra51.vercel.app/categories"
+      );
       const data = await res.json();
       return data;
     },
@@ -29,33 +31,32 @@ const ProductCategory = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div
       data-aos="fade-up"
       data-aos-duration="2200"
-      className="max-w-[340px] lg:max-w-6xl mx-auto"
-    >
+      className="max-w-[340px] lg:max-w-6xl mx-auto">
       <div className="text-center mt-4 lg:mt-32">
         <p className="text-[18px] lg:text-2xl font-bold" id="categories">
           CATEGORIES
@@ -68,8 +69,7 @@ const ProductCategory = () => {
         {productCategories.map((categories, i) => (
           <CategoryCard
             key={categories._id}
-            categories={categories}
-          ></CategoryCard>
+            categories={categories}></CategoryCard>
         ))}
       </Slider>
     </div>

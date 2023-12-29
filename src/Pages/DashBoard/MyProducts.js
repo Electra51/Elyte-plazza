@@ -27,11 +27,14 @@ const MyProducts = () => {
     queryKey: ["addProducts"],
     queryFn: async () => {
       try {
-        const res = await fetch("https://icebox-server.vercel.app/products", {
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
+        const res = await fetch(
+          "https://icebox-server-9upx1roo2-electra51.vercel.app/products",
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
         const data = await res.json();
         return data;
       } catch (error) {}
@@ -57,12 +60,15 @@ const MyProducts = () => {
 
   //handleMakeAvailable
   const handleMakeAvailable = (id) => {
-    fetch(`http://localhost:5000/addProducts/available/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/addProducts/available/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -76,12 +82,15 @@ const MyProducts = () => {
   //for delete
 
   const handleDeleteProduct = (product) => {
-    fetch(`http://localhost:5000/addProducts/${product._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/addProducts/${product._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -132,8 +141,7 @@ const MyProducts = () => {
               <div
                 key={i}
                 className="grid grid-cols-7 justify-start items-center gap-2 mt-5"
-                style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}
-              >
+                style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}>
                 <div className="flex justify-start items-center col-span-3">
                   <img src={e?.item_img} alt="" width={150} />
                   <div className="flex flex-col justify-start items-start gap-1">
@@ -175,23 +183,20 @@ const MyProducts = () => {
                   <label
                     onClick={() => setDeletingProduct(e)}
                     htmlFor="confirmation-modal"
-                    className="text-red-500 border border-red-500 rounded-[4px] px-3 cursor-pointer group-hover:text-white flex items-center gap-1"
-                  >
+                    className="text-red-500 border border-red-500 rounded-[4px] px-3 cursor-pointer group-hover:text-white flex items-center gap-1">
                     Delete <MdDeleteOutline />
                   </label>
                   {e?.role !== "available" && (
                     <button
                       onClick={() => handleMakeAvailable(e._id)}
-                      className="bg-[#0047AF] px-3 py-1 rounded-[4px] text-white"
-                    >
+                      className="bg-[#0047AF] px-3 py-1 rounded-[4px] text-white">
                       Make Advertise
                     </button>
                   )}
                   {e?.role === "available" && (
                     <button
                       onClick={() => handleMakeAvailable(e._id)}
-                      className="text-green-500 font-semibold"
-                    >
+                      className="text-green-500 font-semibold">
                       Advertised
                     </button>
                   )}
@@ -280,8 +285,7 @@ const MyProducts = () => {
           successAction={handleDeleteProduct}
           successButtonName="Delete"
           modalData={deletingProduct}
-          closeModal={closeModal}
-        ></ConfirmationModal>
+          closeModal={closeModal}></ConfirmationModal>
       )}
     </div>
   );

@@ -32,7 +32,7 @@ const BookingModal = ({ productModals, setProductModals }) => {
       location,
     };
 
-    fetch("https://icebox-server.vercel.app/bookings", {
+    fetch("https://icebox-server-9upx1roo2-electra51.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,14 +41,11 @@ const BookingModal = ({ productModals, setProductModals }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-
         if (data.acknowledged) {
           setProductModals(null);
           toast.success("the item is booked");
         }
       });
-
-
   };
   return (
     <>
@@ -57,8 +54,7 @@ const BookingModal = ({ productModals, setProductModals }) => {
         <div className="modal-box relative">
           <label
             htmlFor="booking-modal"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
-          >
+            className="btn btn-sm btn-circle absolute right-2 top-2">
             ✕
           </label>
           <h3 className="text-lg font-bold">{item_name}</h3>
@@ -83,8 +79,7 @@ const BookingModal = ({ productModals, setProductModals }) => {
 
           <form
             onSubmit={handleBooking}
-            className="grid grid-cols-1 gap-3 mt-10 mx-10"
-          >
+            className="grid grid-cols-1 gap-3 mt-10 mx-10">
             {" "}
             <label>Booking Information:</label>
             <div className="flex justify-between  items-center gap-3">

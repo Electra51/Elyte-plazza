@@ -14,7 +14,7 @@ const Available = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/addProducts/available"
+          "https://icebox-server-9upx1roo2-electra51.vercel.app/addProducts/available"
           // ,
           // {
           // headers: {
@@ -24,11 +24,9 @@ const Available = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) { }
+      } catch (error) {}
     },
   });
-
-
 
   const notify = (e) => {
     toast("Coming soon.......");
@@ -39,8 +37,7 @@ const Available = () => {
       <div
         data-aos="fade-up"
         data-aos-duration="2300"
-        className="max-w-[340px] lg:max-w-6xl mx-auto"
-      >
+        className="max-w-[340px] lg:max-w-6xl mx-auto">
         <div className="text-center mt-20 lg:mt-40">
           <p className="text-[18px] lg:text-2xl font-bold">NEW ARRIVALS</p>
           <p className="mb-20">
@@ -59,23 +56,18 @@ const Available = () => {
             })}
           </div>
         </div>
-
-
       </div>
-      {
-        productModals && (
-          <LoaderModal
-            productModals={productModals}
-            setProductModals={setProductModals}
-          ></LoaderModal>
-        )
-      }
+      {productModals && (
+        <LoaderModal
+          productModals={productModals}
+          setProductModals={setProductModals}></LoaderModal>
+      )}
       {productModals && (
         <BookingModal
           productModals={productModals}
-          setProductModals={setProductModals}
-        ></BookingModal>
-      )}</>
+          setProductModals={setProductModals}></BookingModal>
+      )}
+    </>
   );
 };
 

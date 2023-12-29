@@ -27,7 +27,7 @@ const AllBuyers = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "https://icebox-server.vercel.app/users/buyer"
+          "https://icebox-server-9upx1roo2-electra51.vercel.app/users/buyer"
           // ,
           // {
           // headers: {
@@ -37,22 +37,23 @@ const AllBuyers = () => {
         );
         const data = await res.json();
         return data;
-      } catch (error) { }
+      } catch (error) {}
     },
   });
 
   const handleDeleteBuyer = (buyer) => {
-
-    fetch(`https://icebox-server.vercel.app/users/${buyer._id}`, {
-      method: "DELETE",
-      // ,
-      // headers: {
-      //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-      // }
-    })
+    fetch(
+      `https://icebox-server-9upx1roo2-electra51.vercel.app/users/${buyer._id}`,
+      {
+        method: "DELETE",
+        // ,
+        // headers: {
+        //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+        // }
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-
         if (data.deletedCount > 0) {
           refetch();
           toast.success(`Buyer ${buyer.name} deleted successfully`);
@@ -106,8 +107,7 @@ const AllBuyers = () => {
           <div
             key={i}
             className="mt-5 py-5 px-4 group hover:bg-[#0046ac] hover:text-white hover:bg-opacity-70"
-            style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}
-          >
+            style={{ boxShadow: "rgb(119 119 119 / 19%) 0px 5px 15px" }}>
             <div className="flex items-center justify-between gap-3">
               <div className="flex justify-start items-center gap-3">
                 <FiUsers />
@@ -119,8 +119,7 @@ const AllBuyers = () => {
                 <label
                   onClick={() => setDeletingBuyer(buyer)}
                   htmlFor="confirmation-modal"
-                  className="text-red-500 cursor-pointer group-hover:text-white"
-                >
+                  className="text-red-500 cursor-pointer group-hover:text-white">
                   <MdDeleteOutline />
                 </label>
               </div>
@@ -140,8 +139,7 @@ const AllBuyers = () => {
           successAction={handleDeleteBuyer}
           successButtonName="Delete"
           modalData={deletingBuyer}
-          closeModal={closeModal}
-        ></ConfirmationModal>
+          closeModal={closeModal}></ConfirmationModal>
       )}
     </div>
   );
